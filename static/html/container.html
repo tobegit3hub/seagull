@@ -1,0 +1,30 @@
+
+<!-- The home page -->
+<div ng-controller="HomeController">
+
+<div class="jumbotron">
+  <h1>Container</h1>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+
+    <!-- Display all user information -->
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users track by $index">
+        <td><a ng-href="/{{user.Name}}">{{user.Name}}</a></td>
+        <td><a ng-href="mailto:{{user.Email}}?Subject=mycomputer.xyz/{{user.Name}}" target="_top">{{user.Email}}</a></td>
+        <td>{{user.Description}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+
+</div> <!-- End of this angular page -->

@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<!-- Use angular and named seagull -->
+<html ng-app="seagull">
+  <head>
+    <title>Seagull</title>
+    <meta charset="UTF-8">
+    <base href="/">
+    <link rel="icon" href="static/img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon" />
+
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+    <!-- JavaScript -->
+    <script src="static/bower_components/angular/angular.min.js"></script>
+    <script src="static/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="static/js/app.js"></script>
+    <script src="static/js/controllers.js"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Seagull</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/container">Container</a></li>
+            <li><a href="/image">Image</a></li>
+            <li><a href="/configuration">Configuration</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <!-- Angular views, more on static/js/app.js -->
+    <div class="container">
+      <div ng-view></div>
+    </div>
+
+    <!-- Footer -->
+</ol>
+
+  </body>
+</html>

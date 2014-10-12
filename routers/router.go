@@ -7,4 +7,5 @@ import (
 
 func init() {
     beego.Router("/", &controllers.MainController{})
+		beego.Router("/:page", &controllers.MainController{})
 }
