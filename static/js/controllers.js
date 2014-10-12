@@ -27,6 +27,17 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
   function($scope, $routeParams, $http) {
 
 
+    /* Get the comment objects */
+    $http.get('http://127.0.0.1:4243/images/json').success(function(data) {
+      /* If the data is empty string, don't return objects */
+      if(typeof data[0].Id == "undefined") {
+        $scope.comments = null;
+      } else {
+        $scope.images = data;
+      }
+    });
+
+
 }]);
 
 seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$http',

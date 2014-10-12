@@ -1,11 +1,26 @@
 
 <!-- The home page -->
-<div ng-controller="HomeController">
+<div ng-controller="ImagesController">
 
-<div class="jumbotron">
   <h1>Image</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
-</div>
+
+
+<!-- Display all user information -->
+<table class="table table-striped table-hover">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr ng-repeat="image in images track by $index">
+    <td><a ng-href="/{{user.Name}}">{{image.Id}}</a></td>
+    <td>{{image.Created}}</td>
+    <td>{{image.ParentId}}</td>
+  </tr>
+</tbody>
+</table>
 
 </div> <!-- End of this angular page -->
