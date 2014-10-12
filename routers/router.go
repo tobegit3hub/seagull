@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/tobegit3hub/boxeye/controllers"
+	"github.com/tobegit3hub/seagull/controllers"
 	"github.com/astaxie/beego"
 )
 
