@@ -21,7 +21,7 @@ Everybody wants Web UI for docker and seagull is the most suitable for you. It's
 
 ## Development
 
-Seagull is implemented in Go with tools like Beego, AngularJS, Bootstrap, Bower, Docker and TravisCI. You can fork the repository and send pull-request as you want. Any suggestion is welcome!
+Seagull is implemented in Go with tools like Beego, AngularJS, Bootstrap, Bower, Docker and TravisCI. You can fork the repository and send pull-request as you want.
 
 * `git clone git@github.com:tobegit3hub/seagull.git`
 * `go get github.com/astaxie/beego`
