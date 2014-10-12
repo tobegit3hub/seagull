@@ -1,0 +1,23 @@
+{
+  "name": "boxeye",
+  "version": "1.0.0",
+  "homepage": "https://github.com/tobegit3hub/boxeye",
+  "authors": [
+    "tobe <tobeg3oogle@gmail.com>"
+  ],
+  "description": "Web UI to monitor docker",
+  "license": "Apache License",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.26",
+    "angular-route": "~1.2.26",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.2.0"
+  }
+}
