@@ -19,11 +19,19 @@ seagull.config(['$locationProvider', '$routeProvider',
         templateUrl: '/static/html/home.html',
         controller: 'HomeController'
       }).
-      when('/container', {
+      when('/containers', {
+        templateUrl: '/static/html/containers.html',
+        controller: 'ContainersController'
+      }).
+      when('/containers/:id', {
         templateUrl: '/static/html/container.html',
         controller: 'ContainerController'
       }).
-      when('/image', {
+      when('/images', {
+        templateUrl: '/static/html/images.html',
+        controller: 'ImagesController'
+      }).
+      when('/images/:id', {
         templateUrl: '/static/html/image.html',
         controller: 'ImageController'
       }).

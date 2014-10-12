@@ -11,12 +11,23 @@ seagullControllers.controller('HomeController', ['$scope', '$routeParams', '$htt
 
 }]);
 
+seagullControllers.controller('ContainersController', ['$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+
+
+}]);
+
 seagullControllers.controller('ContainerController', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
 
 
 }]);
 
+seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+
+
+}]);
 
 seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
