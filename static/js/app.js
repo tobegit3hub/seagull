@@ -61,11 +61,30 @@ seagull.filter( 'filesize', function () {
     if ( isNaN( parseFloat( bytes )) || ! isFinite( bytes ) ) {
       return '?';
     }
+
     var unit = 0;
     while ( bytes >= 1024 ) {
       bytes /= 1024;
       unit ++;
     }
     return bytes.toFixed( + precision ) + ' ' + units[ unit ];
+  };
+});
+
+/* Filter to convert string array into string */
+seagull.filter( 'array_to_string', function () {
+  return function( strings ) {
+    if ( !Array.isArray(strings) ) {
+      return '';
+    }
+
+    var result = "";
+    for (var i=0; i<strings.length; i++) {
+      result += strings[i];
+      if (i != strings.length-1) {
+        result += ", ";
+      }
+    }
+    return result;
   };
 });

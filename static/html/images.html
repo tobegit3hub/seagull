@@ -19,10 +19,10 @@
 
     <tbody>
       <tr ng-repeat="image in images track by $index">
-        <td><a ng-href="/images/{{image.Id}}">{{image.Id}}</a></td>
-        <td><span ng-repeat="tag in image.RepoTags">{{tag}} </span></td>
-        <td>{{image.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- yyyy-MM-dd HH:mm:ss Z -->
-        <td>{{image.VirtualSize | filesize:2 }}</td>
+        <td><a ng-href="/images/{{image.Id}}">{{image.Id | limitTo:12}}</a></td> <!-- Shorten image id -->
+        <td>{{image.RepoTags | array_to_string}}</td> <!-- Add comma between tags -->
+        <td>{{image.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- Full time with 'yyyy-MM-dd HH:mm:ss Z' -->
+        <td>{{image.VirtualSize | filesize:2}}</td> <!-- Convert to readable size -->
       </tr>
     </tbody>
   </table>
