@@ -21,8 +21,8 @@
       <tr ng-repeat="image in images track by $index">
         <td><a ng-href="/images/{{image.Id}}">{{image.Id}}</a></td>
         <td><span ng-repeat="tag in image.RepoTags">{{tag}} </span></td>
-        <td>{{image.Created * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-        <td>{{image.VirtualSize}}</td>
+        <td>{{image.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- yyyy-MM-dd HH:mm:ss Z -->
+        <td>{{image.VirtualSize | filesize:2 }}</td>
       </tr>
     </tbody>
   </table>
