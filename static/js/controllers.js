@@ -18,17 +18,20 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
 
   /*
     [{
-      "Id": "8dfafdbc3a40",
+      "Id": "d0bd54b5889f73ced793007ecdb3a1f923b3bc6d47979e9b24a8c7f1906aee5a",
+      "Names": ["/happy_turing"]
       "Image": "base:latest",
       "Command": "echo 1",
       "Created": 1367854155,
       "Status": "Exit 0",
       "Ports":[{"PrivatePort": 2222, "PublicPort": 3333, "Type": "tcp"}],
-      "SizeRw":12288,
-      "SizeRootFs":0
     }]
   */
 
+  /* Get the container objects */
+  $http.get('/dockerapi/containers/json').success(function(data) {
+    $scope.containers = data;
+  });
 }]);
 
 seagullControllers.controller('ContainerController', ['$scope', '$routeParams', '$http',
@@ -122,12 +125,7 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
 
   /* Get the image objects */
   $http.get('/dockerapi/images/json').success(function(data) {
-    /* If the data is empty string, don't return objects */
-    if(typeof data[0].Id == "undefined") {
-      $scope.images = null;
-    } else {
-      $scope.images = data;
-    }
+    $scope.images = data;
   });
 }]);
 

@@ -9,19 +9,63 @@ import (
 	"github.com/astaxie/beego"
 
 	"fmt"
-	//"encoding/json"
 	"io/ioutil"
 	"net"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
-	"os"
 	"strings"
 )
 
-func RequestUnixSocket(u string) string {
+/* Request docker unix socket */
+func RequestUnixSocket(address, method string) string {
+	DOCKER_UNIX_SOCKET := "unix:///var/run/docker.sock"
+	// Example: unix:///var/run/docker.sock:/images/json
+	unix_socket_url := DOCKER_UNIX_SOCKET + ":" + address
+	u, err := url.Parse(unix_socket_url)
+	if err != nil || u.Scheme != "unix" {
+		fmt.Println("Error to parse unix socket url " + unix_socket_url)
+		return ""
+	}
 
-	return "hello"
+	hostPath := strings.Split(u.Path, ":")
+	u.Host = hostPath[0]
+	u.Path = hostPath[1]
+
+	conn, err := net.Dial("unix", u.Host)
+	if err != nil {
+		fmt.Println("Error to connect to", u.Host, err)
+		return ""
+	}
+
+	reader := strings.NewReader("")
+	query := ""
+	if len(u.RawQuery) > 0 {
+		query = "?" + u.RawQuery
+	}
+
+	request, err := http.NewRequest(method, u.Path+query, reader)
+	if err != nil {
+		fmt.Println("Error to create http request", err)
+		return ""
+	}
+
+	client := httputil.NewClientConn(conn, nil)
+	response, err := client.Do(request)
+	if err != nil {
+		fmt.Println("Error to achieve http request over unix socket", err)
+		return ""
+	}
+
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		fmt.Println("Error, get invalid body in answer")
+		return ""
+	}
+
+	defer response.Body.Close()
+
+	return string(body)
 }
 
 type DockerapiController struct {
@@ -29,13 +73,9 @@ type DockerapiController struct {
 }
 
 func (this *DockerapiController) GetContainers() {
-
-	u := "unix:///var/run/docker.sock:/images/json"
-	result := RequestUnixSocket(u)
-
-	fmt.Println(result)
-	this.Data["json"] = result
-	this.ServeJson()
+	address := "/containers/json"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
 }
 
 func (this *DockerapiController) GetContainer() {
@@ -43,56 +83,9 @@ func (this *DockerapiController) GetContainer() {
 }
 
 func (this *DockerapiController) GetImages() {
-
-	url_string := "unix:///var/run/docker.sock:/images/json"
-	u, err := url.Parse(url_string)
-	if err != nil || u.Scheme != "unix" {
-		return
-	}
-
-	hostAndPath := strings.Split(u.Path, ":")
-	u.Host = hostAndPath[0]
-	u.Path = hostAndPath[1]
-
-	conn, err := net.Dial("unix", u.Host)
-	if err != nil {
-		fmt.Println("Fail to connect to", u.Host, ":", err)
-		return
-	}
-
-	reader := strings.NewReader("")
-
-	query := ""
-	if len(u.RawQuery) > 0 {
-		query = "?" + u.RawQuery
-	}
-
-	req, err := http.NewRequest("GET", u.Path+query, reader)
-	if err != nil {
-		fmt.Println("Fail to create http request", err)
-		return
-	}
-
-	client := httputil.NewClientConn(conn, nil)
-
-	//res, err := requestExecute(conn, client, req)
-	res, err := client.Do(req)
-
-	if err != nil {
-		fmt.Println("Fail to achieve http request over unix socket", err)
-		os.Exit(1)
-	}
-
-	body, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println("Invalid body in answer")
-		os.Exit(1)
-	}
-
-	defer res.Body.Close()
-
-	this.Ctx.WriteString(string(body))
-
+	address := "/images/json"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
 }
 
 func (this *DockerapiController) GetImage() {
