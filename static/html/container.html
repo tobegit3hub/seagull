@@ -1,30 +1,66 @@
 
-<!-- The home page -->
-<div ng-controller="HomeController">
+<!-- The containers page -->
+<div ng-controller="ContainerController">
 
-<div class="jumbotron">
   <h1>Container</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
 
-    <!-- Display all user information -->
+  <div ng-show="!container" class="alert alert-danger" role="alert">No such container!</div>
+
+  <!-- Display all containers information -->
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Description</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
+
     <tbody>
-      <tr ng-repeat="user in users track by $index">
-        <td><a ng-href="/{{user.Name}}">{{user.Name}}</a></td>
-        <td><a ng-href="mailto:{{user.Email}}?Subject=mycomputer.xyz/{{user.Name}}" target="_top">{{user.Email}}</a></td>
-        <td>{{user.Description}}</td>
+      <tr>
+        <td>Id</td>
+        <td>{{container.Id}}</td> <!-- Shorten container id -->
+      </tr>
+
+      <tr>
+        <td>Name</td>
+        <td>{{container.Name}}</td>
+      </tr>
+
+      <tr>
+        <td>Image</td>
+        <td><a ng-href="/images/{{container.Image}}">{{container.Image}}</a></td>
+      </tr>
+
+      <tr>
+        <td>Created</td>
+        <td>{{container.Created}}</td>
+      </tr>
+
+      <tr>
+        <td>Running</td>
+        <td>{{container.State.Running}}</td>
+      </tr>
+
+      <tr>
+        <td>StartedAt</td>
+        <td>{{container.State.StartedAt}}</td>
+      </tr>
+
+      <tr>
+        <td>PublishAllPorts</td>
+        <td>{{container.PublishAllPorts}}</td>
+      </tr>
+
+      <tr>
+        <td>Links</td>
+        <td>{{container.Links | array_to_string}}</td>
+      </tr>
+
+      <tr>
+        <td>OpenStdin</td>
+        <td>{{container.OpenStdin}}</td>
       </tr>
     </tbody>
   </table>
-  
-</div>
 
 </div> <!-- End of this angular page -->

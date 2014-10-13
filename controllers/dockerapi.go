@@ -79,7 +79,11 @@ func (this *DockerapiController) GetContainers() {
 }
 
 func (this *DockerapiController) GetContainer() {
+	id := this.GetString(":id")
 
+	address := "/containers/" + id + "/json"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
 }
 
 func (this *DockerapiController) GetImages() {

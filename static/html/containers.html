@@ -22,7 +22,7 @@
 
     <tbody>
       <tr ng-repeat="container in containers track by $index">
-        <td><a ng-href="/container/{{container.Id}}/json">{{container.Id | limitTo:12}}</a></td> <!-- Shorten container id -->
+        <td><a ng-href="/containers/{{container.Id}}">{{container.Id | limitTo:12}}</a></td> <!-- Shorten container id -->
         <td>{{container.Names | array_to_string}}</td> <!-- Add comma between names -->
         <td>{{container.Image}}</td>
         <td>{{container.Command}}</td>

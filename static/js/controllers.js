@@ -18,8 +18,8 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
 
   /*
     [{
-      "Id": "d0bd54b5889f73ced793007ecdb3a1f923b3bc6d47979e9b24a8c7f1906aee5a",
-      "Names": ["/happy_turing"]
+      "Id": "d0bd54b5889f73ced793007ecdb3a1f923b3bc6d47979e9b24a8c7f1906aee5a", // I edit it
+      "Names": ["/happy_turing"] // I add it
       "Image": "base:latest",
       "Command": "echo 1",
       "Created": 1367854155,
@@ -41,6 +41,7 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
     {
       "Id": "4fa6e0f0c6786287e131c3852c58a2e01cc697a68231826813597e4994f1d6e2",
       "Created": "2013-05-07T14:51:42.041847+02:00",
+      "Name": "/realms-wiki", // I add it
       "Path": "date",
       "Args": [],
       "Config": {
@@ -91,8 +92,8 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
         "PortBindings": {
           "80/tcp": [
             {
-                "HostIp": "0.0.0.0",
-                "HostPort": "49153"
+              "HostIp": "0.0.0.0",
+              "HostPort": "49153"
             }
           ]
         },
@@ -104,6 +105,11 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
     }
   */
 
+  /* Get the container object */
+  $http.get('/dockerapi/containers/' + $routeParams.id + '/json').success(function(data) {
+    $scope.container = data;
+    console.log(data);
+  });
 }]);
 
 seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$http',
