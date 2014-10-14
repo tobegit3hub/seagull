@@ -16,9 +16,16 @@ func init() {
 
 	beego.Router("/dockerapi/containers/json", &controllers.DockerapiController{}, "get:GetContainers")
 	beego.Router("/dockerapi/containers/:id/json", &controllers.DockerapiController{}, "get:GetContainer")
+	beego.Router("/dockerapi/containers/:id/start", &controllers.DockerapiController{}, "post:StartContainer")
+	beego.Router("/dockerapi/containers/:id/stop", &controllers.DockerapiController{}, "post:StopContainer")
+	beego.Router("/dockerapi/containers/:id", &controllers.DockerapiController{}, "delete:DeleteContainer")
+
 	beego.Router("/dockerapi/images/json", &controllers.DockerapiController{}, "get:GetImages")
 	beego.Router("/dockerapi/images/:id/json", &controllers.DockerapiController{}, "get:GetImage")
 	beego.Router("/dockerapi/images/:user/:repo/json", &controllers.DockerapiController{}, "get:GetUserImage")
+	beego.Router("/dockerapi/images/:id", &controllers.DockerapiController{}, "delete:DeleteImage")
+
 	beego.Router("/dockerapi/version", &controllers.DockerapiController{}, "get:GetVersion")
 	beego.Router("/dockerapi/info", &controllers.DockerapiController{}, "get:GetInfo")
+	// beego.Router("/dockerapi/events", &controllers.DockerapiController{}, "get:GetEvents")
 }

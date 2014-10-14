@@ -20,7 +20,7 @@ import (
 /* Request docker unix socket */
 func RequestUnixSocket(address, method string) string {
 	DOCKER_UNIX_SOCKET := "unix:///var/run/docker.sock"
-	// Example: unix:///var/run/docker.sock:/images/json
+	// Example: unix:///var/run/docker.sock:/images/json?since=2014
 	unix_socket_url := DOCKER_UNIX_SOCKET + ":" + address
 	u, err := url.Parse(unix_socket_url)
 	if err != nil || u.Scheme != "unix" {
@@ -42,9 +42,10 @@ func RequestUnixSocket(address, method string) string {
 	query := ""
 	if len(u.RawQuery) > 0 {
 		query = "?" + u.RawQuery
+		fmt.Println(query)
 	}
 
-	request, err := http.NewRequest(method, u.Path+query, reader)
+	request, err := http.NewRequest(method, u.Path + query, reader)
 	if err != nil {
 		fmt.Println("Error to create http request", err)
 		return ""
@@ -86,6 +87,30 @@ func (this *DockerapiController) GetContainer() {
 	this.Ctx.WriteString(result)
 }
 
+func (this *DockerapiController) StartContainer() {
+	id := this.GetString(":id")
+
+	address := "/containers/" + id + "/start"
+	result := RequestUnixSocket(address, "POST")
+	this.Ctx.WriteString(result)
+}
+
+func (this *DockerapiController) StopContainer() {
+	id := this.GetString(":id")
+
+	address := "/containers/" + id + "/stop"
+	result := RequestUnixSocket(address, "POST")
+	this.Ctx.WriteString(result)
+}
+
+func (this *DockerapiController) DeleteContainer() {
+	id := this.GetString(":id")
+
+	address := "/containers/" + id
+	result := RequestUnixSocket(address, "DELETE")
+	this.Ctx.WriteString(result)
+}
+
 func (this *DockerapiController) GetImages() {
 	address := "/images/json"
 	result := RequestUnixSocket(address, "GET")
@@ -109,6 +134,14 @@ func (this *DockerapiController) GetUserImage() {
 	this.Ctx.WriteString(result)
 }
 
+func (this *DockerapiController) DeleteImage() {
+	id := this.GetString(":id")
+
+	address := "/images/" + id
+	result := RequestUnixSocket(address, "DELETE")
+	this.Ctx.WriteString(result)
+}
+
 func (this *DockerapiController) GetVersion() {
 	address := "/version"
 	result := RequestUnixSocket(address, "GET")
@@ -120,3 +153,15 @@ func (this *DockerapiController) GetInfo() {
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }
+
+/* Todo: not work now
+func (this *DockerapiController) GetEvents() {
+	address := "/events?since=1374067924"
+
+	//var since int
+	//this.Ctx.Input.Bind(&since, "since")
+
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
+}
+*/
