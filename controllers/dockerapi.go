@@ -9,6 +9,7 @@ import (
 	"github.com/astaxie/beego"
 
 	"fmt"
+	"strconv"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -83,6 +84,9 @@ type DockerapiController struct {
 
 func (this *DockerapiController) GetContainers() {
 	address := "/containers/json"
+	var all int
+	this.Ctx.Input.Bind(&all, "all")
+	address = address + "?all=" + strconv.Itoa(all)
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }

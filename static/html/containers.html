@@ -3,7 +3,7 @@
 <div ng-controller="ContainersController">
 
   <span class="page-header">
-    <h1 class="page-header-title">Containers <a href="/dockerapi/containers/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-title">Containers <a href="/dockerapi/containers/json?all=1" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
     <div class="page-header-search input-group">
@@ -42,7 +42,8 @@
         <td>{{}}</td>
         <td ng-show="checkRunning(container)"><button class="btn btn-warning" ng-click="stopContainer(container.Id)">Stop</button></td>
         <td ng-show="!checkRunning(container)"><button class="btn btn-success" ng-click="startContainer(container.Id)">Start</button></td>
-        <td><button class="btn btn-danger" ng-click="deleteContainer(container.Id)">Delete</button></td>
+        <td ng-show="checkRunning(container)"></td>
+        <td ng-show="!checkRunning(container)"><button class="btn btn-danger" ng-click="deleteContainer(container.Id)">Delete</button></td>
       </tr>
     </tbody>
   </table>

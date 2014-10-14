@@ -47,7 +47,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
   */
 
   /* Get the container objects */
-  $http.get('/dockerapi/containers/json').success(function(data) {
+  $http.get('/dockerapi/containers/json?all=1').success(function(data) {
     $scope.containers = data;
   });
 
@@ -76,7 +76,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Start container " + id.substring(0,12));
-        $http.get('/dockerapi/containers/json').success(function(data) {
+        $http.get('/dockerapi/containers/json?all=1').success(function(data) {
           $scope.containers = data;
         });
       } else {
@@ -96,7 +96,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Stop container " + id.substring(0,12));
-        $http.get('/dockerapi/containers/json').success(function(data) {
+        $http.get('/dockerapi/containers/json?all=1').success(function(data) {
           $scope.containers = data;
         });
       } else {
@@ -116,7 +116,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Delete container " + id.substring(0,12));
-        $http.get('/dockerapi/containers/json').success(function(data) {
+        $http.get('/dockerapi/containers/json?all=1').success(function(data) {
           $scope.containers = data;
         });
       } else {
