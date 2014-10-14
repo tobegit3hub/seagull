@@ -28,7 +28,7 @@
 
     <tbody>
       <tr ng-repeat="image in images | filter: search track by $index">
-        <td><a ng-href="/images/{{image.Id}}/json">{{image.Id | limitTo:12}}</a></td> <!-- Shorten image id -->
+        <td><a ng-href="/images/{{image.Id}}">{{image.Id | limitTo:12}}</a></td> <!-- Shorten image id -->
         <td>{{image.RepoTags | array_to_string}}</td> <!-- Add comma between tags -->
         <td>{{image.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- Full time with 'yyyy-MM-dd HH:mm:ss Z' -->
         <td>{{image.VirtualSize | filesize:2}}</td> <!-- Convert to readable size -->

@@ -35,6 +35,10 @@ seagull.config(['$locationProvider', '$routeProvider',
         templateUrl: '/static/html/image.html',
         controller: 'ImageController'
       }).
+      when('/images/:user/:repo', {
+        templateUrl: '/static/html/image.html',
+        controller: 'ImageController'
+      }).
       when('/configuration', {
         templateUrl: '/static/html/configuration.html',
         controller: 'ConfigurationController'

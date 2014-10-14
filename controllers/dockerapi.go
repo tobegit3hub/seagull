@@ -93,5 +93,18 @@ func (this *DockerapiController) GetImages() {
 }
 
 func (this *DockerapiController) GetImage() {
+	id := this.GetString(":id")
 
+	address := "/images/" + id + "/json"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
+}
+
+func (this *DockerapiController) GetUserImage() {
+	user := this.GetString(":user")
+	repo := this.GetString(":repo")
+
+	address := "/images/" + user + "/" + repo + "/json"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
 }
