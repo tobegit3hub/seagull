@@ -38,11 +38,11 @@ seagull.config(['$locationProvider', '$routeProvider',
       when('/configuration', {
         templateUrl: '/static/html/configuration.html',
         controller: 'ConfigurationController'
-      }).
-      otherwise({
-        /* Default to home page */
-        redirectTo: '/'
       });
+      /* No default page for angular
+      otherwise({
+        redirectTo: '/'
+      }); */
   }]
 );
 
