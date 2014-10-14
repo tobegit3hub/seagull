@@ -108,3 +108,15 @@ func (this *DockerapiController) GetUserImage() {
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }
+
+func (this *DockerapiController) GetVersion() {
+	address := "/version"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
+}
+
+func (this *DockerapiController) GetInfo() {
+	address := "/info"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
+}
