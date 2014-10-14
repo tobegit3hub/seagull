@@ -3,6 +3,24 @@
 
 // https://docs.docker.com/reference/api/docker_remote_api_v1.14/
 
+function alert_success(message) {
+  $.gritter.add({
+    title: 'Success!',
+    text: message,
+    image: 'static/img/seagull.png',
+    time: 2000
+  });
+}
+
+function alert_error(message) {
+  $.gritter.add({
+    title: 'Error!',
+    text: message,
+    image: 'static/img/seagull.png',
+    time: 2000
+  });
+}
+
 /* The angular application controllers */
 var seagullControllers = angular.module('seagullControllers', []);
 
@@ -162,15 +180,15 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data, status, headers, config) {
       if (status == 200) {
-        alert("Success to remove image " + id);
+        alert_success("Remove image " + id.substring(0,12));
         $http.get('/dockerapi/images/json').success(function(data) {
           $scope.images = data;
         });
       } else {
-        alert("Fail to remove image " + id);
+        alert_error("Remove image " + id.substring(0,12));
       }
     }).error(function(data, status, headers, config) {
-      alert("Fail to remove image " + id);
+      alert_error("Remove image " + id.substring(0,12));
     });
   }
 }]);
