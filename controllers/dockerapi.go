@@ -81,15 +81,20 @@ func (this *DockerapiController) GetContainers() {
 
 func (this *DockerapiController) GetContainer() {
 	id := this.GetString(":id")
-
 	address := "/containers/" + id + "/json"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
+}
+
+func (this *DockerapiController) TopContainer() {
+	id := this.GetString(":id")
+	address := "/containers/" + id + "/top"
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }
 
 func (this *DockerapiController) StartContainer() {
 	id := this.GetString(":id")
-
 	address := "/containers/" + id + "/start"
 	result := RequestUnixSocket(address, "POST")
 	this.Ctx.WriteString(result)
@@ -97,7 +102,6 @@ func (this *DockerapiController) StartContainer() {
 
 func (this *DockerapiController) StopContainer() {
 	id := this.GetString(":id")
-
 	address := "/containers/" + id + "/stop"
 	result := RequestUnixSocket(address, "POST")
 	this.Ctx.WriteString(result)
@@ -105,7 +109,6 @@ func (this *DockerapiController) StopContainer() {
 
 func (this *DockerapiController) DeleteContainer() {
 	id := this.GetString(":id")
-
 	address := "/containers/" + id
 	result := RequestUnixSocket(address, "DELETE")
 	this.Ctx.WriteString(result)
@@ -119,7 +122,6 @@ func (this *DockerapiController) GetImages() {
 
 func (this *DockerapiController) GetImage() {
 	id := this.GetString(":id")
-
 	address := "/images/" + id + "/json"
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
@@ -128,7 +130,6 @@ func (this *DockerapiController) GetImage() {
 func (this *DockerapiController) GetUserImage() {
 	user := this.GetString(":user")
 	repo := this.GetString(":repo")
-
 	address := "/images/" + user + "/" + repo + "/json"
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
@@ -136,7 +137,6 @@ func (this *DockerapiController) GetUserImage() {
 
 func (this *DockerapiController) DeleteImage() {
 	id := this.GetString(":id")
-
 	address := "/images/" + id
 	result := RequestUnixSocket(address, "DELETE")
 	this.Ctx.WriteString(result)

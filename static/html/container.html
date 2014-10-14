@@ -65,4 +65,30 @@
     </tbody>
   </table>
 
+  <table ng-show="container.State.Running" class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>UID</th>
+        <th>PID</th>
+        <th>C</th>
+        <th>STIME</th>
+        <th>TTY</th>
+        <th>TIME</th>
+        <th>CMD</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="processe in top.Processes">
+        <td>{{processe[0]}}</td>
+        <td>{{processe[1]}}</td>
+        <td>{{processe[2]}}</td>
+        <td>{{processe[3]}}</td>
+        <td>{{processe[4]}}</td>
+        <td>{{processe[5]}}</td>
+        <td>{{processe[6]}}</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div> <!-- End of this angular page -->

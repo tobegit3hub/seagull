@@ -16,6 +16,7 @@ func init() {
 
 	beego.Router("/dockerapi/containers/json", &controllers.DockerapiController{}, "get:GetContainers")
 	beego.Router("/dockerapi/containers/:id/json", &controllers.DockerapiController{}, "get:GetContainer")
+	beego.Router("/dockerapi/containers/:id/top", &controllers.DockerapiController{}, "get:TopContainer")
 	beego.Router("/dockerapi/containers/:id/start", &controllers.DockerapiController{}, "post:StartContainer")
 	beego.Router("/dockerapi/containers/:id/stop", &controllers.DockerapiController{}, "post:StopContainer")
 	beego.Router("/dockerapi/containers/:id", &controllers.DockerapiController{}, "delete:DeleteContainer")

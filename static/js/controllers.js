@@ -103,9 +103,31 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
     }
   */
 
+  /*
+    {
+      "Titles":[
+        "UID", // edit
+        "PID",
+        "C",
+        "STIME"
+        "TTY",
+        "TIME",
+        "CMD" // edit
+      ],
+      "Processes":[
+         ["root","24550","24549","0","17:25","?","00:00:00","runsv cron"], // edit
+         ["root","24492","24485","0","17:25","?","00:00:00","/usr/bin/python3 -u /sbin/my_init"] // edit
+      ]
+    }
+  */
+
   /* Get the container object */
   $http.get('/dockerapi/containers/' + $routeParams.id + '/json').success(function(data) {
     $scope.container = data;
+  });
+
+  $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
+    $scope.top = data;
   });
 }]);
 
@@ -240,7 +262,6 @@ seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$ht
     });
   };
 }]);
-
 
 
 seagullControllers.controller('ConfigurationController', ['$scope', '$routeParams', '$http',
