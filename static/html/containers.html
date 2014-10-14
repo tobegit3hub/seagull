@@ -26,6 +26,8 @@
         <th>Created</th>
         <th>Status</th>
         <th>Ports</th>
+        <th>Operation</th>
+        <th>Delete</th>
       </tr>
     </thead>
 
@@ -38,6 +40,9 @@
         <td>{{container.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- Full time with 'yyyy-MM-dd HH:mm:ss Z' -->
         <td>{{container.Status}}</td>
         <td>{{}}</td>
+        <td ng-show="checkRunning(container)"><button class="btn btn-warning" ng-click="stopContainer(container.Id)">Stop</button></td>
+        <td ng-show="!checkRunning(container)"><button class="btn btn-success" ng-click="startContainer(container.Id)">Start</button></td>
+        <td><button class="btn btn-danger" ng-click="deleteContainer(container.Id)">Delete</button></td>
       </tr>
     </tbody>
   </table>

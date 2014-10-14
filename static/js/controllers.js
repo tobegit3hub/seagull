@@ -8,7 +8,7 @@ function alert_success(message) {
     title: 'Success!',
     text: message,
     image: 'static/img/seagull.png',
-    time: 2000
+    time: 3000
   });
 }
 
@@ -17,7 +17,7 @@ function alert_error(message) {
     title: 'Error!',
     text: message,
     image: 'static/img/seagull.png',
-    time: 2000
+    time: 3000
   });
 }
 
@@ -50,6 +50,83 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
   $http.get('/dockerapi/containers/json').success(function(data) {
     $scope.containers = data;
   });
+
+  // Refer to http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
+  if (typeof String.prototype.startsWith != 'function') {
+    // see below for better implementation!
+    String.prototype.startsWith = function (str){
+      return this.indexOf(str) == 0;
+    };
+  }
+
+  $scope.checkRunning = function(container) {
+    if (container.Status.startsWith("Up")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  $scope.startContainer = function(id) {
+    $http({
+      method: 'POST',
+      url: '/dockerapi/containers/' + id + "/start",
+      data: '',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    }).success(function(data, status, headers, config) {
+      if (status == 200) {
+        alert_success("Start container " + id.substring(0,12));
+        $http.get('/dockerapi/containers/json').success(function(data) {
+          $scope.containers = data;
+        });
+      } else {
+        alert_error("Start container " + id.substring(0,12));
+      }
+    }).error(function(data, status, headers, config) {
+      alert_error("Start container " + id.substring(0,12));
+    });
+  }
+
+  $scope.stopContainer = function(id) {
+    $http({
+      method: 'POST',
+      url: '/dockerapi/containers/' + id + "/stop",
+      data: '',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    }).success(function(data, status, headers, config) {
+      if (status == 200) {
+        alert_success("Stop container " + id.substring(0,12));
+        $http.get('/dockerapi/containers/json').success(function(data) {
+          $scope.containers = data;
+        });
+      } else {
+        alert_error("Stop container " + id.substring(0,12));
+      }
+    }).error(function(data, status, headers, config) {
+      alert_error("Stop container " + id.substring(0,12));
+    });
+  }
+
+  $scope.deleteContainer = function(id) {
+    $http({
+      method: 'DELETE',
+      url: '/dockerapi/containers/' + id,
+      data: '',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    }).success(function(data, status, headers, config) {
+      if (status == 200) {
+        alert_success("Delete container " + id.substring(0,12));
+        $http.get('/dockerapi/containers/json').success(function(data) {
+          $scope.containers = data;
+        });
+      } else {
+        alert_error("Delete container " + id.substring(0,12));
+      }
+    }).error(function(data, status, headers, config) {
+      alert_error("Delete container " + id.substring(0,12));
+    });
+  }
+
 }]);
 
 seagullControllers.controller('ContainerController', ['$scope', '$routeParams', '$http',
@@ -180,15 +257,15 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data, status, headers, config) {
       if (status == 200) {
-        alert_success("Remove image " + id.substring(0,12));
+        alert_success("Delete image " + id.substring(0,12));
         $http.get('/dockerapi/images/json').success(function(data) {
           $scope.images = data;
         });
       } else {
-        alert_error("Remove image " + id.substring(0,12));
+        alert_error("Delete image " + id.substring(0,12));
       }
     }).error(function(data, status, headers, config) {
-      alert_error("Remove image " + id.substring(0,12));
+      alert_error("Delete image " + id.substring(0,12));
     });
   }
 }]);
