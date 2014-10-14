@@ -1,9 +1,9 @@
 
 <!-- The image page -->
 <div ng-controller="ImageController">
-  
+
   <span class="page-header">
-    <h1 class="page-header-title">Image <a ng-href="/dockerapi/images/{{image.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-left">Image <a ng-href="/dockerapi/images/{{image.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
   </span> <!-- End of page header -->
 
   <div ng-show="!image" class="alert alert-danger" role="alert">No such image!</div>

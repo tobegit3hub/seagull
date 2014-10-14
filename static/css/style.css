@@ -5,12 +5,12 @@
 }
 
 /* Username float left */
-.page-header-title {
+.page-header-left {
   float:left;
 }
 
 /* Search form float right */
-.page-header-search {
+.page-header-right {
   float: right;
   padding-top: 21px;
 }

@@ -57,7 +57,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     String.prototype.startsWith = function (str){
       return this.indexOf(str) == 0;
     };
-  }
+  };
 
   $scope.checkRunning = function(container) {
     if (container.Status.startsWith("Up")) {
@@ -65,7 +65,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     } else {
       return false;
     }
-  }
+  };
 
   $scope.startContainer = function(id) {
     $http({
@@ -85,7 +85,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }).error(function(data, status, headers, config) {
       alert_error("Start container " + id.substring(0,12));
     });
-  }
+  };
 
   $scope.stopContainer = function(id) {
     $http({
@@ -105,7 +105,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }).error(function(data, status, headers, config) {
       alert_error("Stop container " + id.substring(0,12));
     });
-  }
+  };
 
   $scope.deleteContainer = function(id) {
     $http({
@@ -125,7 +125,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }).error(function(data, status, headers, config) {
       alert_error("Delete container " + id.substring(0,12));
     });
-  }
+  };
 
 }]);
 
@@ -224,6 +224,84 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
   $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
     $scope.top = data;
   });
+
+  $scope.refresh = function() {
+    location.reload();
+  };
+
+  // Todo: Duplicate with the methods in ContainersController, little difference is reloading data
+  $scope.startContainer = function(id) {
+    $http({
+      method: 'POST',
+      url: '/dockerapi/containers/' + id + "/start",
+      data: '',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    }).success(function(data, status, headers, config) {
+      if (status == 200) {
+        alert_success("Start container " + id.substring(0,12));
+        $http.get('/dockerapi/containers/' + $routeParams.id + '/json').success(function(data) {
+          $scope.container = data;
+        });
+
+        $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
+          $scope.top = data;
+        });
+      } else {
+        alert_error("Start container " + id.substring(0,12));
+      }
+    }).error(function(data, status, headers, config) {
+      alert_error("Start container " + id.substring(0,12));
+    });
+  };
+
+  $scope.stopContainer = function(id) {
+    $http({
+      method: 'POST',
+      url: '/dockerapi/containers/' + id + "/stop",
+      data: '',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    }).success(function(data, status, headers, config) {
+      if (status == 200) {
+        alert_success("Stop container " + id.substring(0,12));
+        $http.get('/dockerapi/containers/' + $routeParams.id + '/json').success(function(data) {
+          $scope.container = data;
+        });
+
+        $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
+          $scope.top = data;
+        });
+      } else {
+        alert_error("Stop container " + id.substring(0,12));
+      }
+    }).error(function(data, status, headers, config) {
+      alert_error("Stop container " + id.substring(0,12));
+    });
+  };
+
+  $scope.deleteContainer = function(id) {
+    $http({
+      method: 'DELETE',
+      url: '/dockerapi/containers/' + id,
+      data: '',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    }).success(function(data, status, headers, config) {
+      if (status == 200) {
+        alert_success("Delete container " + id.substring(0,12));
+        $http.get('/dockerapi/containers/' + $routeParams.id + '/json').success(function(data) {
+          $scope.container = data;
+        });
+
+        $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
+          $scope.top = data;
+        });
+      } else {
+        alert_error("Delete container " + id.substring(0,12));
+      }
+    }).error(function(data, status, headers, config) {
+      alert_error("Delete container " + id.substring(0,12));
+    });
+  };
+
 }]);
 
 seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$http',
@@ -267,7 +345,7 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
     }).error(function(data, status, headers, config) {
       alert_error("Delete image " + id.substring(0,12));
     });
-  }
+  };
 }]);
 
 seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$http',

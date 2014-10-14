@@ -3,10 +3,10 @@
 <div ng-controller="ContainersController">
 
   <span class="page-header">
-    <h1 class="page-header-title">Containers <a href="/dockerapi/containers/json?all=1" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-left">Containers <a href="/dockerapi/containers/json?all=1" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
-    <div class="page-header-search input-group">
+    <div class="page-header-right input-group">
       <input type="text" class="form-control" placeholder="search" ng-model="search" autofocus>
     </div>
   </span> <!-- End of page header -->
@@ -27,7 +27,7 @@
         <th>Status</th>
         <th>Ports</th>
         <th>Operation</th>
-        <th>Delete</th>
+        <th></th>
       </tr>
     </thead>
 

@@ -3,7 +3,15 @@
 <div ng-controller="ContainerController">
 
   <span class="page-header">
-    <h1 class="page-header-title">Container <a ng-href="/dockerapi/containers/{{container.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-left">Container <a ng-href="/dockerapi/containers/{{container.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+
+    <!-- Display search form in the right -->
+    <div class="page-header-right input-group">
+      <span ng-show="container.State.Running"><button class="btn btn-warning" ng-click="stopContainer(container.Id)">Stop</button>&nbsp;</span>
+      <span ng-show="!container.State.Running"><button ng-show="!container.State.Running" class="btn btn-success" ng-click="startContainer(container.Id)">Start</button>&nbsp;</span>
+      <span ng-show="!container.State.Running"><button ng-show="!container.State.Running" class="btn btn-danger" ng-click="deleteContainer(container.Id)">Delete</button>&nbsp;</span>
+      <button class="btn btn-info" ng-click="refresh()">Refresh</button>
+    </div>
   </span> <!-- End of page header -->
 
   <div ng-show="!container" class="alert alert-danger" role="alert">No such container!</div>
