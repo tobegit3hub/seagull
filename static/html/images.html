@@ -2,7 +2,16 @@
 <!-- The images page -->
 <div ng-controller="ImagesController">
 
-  <h1>Images <a href="/dockerapi/images/json"><img src="static/img/json-logo.png" height="32"></a></h1>
+  <span class="page-header">
+    <h1 class="page-header-title">Images <a href="/dockerapi/images/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+
+    <!-- Display search form in the right -->
+    <div class="page-header-search input-group">
+      <input type="text" class="form-control" placeholder="search" ng-model="search" autofocus>
+    </div>
+  </span> <!-- End of page header -->
+
+  <br/>
 
   <div ng-show="!images.length" class="alert alert-danger" role="alert">No docker images!</div>
 
@@ -18,7 +27,7 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="image in images track by $index">
+      <tr ng-repeat="image in images | filter: search track by $index">
         <td><a ng-href="/images/{{image.Id}}/json">{{image.Id | limitTo:12}}</a></td> <!-- Shorten image id -->
         <td>{{image.RepoTags | array_to_string}}</td> <!-- Add comma between tags -->
         <td>{{image.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- Full time with 'yyyy-MM-dd HH:mm:ss Z' -->

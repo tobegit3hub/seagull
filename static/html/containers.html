@@ -2,7 +2,16 @@
 <!-- The containers page -->
 <div ng-controller="ContainersController">
 
-  <h1>Containers <a href="/dockerapi/containers/json"><img src="static/img/json-logo.png" height="32"></a></h1>
+  <span class="page-header">
+    <h1 class="page-header-title">Containers <a href="/dockerapi/containers/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+
+    <!-- Display search form in the right -->
+    <div class="page-header-search input-group">
+      <input type="text" class="form-control" placeholder="search" ng-model="search" autofocus>
+    </div>
+  </span> <!-- End of page header -->
+
+  <br/>
 
   <div ng-show="!containers.length" class="alert alert-danger" role="alert">No docker containers!</div>
 
@@ -21,7 +30,7 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="container in containers track by $index">
+      <tr ng-repeat="container in containers | filter: search track by $index">
         <td><a ng-href="/containers/{{container.Id}}">{{container.Id | limitTo:12}}</a></td> <!-- Shorten container id -->
         <td>{{container.Names | array_to_string}}</td> <!-- Add comma between names -->
         <td>{{container.Image}}</td>

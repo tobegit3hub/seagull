@@ -1,0 +1,11 @@
+
+/* Username float left */
+.page-header-title {
+  float:left;
+}
+
+/* Search form float right */
+.page-header-search {
+  float: right;
+  padding-top: 21px;
+}
