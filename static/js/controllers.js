@@ -153,6 +153,26 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
   $http.get('/dockerapi/images/json').success(function(data) {
     $scope.images = data;
   });
+
+  $scope.deleteImage = function(id) {
+    $http({
+      method: 'DELETE',
+      url: '/dockerapi/images/' + id,
+      data: '',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    }).success(function(data, status, headers, config) {
+      if (status == 200) {
+        alert("Success to remove image " + id);
+        $http.get('/dockerapi/images/json').success(function(data) {
+          $scope.images = data;
+        });
+      } else {
+        alert("Fail to remove image " + id);
+      }
+    }).error(function(data, status, headers, config) {
+      alert("Fail to remove image " + id);
+    });
+  }
 }]);
 
 seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$http',

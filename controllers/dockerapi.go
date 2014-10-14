@@ -64,6 +64,14 @@ func RequestUnixSocket(address, method string) string {
 		return ""
 	}
 
+	/* An example to get continual stream from events, but it's for stdout
+	_, err = io.Copy(os.Stdout, res.Body)
+	if err != nil && err != io.EOF {
+		fmt.Println("Error, get invalid body in answer")
+		return ""
+   }
+	*/
+
 	defer response.Body.Close()
 
 	return string(body)
@@ -154,7 +162,7 @@ func (this *DockerapiController) GetInfo() {
 	this.Ctx.WriteString(result)
 }
 
-/* Todo: not work now
+/* Todo: Implement events api
 func (this *DockerapiController) GetEvents() {
 	address := "/events?since=1374067924"
 

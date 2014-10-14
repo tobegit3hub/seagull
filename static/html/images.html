@@ -23,6 +23,7 @@
         <th>RepoTags</th>
         <th>Created</th>
         <th>VirtualSize</th>
+        <th>Operation</th>
       </tr>
     </thead>
 
@@ -32,6 +33,7 @@
         <td>{{image.RepoTags | array_to_string}}</td> <!-- Add comma between tags -->
         <td>{{image.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- Full time with 'yyyy-MM-dd HH:mm:ss Z' -->
         <td>{{image.VirtualSize | filesize:2}}</td> <!-- Convert to readable size -->
+        <td><button class="btn btn-info" ng-click="deleteImage(image.Id)">Delete</button></td>
       </tr>
     </tbody>
   </table>

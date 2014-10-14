@@ -6,6 +6,7 @@ import (
 )
 
 func init() {
+	/* Angular page */
 	beego.Router("/", &controllers.MainController{})
 	beego.Router("/containers", &controllers.MainController{})
 	beego.Router("/containers/:id", &controllers.MainController{})
@@ -14,6 +15,7 @@ func init() {
 	beego.Router("/images/:user/:repo", &controllers.MainController{})
 	beego.Router("/configuration", &controllers.MainController{})
 
+	/* HTTP API */
 	beego.Router("/dockerapi/containers/json", &controllers.DockerapiController{}, "get:GetContainers")
 	beego.Router("/dockerapi/containers/:id/json", &controllers.DockerapiController{}, "get:GetContainer")
 	beego.Router("/dockerapi/containers/:id/top", &controllers.DockerapiController{}, "get:TopContainer")
