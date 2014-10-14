@@ -3,7 +3,7 @@
 <div ng-controller="ConfigurationController">
 
   <span class="page-header">
-    <h1 class="page-header-title">Configuration</h1>
+    <h1 class="page-header-title">Configuration <a href="/dockerapi/info" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
   </span> <!-- End of page header -->
 
   <div ng-show="!version || !info" class="alert alert-danger" role="alert">No data of version or info!</div>
@@ -89,23 +89,33 @@
       </tr>
 
       <tr>
+        <td>InitSha1</td>
+        <td>{{info.InitSha1}}</td>
+      </tr>
+
+      <tr>
         <td>IndexServerAddress</td>
-        <td>{{info.IndexServerAddress | array_to_string}}</td>
+        <td>{{info.IndexServerAddress}}</td>
       </tr>
 
       <tr>
         <td>MemoryLimit</td>
-        <td>{{info.MemoryLimit}}</td>
+        <td>{{info.MemoryLimit | boolean_to_string}}</td>
       </tr>
 
       <tr>
         <td>SwapLimit</td>
-        <td>{{info.SwapLimit}}</td>
+        <td>{{info.SwapLimit | boolean_to_string}}</td>
       </tr>
 
       <tr>
         <td>IPv4Forwarding</td>
-        <td>{{info.IPv4Forwarding}}</td>
+        <td>{{info.IPv4Forwarding | boolean_to_string}}</td>
+      </tr>
+
+      <tr>
+        <td>Sockets</td>
+        <td>{{info.Sockets | array_to_string}}</td>
       </tr>
   </table>
 

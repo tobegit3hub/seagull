@@ -92,3 +92,19 @@ seagull.filter( 'array_to_string', function () {
     return result;
   };
 });
+
+/* Filter to convert boolean into string */
+seagull.filter( 'boolean_to_string', function () {
+  return function( bool ) {
+    /* Todo: seems not work
+    if ( typeof bool != "boolean" ) {
+      return '';
+    } */
+
+    if (bool) {
+      return "true";
+    } else {
+      return "false";
+    }
+  };
+});

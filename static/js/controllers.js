@@ -260,6 +260,15 @@ seagullControllers.controller('ConfigurationController', ['$scope', '$routeParam
         "Containers":11,
         "Images":16,
         "Driver":"btrfs",
+        "DriverStatus": [ // I add it
+          [
+            "Root Dir",
+            "/var/lib/docker/aufs"
+          ],[
+            "Dirs",
+            "544"
+          ]
+        ],
         "ExecutionDriver":"native-0.1",
         "KernelVersion":"3.12.0-1-amd64"
         "Debug":false,
@@ -267,10 +276,14 @@ seagullControllers.controller('ConfigurationController', ['$scope', '$routeParam
         "NGoroutines":21,
         "NEventsListener":0,
         "InitPath":"/usr/bin/docker",
-        "IndexServerAddress":["https://index.docker.io/v1/"],
+        "InitSha1": "", // I add it
+        "IndexServerAddress": "https://index.docker.io/v1/", // I edit it
         "MemoryLimit":true,
         "SwapLimit":false,
         "IPv4Forwarding":true
+        "Sockets": [
+          "unix:///var/run/docker.sock" // I add it
+        ],
       }
     */
 

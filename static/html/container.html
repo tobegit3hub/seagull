@@ -40,7 +40,7 @@
 
       <tr>
         <td>Running</td>
-        <td>{{container.State.Running}}</td>
+        <td>{{container.State.Running | boolean_to_string}}</td>
       </tr>
 
       <tr>
