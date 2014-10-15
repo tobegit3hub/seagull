@@ -88,7 +88,7 @@ seagull.config(function ($translateProvider) {
   $translateProvider.preferredLanguage('en-us');
 });
 
-seagull.controller('Ctrl', function ($scope, $translate) {
+seagull.controller('IndexController', function ($scope, $translate) {
   $scope.changeLanguage = function (key) {
     $translate.use(key);
   };
