@@ -3,7 +3,8 @@
 <div ng-controller="HomeController">
 
   <div class="jumbotron">
-    <h1>Seagull <small>the best friend of docker</small></h1>
+    <!-- Seagull the best friend of docker -->
+    <h1>{{'seagull'|translate}} <small>{{'the_best_friend_of_docker'|translate}}</small></h1>
 
     <h3>
       I'm using <i>{{Os}}</i> with kernel <i>{{KernelVersion}}</i>, <i>{{GoVersion}}</i> and Docker <i>{{Version}}</i>. The docker deamon has <i>{{Containers}}</i> running/stopped containers and <i>{{Images}}</i> images now. Docker is an open platform for distributed application for developers and sysadmins. And seagull provides a friendly Web UI to monitor docker.

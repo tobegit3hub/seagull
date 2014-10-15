@@ -4,7 +4,8 @@
 /* The seagull angular application */
 var seagull = angular.module('seagull', [
   'ngRoute',
-  'seagullControllers'
+  'seagullControllers',
+  'pascalprecht.translate'
 ]);
 
 /* Configurate application like router and others*/
@@ -49,6 +50,49 @@ seagull.config(['$locationProvider', '$routeProvider',
       }); */
   }]
 );
+
+seagull.config(function ($translateProvider) {
+  $translateProvider.translations('en-us', {
+    // Index html
+    seagull: 'Seagull',
+    containers: 'Containers',
+    images: 'Images',
+    configuration: 'Configuration',
+    more: 'More',
+    zh_cn: '简体中文',
+    zh_hant: '繁體中文',
+    en_us: 'English',
+    need_help: 'Need Help',
+    // Home page
+    the_best_friend_of_docker: 'the best friend of docker',
+  });
+
+  $translateProvider.translations('zh-cn', {
+    seagull: '海鸥',
+    containers: '容器',
+    images: '镜像',
+    configuration: '配置',
+    more: '更多',
+    zh_cn: '简体中文',
+    zh_hant: '繁體中文',
+    en_us: 'English',
+    need_help: '帮助',
+    // Home page
+    the_best_friend_of_docker: 'docker最好的伙伴',
+  });
+
+  $translateProvider.translations('zh-hant', {
+
+  });
+
+  $translateProvider.preferredLanguage('en-us');
+});
+
+seagull.controller('Ctrl', function ($scope, $translate) {
+  $scope.changeLanguage = function (key) {
+    $translate.use(key);
+  };
+});
 
 /* File size filter, code from https://gist.github.com/yrezgui/5653591 */
 seagull.filter( 'filesize', function () {
