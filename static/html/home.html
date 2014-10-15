@@ -2,10 +2,107 @@
 <!-- The home page -->
 <div ng-controller="HomeController">
 
-<div class="jumbotron">
-  <h1>Home</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
-</div>
+  <div class="jumbotron">
+    <h1>Seagull <small>the best friend of docker</small></h1>
+
+    <h3>
+      I'm using <i>{{Os}}</i> with kernel <i>{{KernelVersion}}</i>, <i>{{GoVersion}}</i> and Docker <i>{{Version}}</i>. The docker deamon has <i>{{Containers}}</i> running/stopped containers and <i>{{Images}}</i> images now. Docker is an open platform for distributed application for developers and sysadmins. And seagull provides a friendly Web UI to monitor docker.
+    </h3>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="thumbnail">
+            <img src="static/img/containers-page.png" alt="" data-toggle="modal" data-target="#popupContainers">
+            <div class="caption">
+                <h3>Containers</h3>
+                <p>Containers page display all running and stopped docker containers.</p>
+                <p>
+                    <a href="/containers" class="btn btn-primary">Go Now!</a> <a href="https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-15-seagull-containers-page.md" target="_blank" class="btn btn-default">Learn More</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="thumbnail">
+            <img src="static/img/images-page.png" alt="" data-toggle="modal" data-target="#popupImages">
+            <div class="caption">
+                <h3>Images</h3>
+                <p>Images page display all docker images to start, stop and delete.</p>
+                <p>
+                    <a href="/images" class="btn btn-primary">Go Now!</a> <a href="https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-16-seagull-images-page.md" target="_blank" class="btn btn-default">Learn More</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="thumbnail">
+            <img src="static/img/configuration-page.png" alt="" data-toggle="modal" data-target="#popupConfiguration">
+            <div class="caption">
+                <h3>Configuration</h3>
+                <p>Configuration page display all your docker environment and settings.</p>
+                <p>
+                    <a href="/configuration" class="btn btn-primary">Go Now!</a> <a href="https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-17-seagull-images-page.md" target="_blank" class="btn btn-default">Learn More</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="thumbnail">
+            <img src="static/img/github-page.png" alt="" data-toggle="modal" data-target="#popupGithub">
+            <div class="caption">
+                <h3>Github</h3>
+                <p>Seagull is open source in Github. Welcome to contribution and issues.</p>
+                <p>
+                    <a href="https://github.com/tobegit3hub/seagull" class="btn btn-primary">Go Now!</a> <a href="https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-14-design-and-implement.md" target="_blank" class="btn btn-default">Learn More</a>
+                </p>
+            </div>
+        </div>
+    </div>
+  </div>
 
 </div> <!-- End of this angular page -->
+
+<!-- Popup larger images, refer to static/js/style.js -->
+<div id="popupContainers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <img src="static/img/containers-page.png" class="img-responsive">
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="popupImages" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <img src="static/img/images-page.png" class="img-responsive">
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="popupConfiguration" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <img src="static/img/configuration-page.png" class="img-responsive">
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="popupGithub" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <img src="static/img/github-page.png" class="img-responsive">
+        </div>
+    </div>
+  </div>
+</div>
