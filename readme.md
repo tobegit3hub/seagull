@@ -3,11 +3,11 @@
 
 * [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 * [TravisCI]()
-* [Docker Hub]()
+* [Docker Hub](https://registry.hub.docker.com/u/tobegit3hub/seagull/)
 
 ## Introduction
 
-Seagull is the best friend of docker which providers Web UI to monitor deamon.
+Seagull is the best friend of docker which providers Web UI to monitor docker deamon.
 
 Everybody wants Web UI for docker and seagull is the most suitable for you. It's super easy to install through one command. You can know all about images and containers in this single page application.
 
