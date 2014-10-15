@@ -19,6 +19,7 @@
     "angular-route": "~1.2.26",
     "jquery": "~2.1.1",
     "bootstrap": "~3.2.0",
-    "jquery.gritter": "*"
+    "jquery.gritter": "*",
+    "angular-translate": "~2.4.1"
   }
 }

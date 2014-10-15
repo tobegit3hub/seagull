@@ -7,4 +7,5 @@
 * `bower install jquery --save`
 * `bower install bootstrap --save`
 * `bower install jquery.gritter --save`
+* `bower install angular-translate --save`
 
