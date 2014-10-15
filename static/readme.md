@@ -1,5 +1,7 @@
 
-## Use Bower
+# Static
+
+## Bower.json
 
 * `bower init` to create bower.json
 * `bower install angular --save`
@@ -8,4 +10,11 @@
 * `bower install bootstrap --save`
 * `bower install jquery.gritter --save`
 * `bower install angular-translate --save`
+
+## Js
+
+## Css
+
+## 
+
 
