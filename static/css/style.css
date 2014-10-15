@@ -14,3 +14,20 @@
   float: right;
   padding-top: 21px;
 }
+
+
+#popupContainers .modal-dialog {
+  width: 70%;
+}
+
+#popupImages .modal-dialog {
+  width: 70%;
+}
+
+#popupConfiguration .modal-dialog {
+  width: 70%;
+}
+
+#popupGithub .modal-dialog {
+  width: 70%;
+}
