@@ -3,63 +3,63 @@
 <div ng-controller="ImageController">
 
   <span class="page-header">
-    <h1 class="page-header-left">Image <a ng-href="/dockerapi/images/{{image.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-left">{{'image'|translate}} <a ng-href="/dockerapi/images/{{image.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
   </span> <!-- End of page header -->
 
-  <div ng-show="!image" class="alert alert-danger" role="alert">No such image!</div>
+  <div ng-show="!image" class="alert alert-danger" role="alert">{{'no_such_image'|translate}}</div>
 
   <!-- Display image information -->
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>Attribute</th>
-        <th>Value</th>
+        <th>{{'attribute'|translate}}</th>
+        <th>{{'value'|translate}}</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
-        <td>Id</td>
+        <td>{{'id'|translate}}</td>
         <td>{{image.Id | limitTo:12}}</td> <!-- Shorten image id -->
       </tr>
 
       <tr>
-        <td>Author</td>
+        <td>{{'author'|translate}}</td>
         <td>{{image.Author}}</td>
       </tr>
 
       <tr>
-        <td>Architecture</td>
+        <td>{{'architecture'|translate}}</td>
         <td>{{image.Architecture}}</td>
       </tr>
 
       <tr>
-        <td>Comment</td>
+        <td>{{'comment'|translate}}</td>
         <td>{{image.Comment}}</td>
       </tr>
 
       <tr>
-        <td>Created</td>
+        <td>{{'created'|translate}}</td>
         <td>{{image.Created}}</td>
       </tr>
 
       <tr>
-        <td>DockerVersion</td>
+        <td>{{'dockerversion'|translate}}</td>
         <td>{{image.DockerVersion}}</td>
       </tr>
 
       <tr>
-        <td>Os</td>
+        <td>{{'os'|translate}}</td>
         <td>{{image.Os}}</td>
       </tr>
 
       <tr>
-        <td>Parent</td>
+        <td>{{'parent'|translate}}</td>
         <td>{{image.Parent | limitTo:12}}</td>
       </tr>
 
       <tr>
-        <td>Size</td>
+        <td>{{'size'|translate}}</td>
         <td>{{image.Size}}</td>
       </tr>
   </table>

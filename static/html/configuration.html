@@ -3,118 +3,118 @@
 <div ng-controller="ConfigurationController">
 
   <span class="page-header">
-    <h1 class="page-header-title">Configuration <a href="/dockerapi/info" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-title">{{'configuration'|translate}} <a href="/dockerapi/info" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
   </span> <!-- End of page header -->
 
-  <div ng-show="!version || !info" class="alert alert-danger" role="alert">No data of version or info!</div>
+  <div ng-show="!version || !info" class="alert alert-danger" role="alert">{{'no_data_of_version_or_info'|translate}}</div>
 
   <!-- Display configuration information -->
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>Attribute</th>
-        <th>Value</th>
+        <th>{{'attribute'|translate}}</th>
+        <th>{{'value'|translate}}</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
-        <td>GoVersion</td>
+        <td>{{'goversion'|translate}}</td>
         <td>{{version.GoVersion}}</td>
       </tr>
 
       <tr>
-        <td>Version</td>
+        <td>{{'version'|translate}}</td>
         <td>{{version.Version}}</td>
       </tr>
 
       <tr>
-        <td>GitCommit</td>
+        <td>{{'gitcommit'|translate}}</td>
         <td>{{version.GitCommit}}</td>
       </tr>
 
       <tr>
-        <td>ApiVersion</td>
+        <td>{{'apiversion'|translate}}</td>
         <td>{{version.ApiVersion}}</td>
       </tr>
 
       <tr>
-        <td>Containers</td>
+        <td>{{'containers'|translate}}</td>
         <td>{{info.Containers}}</td>
       </tr>
 
       <tr>
-        <td>Images</td>
+        <td>{{'images'|translate}}</td>
         <td>{{info.Images}}</td>
       </tr>
 
       <tr>
-        <td>Driver</td>
+        <td>{{'driver'|translate}}</td>
         <td>{{info.Driver}}</td>
       </tr>
 
       <tr>
-        <td>ExecutionDriver</td>
+        <td>{{'executiondriver'|translate}}</td>
         <td>{{info.ExecutionDriver}}</td>
       </tr>
 
       <tr>
-        <td>KernelVersion</td>
+        <td>{{'kernelversion'|translate}}</td>
         <td>{{info.KernelVersion}}</td>
       </tr>
 
       <tr>
-        <td>Debug</td>
+        <td>{{'debug'|translate}}</td>
         <td>{{info.Debug}}</td>
       </tr>
 
       <tr>
-        <td>NFd</td>
+        <td>{{'nfd'|translate}}</td>
         <td>{{info.NFd}}</td>
       </tr>
 
       <tr>
-        <td>NGoroutines</td>
+        <td>{{'ngoroutines'|translate}}</td>
         <td>{{info.NGoroutines}}</td>
       </tr>
 
       <tr>
-        <td>NEventsListener</td>
+        <td>{{'neventslistener'|translate}}</td>
         <td>{{info.NEventsListener}}</td>
       </tr>
 
       <tr>
-        <td>InitPath</td>
+        <td>{{'initpath'|translate}}</td>
         <td>{{info.InitPath}}</td>
       </tr>
 
       <tr>
-        <td>InitSha1</td>
+        <td>{{'initsha1'|translate}}</td>
         <td>{{info.InitSha1}}</td>
       </tr>
 
       <tr>
-        <td>IndexServerAddress</td>
+        <td>{{'indexserveraddress'|translate}}</td>
         <td>{{info.IndexServerAddress}}</td>
       </tr>
 
       <tr>
-        <td>MemoryLimit</td>
+        <td>{{'memorylimit'|translate}}</td>
         <td>{{info.MemoryLimit | boolean_to_string}}</td>
       </tr>
 
       <tr>
-        <td>SwapLimit</td>
+        <td>{{'swaplimit'|translate}}</td>
         <td>{{info.SwapLimit | boolean_to_string}}</td>
       </tr>
 
       <tr>
-        <td>IPv4Forwarding</td>
+        <td>{{'ipv4forwarding'|translate}}</td>
         <td>{{info.IPv4Forwarding | boolean_to_string}}</td>
       </tr>
 
       <tr>
-        <td>Sockets</td>
+        <td>{{'sockets'|translate}}</td>
         <td>{{info.Sockets | array_to_string}}</td>
       </tr>
   </table>

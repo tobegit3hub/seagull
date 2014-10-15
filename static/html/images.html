@@ -3,27 +3,27 @@
 <div ng-controller="ImagesController">
 
   <span class="page-header">
-    <h1 class="page-header-left">Images <a href="/dockerapi/images/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-left">{{'images'|translate}} <a href="/dockerapi/images/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
     <div class="page-header-right input-group">
-      <input type="text" class="form-control" placeholder="search" ng-model="search" autofocus>
+      <input type="text" class="form-control" placeholder="{{'search'|translate}}" ng-model="search" autofocus>
     </div>
   </span> <!-- End of page header -->
 
   <br/>
 
-  <div ng-show="!images.length" class="alert alert-danger" role="alert">No docker images!</div>
+  <div ng-show="!images.length" class="alert alert-danger" role="alert">{{'no_docker_image'|translate}}</div>
 
   <!-- Display all images information -->
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>Id</th>
-        <th>RepoTags</th>
-        <th>Created</th>
-        <th>VirtualSize</th>
-        <th>Operation</th>
+        <th>{{'id'|translate}}</th>
+        <th>{{'repotags'|translate}}</th>
+        <th>{{'created'|translate}}</th>
+        <th>{{'virtualsize'|translate}}</th>
+        <th>{{'operation'|translate}}</th>
       </tr>
     </thead>
 
@@ -33,7 +33,7 @@
         <td>{{image.RepoTags | array_to_string}}</td> <!-- Add comma between tags -->
         <td>{{image.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- Full time with 'yyyy-MM-dd HH:mm:ss Z' -->
         <td>{{image.VirtualSize | filesize:2}}</td> <!-- Convert to readable size -->
-        <td><button class="btn btn-danger" ng-click="deleteImage(image.Id)">Delete</button></td>
+        <td><button class="btn btn-danger" ng-click="deleteImage(image.Id)">{{'delete'|translate}}</button></td>
       </tr>
     </tbody>
   </table>
