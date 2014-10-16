@@ -5,6 +5,7 @@
 var seagull = angular.module('seagull', [
   'ngRoute',
   'seagullControllers',
+  'ngCookies',
   'pascalprecht.translate'
 ]);
 
@@ -129,6 +130,7 @@ seagull.controller('IndexController', function ($scope, $translate) {
 });
 
 seagull.config(function ($translateProvider) {
+  $translateProvider.useCookieStorage();
 
   $translateProvider.preferredLanguage('en-us');
 
