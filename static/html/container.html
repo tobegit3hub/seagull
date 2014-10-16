@@ -1,19 +1,23 @@
 
-<!-- The container page -->
+<!-- The container page, refer to static/js/controller -->
 <div ng-controller="ContainerController">
 
   <span class="page-header">
+    <!-- Display container title and the JSON link -->
     <h1 class="page-header-left">{{'container'|translate}} <a ng-href="/dockerapi/containers/{{container.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
     <div class="page-header-right input-group">
+      <!-- If the container is running, display stop button -->
       <span ng-show="container.State.Running"><button class="btn btn-warning" ng-click="stopContainer(container.Id)">{{'stop'|translate}}</button>&nbsp;</span>
+      <!-- Else display start and delete buttons -->
       <span ng-show="!container.State.Running"><button ng-show="!container.State.Running" class="btn btn-success" ng-click="startContainer(container.Id)">{{'start'|translate}}</button>&nbsp;</span>
       <span ng-show="!container.State.Running"><button ng-show="!container.State.Running" class="btn btn-danger" ng-click="deleteContainer(container.Id)">{{'delete'|translate}}</button>&nbsp;</span>
       <button class="btn btn-info" ng-click="refresh()">{{'refresh'|translate}}</button>
     </div>
   </span> <!-- End of page header -->
 
+  <!-- Alert if we get nothing from server -->
   <div ng-show="!container" class="alert alert-danger" role="alert">{{'no_such_container'|translate}}</div>
 
   <!-- Display container information -->
@@ -73,8 +77,10 @@
     </tbody>
   </table>
 
+  <!-- If the container is running, add a break line for the next table -->
   <br ng-show="container.State.Running"/>
 
+  <!-- If the container is running, display its running status -->
   <table ng-show="container.State.Running" class="table table-striped table-hover">
     <thead>
       <tr>

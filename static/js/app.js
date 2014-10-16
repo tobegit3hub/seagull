@@ -5,7 +5,7 @@
 var seagull = angular.module('seagull', [
   'ngRoute',
   'seagullControllers',
-  'ngCookies',
+  'ngCookies', // To save perference of i18n language
   'pascalprecht.translate'
 ]);
 
@@ -45,14 +45,14 @@ seagull.config(['$locationProvider', '$routeProvider',
         templateUrl: '/static/html/configuration.html',
         controller: 'ConfigurationController'
       });
-      /* No default page for angular
+      /* No default page for angular so that beego can process API request
       otherwise({
         redirectTo: '/'
       }); */
   }]
 );
 
-/* File size filter, code from https://gist.github.com/yrezgui/5653591 */
+/* Filter to convert file size into readable string, code from https://gist.github.com/yrezgui/5653591 */
 seagull.filter( 'filesize', function () {
   var units = [
     'bytes',
@@ -98,7 +98,7 @@ seagull.filter( 'array_to_string', function () {
 /* Filter to convert boolean into string */
 seagull.filter( 'boolean_to_string', function () {
   return function( bool ) {
-    /* Todo: seems not work
+    /* Todo: Determine it is boolean or not but it seems not work
     if ( typeof bool != "boolean" ) {
       return '';
     } */
@@ -111,31 +111,38 @@ seagull.filter( 'boolean_to_string', function () {
   };
 });
 
-// Refer to http://www.ng-newsletter.com/posts/angular-translate.html for i18n
-
+/* Refer to http://www.ng-newsletter.com/posts/angular-translate.html for i18n */
 seagull.controller('IndexController', function ($scope, $translate) {
+  /* Change languages with the language string */
   $scope.changeLanguage = function (key) {
     $translate.use(key);
   };
 
+  /* Determine it is English or not */
   $scope.isEnUs = function () {
      return $translate.use() == "en-us";
   }
 
+  /* Determine it is simplified Chinese or not */
   $scope.isZhCn = function () {
 	   return $translate.use() == "zh-cn";
   }
 
+  /* Determine it is traditional Chinese or not */
   $scope.isZhHant = function () {
      return $translate.use() == "zh-hant";
   }
 });
 
+/* Use angular-translate for i18n and all text should be translated here */
 seagull.config(function ($translateProvider) {
+  /* Use cookie to store the perference of i18n language */
   $translateProvider.useCookieStorage();
 
+  /* The default language should be English */
   $translateProvider.preferredLanguage('en-us');
 
+  /* Translate into English */
   $translateProvider.translations('en-us', {
     // Index html
     seagull: 'Seagull',
@@ -234,6 +241,7 @@ seagull.config(function ($translateProvider) {
     sockets: 'Sockets'
   });
 
+  /* Translate into simplified Chinese */
   $translateProvider.translations('zh-cn', {
     // Index html
     seagull: '海鸥',
@@ -332,6 +340,7 @@ seagull.config(function ($translateProvider) {
     sockets: '套接字'
   });
 
+  /* Translate into traditional Chinese */
   $translateProvider.translations('zh-hant', {
     // Index html
     seagull: '海鷗',

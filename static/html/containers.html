@@ -1,8 +1,9 @@
 
-<!-- The containers page -->
+<!-- The containers page, refer to static/js/controller -->
 <div ng-controller="ContainersController">
 
   <span class="page-header">
+    <!-- Display containers title and the JSON link -->
     <h1 class="page-header-left">{{'containers'|translate}} <a href="/dockerapi/containers/json?all=1" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
@@ -11,8 +12,10 @@
     </div>
   </span> <!-- End of page header -->
 
+  <!-- Todo: No need to use <br/> -->
   <br/><br/><br/><br/>
 
+  <!-- Alert if we get nothing from server -->
   <div ng-show="!containers.length" class="alert alert-danger" role="alert">{{'no_docker_container'|translate}}</div>
 
   <!-- Display all containers information -->
@@ -38,9 +41,13 @@
         <td>{{container.Command}}</td>
         <td>{{container.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- Full time with 'yyyy-MM-dd HH:mm:ss Z' -->
         <td>{{container.Status}}</td>
+        <!-- If the container is running, display stop button -->
         <td ng-show="checkRunning(container)"><button class="btn btn-warning" ng-click="stopContainer(container.Id)">{{'stop'|translate}}</button></td>
+        <!-- Else display start button -->
         <td ng-show="!checkRunning(container)"><button class="btn btn-success" ng-click="startContainer(container.Id)">{{'start'|translate}}</button></td>
+        <!-- If the container is running, display nothing -->
         <td ng-show="checkRunning(container)"></td>
+        <!-- Else display delete button -->
         <td ng-show="!checkRunning(container)"><button class="btn btn-danger" ng-click="deleteContainer(container.Id)">{{'delete'|translate}}</button></td>
       </tr>
     </tbody>

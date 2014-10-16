@@ -1,27 +1,27 @@
 
 'use strict';
 
-// https://docs.docker.com/reference/api/docker_remote_api_v1.14/
-
+/* Use JQuery.gritter to popup success message */
 function alert_success(message) {
   $.gritter.add({
     title: 'Success!',
     text: message,
-    image: 'static/img/seagull.png',
+    image: 'static/img/seagull-logo.png',
     time: 3000
   });
 }
 
+/* Use JQuery.gritter to popup error message */
 function alert_error(message) {
   $.gritter.add({
     title: 'Error!',
     text: message,
-    image: 'static/img/seagull.png',
+    image: 'static/img/seagull-logo.png',
     time: 3000
   });
 }
 
-/* The angular application controllers */
+/* All angular application controllers */
 var seagullControllers = angular.module('seagullControllers', []);
 
 /* This controller to get comment from beego api */
@@ -45,10 +45,11 @@ seagullControllers.controller('HomeController', ['$scope', '$routeParams', '$htt
   });
 }]);
 
+/* Contaienrs controller requests beego API server to get/start/stop/delete containers */
 seagullControllers.controller('ContainersController', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
 
-  /*
+  /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#list-containers
     [{
       "Id": "d0bd54b5889f73ced793007ecdb3a1f923b3bc6d47979e9b24a8c7f1906aee5a", // I edit it
       "Names": ["/happy_turing"] // I add it
@@ -65,7 +66,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     $scope.containers = data;
   });
 
-  // Refer to http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string
+  /* Enable to check startsWith, refer to http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string */
   if (typeof String.prototype.startsWith != 'function') {
     // see below for better implementation!
     String.prototype.startsWith = function (str){
@@ -73,6 +74,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     };
   };
 
+  /* Determine if the container is running */
   $scope.checkRunning = function(container) {
     if (container.Status.startsWith("Up")) {
       return true;
@@ -81,6 +83,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }
   };
 
+  /* Request beego API server to start container */
   $scope.startContainer = function(id) {
     $http({
       method: 'POST',
@@ -101,6 +104,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     });
   };
 
+  /* Request beego API server to stop container */
   $scope.stopContainer = function(id) {
     $http({
       method: 'POST',
@@ -121,6 +125,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     });
   };
 
+  /* Request beego API server to delete container */
   $scope.deleteContainer = function(id) {
     $http({
       method: 'DELETE',
@@ -143,10 +148,14 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
 
 }]);
 
+/*
+ * Contaienr controller requests beego API server to get/start/stop/delete container
+ * Todo: Remove the duplicated code from ContainersController
+ */
 seagullControllers.controller('ContainerController', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
 
-  /*
+  /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#inspect-a-container
     {
       "Id": "4fa6e0f0c6786287e131c3852c58a2e01cc697a68231826813597e4994f1d6e2",
       "Created": "2013-05-07T14:51:42.041847+02:00",
@@ -235,15 +244,17 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
     $scope.container = data;
   });
 
+  /* Get the container top status */
   $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
     $scope.top = data;
   });
 
+  /* Refresh the page */
   $scope.refresh = function() {
     location.reload();
   };
 
-  // Todo: Duplicate with the methods in ContainersController, little difference is reloading data
+  /* Request beego API server to start container */
   $scope.startContainer = function(id) {
     $http({
       method: 'POST',
@@ -268,6 +279,7 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
     });
   };
 
+  /* Request beego API server to stop container */
   $scope.stopContainer = function(id) {
     $http({
       method: 'POST',
@@ -292,6 +304,7 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
     });
   };
 
+  /* Request beego API server to delete container */
   $scope.deleteContainer = function(id) {
     $http({
       method: 'DELETE',
@@ -318,10 +331,11 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
 
 }]);
 
+/* Images controller requests beego API server to get/delete images */
 seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
 
-  /*
+  /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#inspect-an-image
     [{
       "RepoTags": [
         "ubuntu:12.04",
@@ -336,11 +350,12 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
     }]
   */
 
-  /* Get the image objects */
+  /* Request beego API server to get images */
   $http.get('/dockerapi/images/json').success(function(data) {
     $scope.images = data;
   });
 
+  /* Request beego API server to delete image */
   $scope.deleteImage = function(id) {
     $http({
       method: 'DELETE',
@@ -362,10 +377,14 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
   };
 }]);
 
+/*
+ * Image controller requests beego API server to get image
+ * Todo: Remove the duplicated code from ImagesController
+ */
 seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
 
-  /*
+  /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#inspect-an-image
     {
       Architecture: "amd64",
       Author: "tobe tobeg3oogle@gmail.com",
@@ -458,7 +477,7 @@ seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$ht
     }
   */
 
-  /* Get the image object */
+  /* Request beego API server to get image */
   if(typeof $routeParams.id === 'undefined' || $routeParams.id == null){
     $http.get('/dockerapi/images/' + $routeParams.user + "/" + $routeParams.repo + '/json').success(function(data) {
       $scope.image = data;
@@ -470,11 +489,11 @@ seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$ht
   };
 }]);
 
-
+/* Contaienrs controller requests beego API server to get configuration */
 seagullControllers.controller('ConfigurationController', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
 
-    /*
+    /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#show-the-docker-version-information
       {
         "ApiVersion":"1.12",
         "Version":"0.2.2",
@@ -483,7 +502,7 @@ seagullControllers.controller('ConfigurationController', ['$scope', '$routeParam
       }
     */
 
-    /*
+    /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#display-system-wide-information
       {
         "Containers":11,
         "Images":16,
@@ -515,12 +534,12 @@ seagullControllers.controller('ConfigurationController', ['$scope', '$routeParam
       }
     */
 
-  /* Get the version object */
+  /*   /* Request beego API server to get the version object */
   $http.get('/dockerapi/version').success(function(data) {
     $scope.version = data;
   });
 
-  /* Get the info object */
+  /* Request beego API server to get the info object */
   $http.get('/dockerapi/info').success(function(data) {
     $scope.info = data;
   });

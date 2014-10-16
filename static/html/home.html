@@ -2,13 +2,15 @@
 <!-- The home page -->
 <div ng-controller="HomeController">
 
+  <!-- Alert if we get nothing from server -->
   <div ng-show="!version || !info" class="alert alert-danger" role="alert">{{'error_to_load_data_from_docker_deanmon_please_check_seagull_and_configuration'|translate}}</div>
 
+  <!-- Display a bootstrap-style jumbotron to display the basic info of docker -->
   <div class="jumbotron">
-    <!-- Seagull the best friend of docker -->
+    <!-- Example: Seagull the best friend of docker -->
     <h1>{{'seagull'|translate}} <small>{{'the_best_friend_of_docker'|translate}}</small></h1>
 
-    <!-- I'm using linux with kernel 3.11.0-12-generic, go1.2.1 and Docker 1.1.2. The docker deamon has 26 running/stopped containers and 359 images now. Docker is an open platform for distributed application for developers and sysadmins. And seagull provides a friendly Web UI to monitor docker. -->
+    <!-- Example: I'm using linux with kernel 3.11.0-12-generic, go1.2.1 and Docker 1.1.2. The docker deamon has 26 running/stopped containers and 359 images now. Docker is an open platform for distributed application for developers and sysadmins. And seagull provides a friendly Web UI to monitor docker. -->
     <h3>
       {{'im_using'|translate}} <i>{{Os}}</i> {{'with_kernel'|translate}} <i>{{KernelVersion}}</i>, <i>{{GoVersion}}</i> {{'and_docker'|translate}} <i>{{Version}}</i>{{'period'|translate}} {{'the_docker_deamon_has'|translate}} <i>{{Containers}}</i> {{'running_stopped_containers_and'|translate}} <i>{{Images}}</i> {{'images_now'|translate}}{{'period'|translate}}
       {{'docker_is_an_open_platform_for_distributed_application_for_developers_and_sysadmins'|translate}},
@@ -16,13 +18,14 @@
     </h3>
   </div>
 
+  <!-- Display four section with text and image of containers page, images page, configuration page and github page -->
   <div class="row text-center">
     <div class="col-md-3 col-sm-6 hero-feature">
         <div class="thumbnail">
             <img src="static/img/containers-page.png" alt="" data-toggle="modal" data-target="#popupContainers">
             <div class="caption">
                 <h3>{{'containers'|translate}}</h3>
-                <!-- Containers page display all running and stopped docker containers. -->
+                <!-- Example: Containers page display all running and stopped docker containers. -->
                 <p>{{'containers_page_display_all_running_and_stopped_docker_containers'|translate}}</p>
                 <p>
                     <a href="/containers" class="btn btn-primary">{{'go_now'|translate}}</a> <a href="https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-15-seagull-containers-page.md" target="_blank" class="btn btn-default">{{'learn_more'|translate}}</a>
@@ -36,7 +39,7 @@
             <img src="static/img/images-page.png" alt="" data-toggle="modal" data-target="#popupImages">
             <div class="caption">
                 <h3>{{'images'|translate}}</h3>
-                <!-- Images page display all docker images to start, stop and delete. -->
+                <!-- Example: Images page display all docker images to start, stop and delete. -->
                 <p>{{'images_page_display_all_docker_images_to_start_stop_and_delete'|translate}}</p>
                 <p>
                     <a href="/images" class="btn btn-primary">{{'go_now'|translate}}</a> <a href="https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-16-seagull-images-page.md" target="_blank" class="btn btn-default">{{'learn_more'|translate}}</a>
@@ -50,7 +53,7 @@
             <img src="static/img/configuration-page.png" alt="" data-toggle="modal" data-target="#popupConfiguration">
             <div class="caption">
                 <h3>{{'configuration'|translate}}</h3>
-                <!-- Configuration page display all your docker environment and settings. -->
+                <!-- Example: Configuration page display all your docker environment and settings. -->
                 <p>{{'configuration_page_display_all_your_docker_environment_and_settings'|translate}}</p>
                 <p>
                     <a href="/configuration" class="btn btn-primary">{{'go_now'|translate}}</a> <a href="https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-17-seagull-configuration-page.md" target="_blank" class="btn btn-default">{{'learn_more'|translate}}</a>
@@ -64,7 +67,7 @@
             <img src="static/img/github-page.png" alt="" data-toggle="modal" data-target="#popupGithub">
             <div class="caption">
                 <h3>{{'github'|translate}}</h3>
-                <!-- Seagull is open source in Github. Welcome to contribution and issues. -->
+                <!-- Example: Seagull is open source in Github. Welcome to contribution and issues. -->
                 <p>{{'seagull_is_open_source_in_Github_welcome_to_contribution_and_issues'|translate}}</p>
                 <p>
                     <a href="https://github.com/tobegit3hub/seagull" class="btn btn-primary">{{'go_now'|translate}}</a> <a href="https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-14-seagull-design-and-implement.md" target="_blank" class="btn btn-default">{{'learn_more'|translate}}</a>
@@ -72,11 +75,11 @@
             </div>
         </div>
     </div>
-  </div>
+  </div> <!-- End of four sections in a row -->
 
 </div> <!-- End of this angular page -->
 
-<!-- Popup larger images, refer to static/js/style.js -->
+<!-- The popup larger images when click each page's image, refer to static/js/style.js for the effect -->
 <div id="popupContainers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
