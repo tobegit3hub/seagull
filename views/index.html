@@ -43,9 +43,9 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="">{{'more'|translate}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="" ng-click="changeLanguage('zh-cn')">{{'zh_cn'|translate}}</a></li>
-                <li><a href="" ng-click="changeLanguage('zh-hant')">{{'zh_hant'|translate}}</a></li>
-                <li><a href="" ng-click="changeLanguage('en-us')">{{'en_us'|translate}}</a></li>
+                <li ng-hide="isEnUs()"><a href="" ng-click="changeLanguage('en-us')">{{'en_us'|translate}}</a></li>
+                <li ng-hide="isZhCn()"><a href="" ng-click="changeLanguage('zh-cn')">{{'zh_cn'|translate}}</a></li>
+                <li ng-hide="isZhHant()"><a href="" ng-click="changeLanguage('zh-hant')">{{'zh_hant'|translate}}</a></li>
                 <li><a href="https://github.com/tobegit3hub/seagull" target="_blank">Github</a></li>
                 <li><a href="https://gitter.im/tobegit3hub/seagull" target="_blank">Gitter</a></li>
                 <li><a href="mailto:tobeg3oogle@gmail.com?Subject=seagull" target="_top">{{'need_help'|translate}}</a></li>

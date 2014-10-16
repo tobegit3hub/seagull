@@ -2,6 +2,8 @@
 <!-- The home page -->
 <div ng-controller="HomeController">
 
+  <div ng-show="!version || !info" class="alert alert-danger" role="alert">{{'error_to_load_data_from_docker_deanmon_please_check_seagull_and_configuration'|translate}}</div>
+
   <div class="jumbotron">
     <!-- Seagull the best friend of docker -->
     <h1>{{'seagull'|translate}} <small>{{'the_best_friend_of_docker'|translate}}</small></h1>

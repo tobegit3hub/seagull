@@ -114,11 +114,23 @@ seagull.controller('IndexController', function ($scope, $translate) {
   $scope.changeLanguage = function (key) {
     $translate.use(key);
   };
+
+  $scope.isEnUs = function () {
+     return $translate.use() == "en-us";
+  }
+
+  $scope.isZhCn = function () {
+	   return $translate.use() == "zh-cn";
+  }
+
+  $scope.isZhHant = function () {
+     return $translate.use() == "zh-hant";
+  }
 });
 
 seagull.config(function ($translateProvider) {
 
-  $translateProvider.preferredLanguage('zh-cn');
+  $translateProvider.preferredLanguage('en-us');
 
   $translateProvider.translations('en-us', {
     // Index html
@@ -132,6 +144,7 @@ seagull.config(function ($translateProvider) {
     en_us: 'English',
     need_help: 'Need Help',
     // Home page
+    error_to_load_data_from_docker_deanmon_please_check_seagull_and_configuration: 'Error to load data from docker deamon. Please check seagull and configuration.',
     period: '.',
     the_best_friend_of_docker: 'the best friend of docker',
     im_using: 'I\'m using',
@@ -229,6 +242,7 @@ seagull.config(function ($translateProvider) {
     en_us: 'English',
     need_help: '帮助',
     // Home page
+    error_to_load_data_from_docker_deanmon_please_check_seagull_and_configuration: '从Docker中获取数据失败，请检查Docker和海鸥的配置',
     period: '。',
     the_best_friend_of_docker: 'docker的最佳小伙伴',
     im_using: '我正在使用',
@@ -326,6 +340,7 @@ seagull.config(function ($translateProvider) {
     en_us: 'English',
     need_help: '幫助',
     // Home page
+    error_to_load_data_from_docker_deanmon_please_check_seagull_and_configuration: '從Docker中獲取數據失敗，請檢查Docker和海鷗的配置',
     period: '。',
     the_best_friend_of_docker: 'docker的最佳小夥伴',
     im_using: '我正在使用',
