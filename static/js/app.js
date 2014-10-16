@@ -248,7 +248,7 @@ seagull.config(function ($translateProvider) {
     // Home page
     error_to_load_data_from_docker_deanmon_please_check_seagull_and_configuration: '从Docker中获取数据失败，请检查Docker和海鸥的配置',
     period: '。',
-    the_best_friend_of_docker: 'docker的最佳小伙伴',
+    the_best_friend_of_docker: 'Docker的最佳小伙伴',
     im_using: '我正在使用',
     with_kernel: '内核版本',
     and_docker: '和Docker',
@@ -346,7 +346,7 @@ seagull.config(function ($translateProvider) {
     // Home page
     error_to_load_data_from_docker_deanmon_please_check_seagull_and_configuration: '從Docker中獲取數據失敗，請檢查Docker和海鷗的配置',
     period: '。',
-    the_best_friend_of_docker: 'docker的最佳小夥伴',
+    the_best_friend_of_docker: 'Docker的最佳小夥伴',
     im_using: '我正在使用',
     with_kernel: '內核版本',
     and_docker: '和Docker',

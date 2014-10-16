@@ -1,5 +1,5 @@
 
-/* Popup the larger image, code from http://www.bootply.com/Zla4ld4aD1 */
+/* Popup the larger image in home page, code from http://www.bootply.com/Zla4ld4aD1 */
 function centerModal() {
     $(this).css('display', 'block');
     var $dialog = $(this).find(".modal-dialog");

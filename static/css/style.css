@@ -4,18 +4,18 @@
 
 }
 
-/* Username float left */
+/* The left part of header */
 .page-header-left {
   float:left;
 }
 
-/* Search form float right */
+/* The right part of header */
 .page-header-right {
   float: right;
-  padding-top: 21px;
+  padding-top: 21px; /* For search form */
 }
 
-
+/* The size of popup images in home page */
 #popupContainers .modal-dialog {
   width: 70%;
 }

@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
-<!-- Use angular and named seagull -->
+<!-- Use angular and named it seagull application -->
 <html ng-app="seagull">
   <head>
     <title>Seagull</title>
     <meta charset="UTF-8">
     <base href="/">
+    <!-- Favicon -->
     <link rel="icon" href="static/img/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon" />
 
@@ -29,19 +30,25 @@
     <script src="static/js/style.js"></script>
   </head>
 
+  <!-- The controller to change i18n language -->
   <body ng-controller="IndexController">
-    <!-- Header -->
+    <!-- Header with a navigation bar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
+        <!-- Home page button -->
         <div class="navbar-header">
           <a class="navbar-brand" href="/">{{'seagull'|translate}}</a>
         </div>
+
+        <!-- Containers page, images page and configuration page buttons -->
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="/containers">{{'containers'|translate}}</a></li>
             <li><a href="/images">{{'images'|translate}}</a></li>
             <li><a href="/configuration">{{'configuration'|translate}}</a></li>
           </ul>
+
+          <!-- A more button to change i18n languages and email me -->
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="">{{'more'|translate}} <span class="caret"></span></a>
@@ -53,10 +60,11 @@
               </ul>
             </li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
-    </div>
+    </div> <!-- End of navbar -->
 
+    <!-- Todo: No need to use <br/> to move content below the navigation bar -->
     <br/><br/><br/><br/>
 
     <!-- Angular views, more on static/js/app.js -->
@@ -65,7 +73,5 @@
     </div>
 
     <!-- No footer -->
-
-
   </body>
 </html>

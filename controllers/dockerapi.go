@@ -1,8 +1,10 @@
 package controllers
 
 /*
- * Docker API from https://docs.docker.com/reference/api/docker_remote_api_v1.14/
- * Acess Unix Socket from https://github.com/Soulou/curl-unix-socket
+ * The docker API controller to access docker unix socket and reponse JSON data
+ *
+ * Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/ for docker remote API
+ * Refer to https://github.com/Soulou/curl-unix-socket to know how to access unix docket
  */
 
 import (
@@ -18,10 +20,10 @@ import (
 	"strings"
 )
 
-/* Request docker unix socket */
+/* Give address and method to request docker unix socket */
 func RequestUnixSocket(address, method string) string {
 	DOCKER_UNIX_SOCKET := "unix:///var/run/docker.sock"
-	// Example: unix:///var/run/docker.sock:/images/json?since=2014
+	// Example: unix:///var/run/docker.sock:/images/json?since=1374067924
 	unix_socket_url := DOCKER_UNIX_SOCKET + ":" + address
 	u, err := url.Parse(unix_socket_url)
 	if err != nil || u.Scheme != "unix" {
@@ -78,12 +80,12 @@ func RequestUnixSocket(address, method string) string {
 	return string(body)
 }
 
+/* It's a beego controller */
 type DockerapiController struct {
 	beego.Controller
 }
 
-/* Refer to http://beego.me/docs/mvc/controller/params.md#data-bind to get query string */
-
+/* Wrap docker remote API to get contaienrs */
 func (this *DockerapiController) GetContainers() {
 	address := "/containers/json"
 	var all int
@@ -93,6 +95,7 @@ func (this *DockerapiController) GetContainers() {
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to get data of contaienr */
 func (this *DockerapiController) GetContainer() {
 	id := this.GetString(":id")
 	address := "/containers/" + id + "/json"
@@ -100,6 +103,7 @@ func (this *DockerapiController) GetContainer() {
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to get container's status */
 func (this *DockerapiController) TopContainer() {
 	id := this.GetString(":id")
 	address := "/containers/" + id + "/top"
@@ -107,6 +111,7 @@ func (this *DockerapiController) TopContainer() {
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to start contaienrs */
 func (this *DockerapiController) StartContainer() {
 	id := this.GetString(":id")
 	address := "/containers/" + id + "/start"
@@ -114,6 +119,7 @@ func (this *DockerapiController) StartContainer() {
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to stop contaienrs */
 func (this *DockerapiController) StopContainer() {
 	id := this.GetString(":id")
 	address := "/containers/" + id + "/stop"
@@ -121,6 +127,7 @@ func (this *DockerapiController) StopContainer() {
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to delete contaienrs */
 func (this *DockerapiController) DeleteContainer() {
 	id := this.GetString(":id")
 	address := "/containers/" + id
@@ -128,12 +135,14 @@ func (this *DockerapiController) DeleteContainer() {
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to get images */
 func (this *DockerapiController) GetImages() {
 	address := "/images/json"
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to get data of image */
 func (this *DockerapiController) GetImage() {
 	id := this.GetString(":id")
 	address := "/images/" + id + "/json"
@@ -141,6 +150,7 @@ func (this *DockerapiController) GetImage() {
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to get data of user image */
 func (this *DockerapiController) GetUserImage() {
 	user := this.GetString(":user")
 	repo := this.GetString(":repo")
@@ -149,6 +159,7 @@ func (this *DockerapiController) GetUserImage() {
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to delete image */
 func (this *DockerapiController) DeleteImage() {
 	id := this.GetString(":id")
 	address := "/images/" + id
@@ -156,25 +167,26 @@ func (this *DockerapiController) DeleteImage() {
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to get version info */
 func (this *DockerapiController) GetVersion() {
 	address := "/version"
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }
 
+/* Wrap docker remote API to get docker info */
 func (this *DockerapiController) GetInfo() {
 	address := "/info"
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }
 
-/* Todo: Implement events api
+/* Todo: Implement events API, the response is a stream so can't use ioutil.ReadAll() which will be blocked
 func (this *DockerapiController) GetEvents() {
-	address := "/events?since=1374067924"
-
-	//var since int
-	//this.Ctx.Input.Bind(&since, "since")
-
+	address := "/events"
+	var since int
+	this.Ctx.Input.Bind(&since, "since")
+	address = address + "?since=" + strconv.Itoa(since)
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }
