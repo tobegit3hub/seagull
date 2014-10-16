@@ -1,0 +1,19 @@
+{
+  "name": "angular-translate-storage-cookie",
+  "version": "2.4.1",
+  "main": "./angular-translate-storage-cookie.js",
+  "dependencies": {
+    "angular-translate": "~2.4.0"
+  },
+  "ignore": [],
+  "homepage": "https://github.com/PascalPrecht/bower-angular-translate-storage-cookie",
+  "_release": "2.4.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.4.1",
+    "commit": "1720693986ec1da0a5540070736e1f448691c47f"
+  },
+  "_source": "git://github.com/PascalPrecht/bower-angular-translate-storage-cookie.git",
+  "_target": "~2.4.0",
+  "_originalSource": "angular-translate-storage-cookie"
+}
