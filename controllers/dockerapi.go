@@ -9,12 +9,12 @@ import (
 	"github.com/astaxie/beego"
 
 	"fmt"
-	"strconv"
 	"io/ioutil"
 	"net"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"strconv"
 	"strings"
 )
 
@@ -46,7 +46,7 @@ func RequestUnixSocket(address, method string) string {
 		fmt.Println(query)
 	}
 
-	request, err := http.NewRequest(method, u.Path + query, reader)
+	request, err := http.NewRequest(method, u.Path+query, reader)
 	if err != nil {
 		fmt.Println("Error to create http request", err)
 		return ""
@@ -66,11 +66,11 @@ func RequestUnixSocket(address, method string) string {
 	}
 
 	/* An example to get continual stream from events, but it's for stdout
-	_, err = io.Copy(os.Stdout, res.Body)
-	if err != nil && err != io.EOF {
-		fmt.Println("Error, get invalid body in answer")
-		return ""
-   }
+		_, err = io.Copy(os.Stdout, res.Body)
+		if err != nil && err != io.EOF {
+			fmt.Println("Error, get invalid body in answer")
+			return ""
+	   }
 	*/
 
 	defer response.Body.Close()
