@@ -349,7 +349,7 @@ seagull.config(function ($translateProvider) {
     with_kernel: '內核版本',
     and_docker: '和Docker',
     the_docker_deamon_has: '目前Docker有',
-    running_stopped_containers_and: '正在運行或者停止的容器',
+    running_stopped_containers_and: '正在運行或者停止的容器和',
     images_now: '鏡像',
     docker_is_an_open_platform_for_distributed_application_for_developers_and_sysadmins: 'Docker是爲開發和運維人員設計的分佈式應用的開放平臺。',
     and_seagull_provides_a_friendly_web_ui_to_monitor_docker: '而海鷗爲Docker的監控提供了友好的界面',

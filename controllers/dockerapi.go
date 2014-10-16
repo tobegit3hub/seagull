@@ -82,6 +82,8 @@ type DockerapiController struct {
 	beego.Controller
 }
 
+/* Refer to http://beego.me/docs/mvc/controller/params.md#data-bind to get query string */
+
 func (this *DockerapiController) GetContainers() {
 	address := "/containers/json"
 	var all int
