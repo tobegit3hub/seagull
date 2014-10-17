@@ -1,7 +1,7 @@
 
 # 海鸥
 
-* [English Edition](https://github.com/tobegit3hub/seagull/blob/master/readme.md)
+* [English Edition](readme.md)
 * [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 * [TravisCI]()
 * [Docker仓库](https://registry.hub.docker.com/u/tobegit3hub/seagull/)
@@ -41,4 +41,4 @@
 * `go build seagull.go`或者运行`bee run seagull`来调试
 * `./seagull`或者运行`sudo ./seagull`来访问/var/run/docker.sock
 
-更多细节可以参考<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-16-seagull-images-page-zh.md>，我们提供了非常优秀和完整的文档。
+更多细节可以参考[海鸥的设计与实现](docs/2014-10-14-seagull-design-and-implement-zh.md)，我们在[docs](https://github.com/tobegit3hub/seagull/tree/master/docs)还有非常优秀的文档。

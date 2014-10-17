@@ -1,7 +1,7 @@
 
 # Seagull
 
-* [中文文档](https://github.com/tobegit3hub/seagull/blob/master/readme-zh.md)
+* [中文文档](readme-zh.md)
 * [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 * [TravisCI]()
 * [Docker Hub](https://registry.hub.docker.com/u/tobegit3hub/seagull/)
@@ -41,4 +41,4 @@ Seagull is implemented in Go and JavaScript with tools like Beego, AngularJS, Bo
 * `go build seagull.go` or `bee run seagull` for dubuging
 * `./seagull` or `sudo ./seagull` to access /var/run/docker.sock
 
-More detail in <https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-16-seagull-images-page.md> and we have lots of excellent documents.
+More detail in [seagull-design-and-implement](docs/2014-10-14-seagull-design-and-implement.md) and we have excellent documents in [docs](https://github.com/tobegit3hub/seagull/tree/master/docs).
