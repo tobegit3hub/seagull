@@ -1,6 +1,8 @@
 
 # Static
 
+## Updating ...
+
 ## Bower.json
 
 * `bower init` to create bower.json
@@ -14,7 +16,3 @@
 ## Js
 
 ## Css
-
-## 
-
-
