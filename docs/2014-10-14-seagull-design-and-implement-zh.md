@@ -1,58 +1,60 @@
 
-# Seagull Design And Implement
+# 海鸥的设计与实现
 
-Seagull is implemented in Go and JavaScript with tools like Beego, AngularJS, Bootstrap, Bower, JQuery and Docker. Wait, wait, wait. It's not so complicated. I will introduce you what's the architecture and technology of seagull. You may implement a better HTTP service after reading this.
+[English Edition](2014-10-14-seagull-design-and-implement.md)
 
-## Overview
+海鸥是使用Go和JavaScript实现的，它使用了如Beego、AngularJS、Bootstrap、Bower、JQuery和Docker等工具。停停停，这并没有你想象的那么复杂。我将会给你介绍海鸥项目的架构和用到的技术。读完这篇文章你就可以实现一个更好的HTTP服务了。
 
-Seagull actually is a Web service running on your localhost. There'is a API server running to access your docker unix socket to get data of docker, which is written with Beego framework. Beego accept requests and response the HTML file as a HTTP server as well. But most logic of the web page is controlled by the MVC front-end framework, AngularJS. We don't use database and the website is totally stateless. There're some tools like Bower help to mange the JavaScript dependency and Bootstrap helps to style the web pages. We're also using JQuery.gritter for notification and Angular-translate for i18n(internationalization) which will highly improve the user experience. Let's start with each component.
+## 概述
 
-## Web Server
+海鸥实际上是一个在你本地运行的Web服务。它有一个API服务器不断请求你的Docker本地套接字以获取Docker的数据，这个服务器是使用Beego实现的。Beego同时也会作为一个Web服务器接受请求并返回网页文件。但网页的大部分逻辑都由前端的AngularJS框架控制。我们并没有使用数据库，所以整个网站都是无状态的。我们用到像Bower这样的工具来管理所依赖的JavaScript库，用Bootstrap前端框架来美化所有的页面。我们也用到JQuery.gritter来进行系统通知和Angular-translate来实现多语言支持，这也极大提高了用户体验。让我们从各个组件开始入手吧。
 
-The web server is responsible for accepting HTTP requests and response the HTML file to browsers. There're so many choices for you no matter what language you prefer. Finally I choose Beego because it's full-feature, high-performance and easy to use.
+## Web服务器
 
-Please refer to <https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-23-use-beego-as-web-server.md> and I will tell how seagull implements its web server.
+Web服务器是负责接受HTTP请求并返回HTML文件给浏览器。无论你有什么编程语言，都有很多Web服务器框架供你选择。最终我选用了Beego，是因为它功能齐全、性能好，而且容易上手。
 
-After reading this, you know how to process HTTP requests and return a complete web page. But it's not all seagull has been done. Actually seagull server can process the API requests.
+建议阅读<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-23-use-beego-as-web-server.md>，我介绍了海鸥是如何实现它的Web服务器的。
 
-## API Server
+阅读完这篇文章，你就知道如何处理HTTP请求和返回一个完整页面吧。但海鸥并不仅仅做到这些，实际上海鸥服务器还能够处理API请求。
 
-The API server is responsible for accepting HTTP requests and response the specified data. In modern development, RESTful(Representational State Transfer) is the industry standard. So web service like seagull should implement RESTful interfaces for front-end users.
+## API服务器
 
-Please refer to <https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-24-use-beego-as-api-server.md>. I will introduce how to implement a simple API server with beego and how seagull server works.
+API服务器是负责接受HTTP请求并返回指定数据的。在现代的开发中，RESTful(表现状态转移)接口已经是行业标准，所以像海鸥这个的Web服务也应该为前端用户实现RESTful的接口。
 
-## Front-end Framework
+建议阅读<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-24-use-beego-as-api-server.md>。我将会介绍如何使用Beego开发一个API服务器和海鸥服务器是怎样工作的。
 
-Front-end framework is really important for single page application. If you have experienced seagull, you may find that it's fast and data changes dynamically. It benifites from the front-end MVC framework. What's more, the code is much cleaner thant just using pure JavaScript.
+## 前端框架
 
-Please refer to <https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-25-use-angulr.md> and I will tell you how the easiest way to use Angualr.
+前端框架对单页应用来说是非常重要的。如果你已经使用过海鸥，你可能发现整个网站速度很快而且数据是动态更新的，这就得益于前端的MVC框架。而且，使用前端框架后代码比纯写JavaScript简洁很多。
 
-## Manage Dependency
+建议阅读<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-25-use-angulr.md>，我将会告诉你使用AngularJS最简单的方法。
 
-Currently we're using JavaScript libraries like angular, angular-route, jquery, bootstrap, jquery.gritter, angular-translate, angular-translate-storage-local and angular-cookies. How can I manage this dependency or upgrade some of these libraries. Now you need Bower, a package manager for the web.
+## 管理依赖
 
-Please refer to <https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-26-use-bower-to-manage-dependency.md>. It's super easy to use this powerful tool for your website.
+目前我们用到的JavaScript库包括angular、angular-route、jquery、bootstrap、jquery.gritter、angular-translate、angular-translate-storage-local和angular-cookies。我们是如何管理这些依赖或者升级某个类库的呢？这时你就需要Bower，一个为Web开发设计的包管理工具。
 
-## Style
+建议阅读<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-26-use-bower-to-manage-dependency.md>。为你的网站添加Bower这个强大的工具是非常简单的。
 
-As stated about, seagull is using Bootstrap to style all the web pages. It's a popular front-end framework which provides a clean, beautiful and standard UI for us. The best of all is that it releases you from the hell of writing CSS and JavaScript.
+## 网站样式
 
-Please refer to <https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-27-how-seagull-use-bootstrap.md> which show the basic usage of Bootstrap.
+正如前面所说，海鸥使用了Bootstrap来为所有网页提供样式。这是一个流行的前端框架，它为我们提供了简洁、漂亮而且标准的用户界面。最好的一点是它让你从手写CSS和JavaScript的繁琐中解脱出来。
 
-## Notification
+建议阅读<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-27-how-seagull-use-bootstrap.md>，这里介绍了Bootstrap的基本用法。
 
-Bootstrap doesn't provide a pretty way for notification, but JQuery.gritter does. It's a JavaScript library and no need to configure it. I would just say one more time, "It's easy to use and gorgeous to see".
+## 网站通知
 
-Please refer to <https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-28-use-jquerygritter-for-notification.md>. I will show you how to use it.
+Bootstrap没有未我们提供便利的方式进行通知，但使用JQuery.gritter就好了。这是一个JavaScript库，导入后也无需配置。我想最后说一次，这真的是又易用又好用。
 
-## I18n
+建议阅读<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-28-use-jquerygritter-for-notification.md>。我会介绍怎么用这个东西。
 
-I18n(internationalization) is an important part of seagull to impove the user experience. Espectially for non-English users, the option of changing languages means a lot for them. Currently, English, simplified Chinese and traditional Chinese are perfectly supported. Angular-translate is a great project to help me to achive this.
+## 国际化
 
-Please refer to <https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-18-implement-i18n-with-angular-translate.md> and it shows how to support i18n in your Angular project.
+支持国际化多种语言对于提高海鸥网站用户体验是非常重要的。特别是母语非英语的用户，可以选择改变界面语言对他们有很大意义。当前，海鸥已完美支持英语、简体中文和繁体中文。Angular-translate是一个很好的项目来帮助我实现国际化的功能。
 
-## Package
+建议阅读<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-18-implement-i18n-with-angular-translate.md>。这介绍了如何为你的Angular项目添加国际化多语言的支持。
 
-Finally I would like to introduce how to package seagull. Seagull can run in docker container so that you can run one command to setup and start it. It's one of the advantage of docker. The only difficult part is how to write the Dockerfile.
+## 项目打包
 
-Please refer to <https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-20-seagull-dockerfile.md> which tells all the detail of seagull's Dockerfile.
+最后我想介绍如何打包海鸥项目。海鸥能够运行在Docker容器中，所以你能够一键安装和启动它，这也是Docker的优势之一。唯一有难度的是如何为这个项目写Dockerfile。
+
+建议阅读<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-20-seagull-dockerfile.md>，这讲解了海鸥的Dockerfile和所有细节。
