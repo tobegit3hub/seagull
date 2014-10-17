@@ -41,3 +41,4 @@
 * `go build seagull.go`或者运行`bee run seagull`来调试
 * `./seagull`或者运行`sudo ./seagull`来访问/var/run/docker.sock
 
+更多细节可以参考<https://github.com/tobegit3hub/seagull/blob/master/docs/2014-10-16-seagull-images-page-zh.md>，我们提供了非常优秀和完整的文档。
