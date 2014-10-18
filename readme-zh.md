@@ -3,7 +3,6 @@
 
 * [English Edition](readme.md)
 * [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-* [TravisCI]()
 * [Docker仓库](https://registry.hub.docker.com/u/tobegit3hub/seagull/)
 
 ## 简介
@@ -12,7 +11,7 @@
 
 使用Docker都希望有Web监控和管理界面，海鸥就是为此量身订造的。它可以通过一行命令安装运行，你在此能够监控你的所有Docker容器和镜像。现在，海鸥已经完美支持英语、简体中文和繁体中文了！
 
-欢迎来看我的海鸥服务器，地址<http://104.131.110.84:10086>。
+欢迎看看Demo网站，地址是<http://104.131.110.84:10086>。
 
 ## 使用
 
