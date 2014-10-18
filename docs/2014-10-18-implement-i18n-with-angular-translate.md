@@ -4,6 +4,8 @@
 // bower install angular-translate-storage
 # Implement I18n With Angular-translate
 
+[中文文档](2014-10-18-implement-i18n-with-angular-translate-zh.md)
+
 I18n(internationalization) means that your webiste support multiple languages. It's not a functional requirement but it would highly improve the user experience of non-English users.
 
 If you have experienced seagull, you may know that it has perfectly supported English, simplied Chinese and traditional Chinese. It's implemented with angular-translate library. So I will take this as example and tell you know to implement i18n in your angular project.
@@ -12,7 +14,7 @@ If you have experienced seagull, you may know that it has perfectly supported En
 
 First of all, you should go to official home page of angular-translate, <https://github.com/angular/angular-translate>. You should know it's for i18n and only works in angular projects.
 
-Here's a official post to use angular-translate in the easiest way, <http://www.ng-newsletter.com/posts/angular-translate.html>. 
+Here's a official post to use angular-translate in the easiest way, <http://www.ng-newsletter.com/posts/angular-translate.html>.
 
 ## Import Angular-translate Library
 
@@ -64,7 +66,7 @@ seagull.config(function ($translateProvider) {
     more: 'More',
     need_help: 'Need Help',
   });
- 
+
    /* Translate into simplified Chinese */
   $translateProvider.translations('zh-cn', {
     // Index html
@@ -75,7 +77,7 @@ seagull.config(function ($translateProvider) {
     more: '更多',
     need_help: '帮助',
   });
-   
+
   /* Translate into traditional Chinese */
   $translateProvider.translations('zh-hant', {
     // Index html
@@ -84,10 +86,10 @@ seagull.config(function ($translateProvider) {
     images: '鏡像',
     configuration: '配置',
     more: '更多',
-    need_help: '幫助',   
-  }); 
+    need_help: '幫助',
+  });
 });
-    
+
 ```
 
 Then how can we change the language? We need a controller to change the value of $translate.use(). The code is in the same app.js as well.
@@ -128,7 +130,7 @@ Then we can use it all my HTML files. I will take seagull/views/index.html for e
 
 ## Use Cookie To Remember Language
 
-The choice of language is just for one time. When you refresh the page, the value of $translate.use() will be reset. If you want to remember the choice of your perference, you need cookies or local storage to store it. 
+The choice of language is just for one time. When you refresh the page, the value of $translate.use() will be reset. If you want to remember the choice of your perference, you need cookies or local storage to store it.
 
 Fortunately I have found the great projects, angular-cookies and angualar-translate-storage. You should refer to their official page first, <https://github.com/angular-translate-storage> and <https://github.com/angular-translate-storage>.
 

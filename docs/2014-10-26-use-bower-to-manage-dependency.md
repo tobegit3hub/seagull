@@ -3,6 +3,8 @@
 // bower update?
 # Use Bower To Manage Dependency
 
+[中文文档](2014-10-26-use-bower-to-manage-dependency-zh.md)
+
 Bower is the tool to manage dependency for web. Seagull also uses Bower to manage my JavaScript dependency. Why don't we just download the js files to use? Because it's not a standard way and hard to maintain. One more problem is that it's inconvenient to upgrade the dependent libraries.
 
 ## Official Tutorial
