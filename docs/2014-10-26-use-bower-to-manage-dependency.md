@@ -1,6 +1,4 @@
-// Add all the bower commands
-// Add bower official website
-// bower update?
+
 # Use Bower To Manage Dependency
 
 [中文文档](2014-10-26-use-bower-to-manage-dependency-zh.md)
@@ -25,6 +23,8 @@ Then you can intall libraries. For seagull, we run the following command.
 * `bower install bootstrap --save`
 * `bower install jquery.gritter --save`
 * `bower install angular-translate --save`
+* `bower install angular-cookies --save`
+* `bower install angular-translate-storage-local --save`
 
 That's all. The libraries will be downloaded in the bower_components.
 

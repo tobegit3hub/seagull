@@ -1,7 +1,4 @@
-// Get angular-translate github addrees
-// Get angular-translate-cookies github addrees
-// Get angular-translate-storage-cookie address
-// bower install angular-translate-storage
+
 # Implement I18n With Angular-translate
 
 [中文文档](2014-10-18-implement-i18n-with-angular-translate-zh.md)
@@ -12,7 +9,7 @@ If you have experienced seagull, you may know that it has perfectly supported En
 
 ## Official Tutorial
 
-First of all, you should go to official home page of angular-translate, <https://github.com/angular/angular-translate>. You should know it's for i18n and only works in angular projects.
+First of all, you should go to official home page of angular-translate, <http://angular-translate.github.io>. You should know it's for i18n and only works in angular projects.
 
 Here's a official post to use angular-translate in the easiest way, <http://www.ng-newsletter.com/posts/angular-translate.html>.
 
@@ -24,7 +21,6 @@ Then you need to include it in your HTML file. Here's the source code in seagull
 
 ```
  <script src="static/bower_components/angular-translate/angular-translate.min.js"></script>
-
 ```
 
 It's in index.html page so that each page will include this library. If you're no familiar with Bower, please refer to [use-bower-to-manage-dependency](2014-10-26-use-bower-to-manage-dependency.md).
@@ -89,7 +85,6 @@ seagull.config(function ($translateProvider) {
     need_help: '幫助',
   });
 });
-
 ```
 
 Then how can we change the language? We need a controller to change the value of $translate.use(). The code is in the same app.js as well.
@@ -132,9 +127,9 @@ Then we can use it all my HTML files. I will take seagull/views/index.html for e
 
 The choice of language is just for one time. When you refresh the page, the value of $translate.use() will be reset. If you want to remember the choice of your perference, you need cookies or local storage to store it.
 
-Fortunately I have found the great projects, angular-cookies and angualar-translate-storage. You should refer to their official page first, <https://github.com/angular-translate-storage> and <https://github.com/angular-translate-storage>.
+Fortunately I have found the great projects, angular-cookies and angualar-translate-storage. You should refer to their official page first, <https://github.com/angular/bower-angular-cookies> and <https://github.com/angular-translate/bower-angular-translate-storage-cookie>.
 
-So I ran `bower install angular-cookies --save` and `bower install angular-translate-storage --save` to download the libraries and include it in seagull/views/index.html.
+So I ran `bower install angular-cookies --save` and ``bower install angular-translate-storage-cookies --save`` to download the libraries and include it in seagull/views/index.html.
 
 ```
  <script src="static/bower_components/angular-cookies/angular-cookies.min.js"></script>

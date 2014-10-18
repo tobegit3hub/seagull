@@ -1,4 +1,4 @@
-// GEt angular tutorial 
+
 # Implement Search In Angular
 
 [中文文档](2014-10-14-seagull-design-and-implement-zh.md)
@@ -7,7 +7,7 @@ If you have experienced seagull, you may notice that searching in seagull is sup
 
 ## Official Tutorial
 
-If you're new to AngularJS, I recommand you to read the simple tutorial from <http://angular-tutorial>. It use AngualrJS in a simple but powerful single page application. One of those steps introduce how to implment search in AngularJS.
+If you're new to AngularJS, I recommand you to read the simple tutorial from <https://docs.angularjs.org/tutorial/step_00>. It use AngualrJS in a simple but powerful single page application. One of those steps introduce how to implment search in AngularJS.
 
 ## How To Implement It
 

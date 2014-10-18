@@ -1,4 +1,4 @@
-// bootstap website
+
 # How Seagull Use Bootstrap
 
 [中文文档](2014-10-27-how-seagull-use-bootstrap-zh.md)
@@ -7,7 +7,7 @@ Bootstrap is a popular front-end framework. I don't need to talk about how great
 
 ## Official Tutorial
 
-If you haven't known about Bootstrap, please refer to its official website, <http://bootstrap.com>.
+If you haven't known about Bootstrap, please refer to its official website, <http://getbootstrap.com>.
 
 ## How To Use It
 
@@ -75,10 +75,10 @@ The default style of HTML table is ugly. But if you're using Bootstrap, have a t
    </thead>
    <tbody>
      <tr ng-repeat="container in containers | filter: search track by $index">
-       <td><a ng-href="/containers/{{container.Id}}">{{container.Id | limitTo:12}}</a></td> 
+       <td><a ng-href="/containers/{{container.Id}}">{{container.Id | limitTo:12}}</a></td>
      </tr>
    </tbody>
- </table> 
+ </table>
 ```
 
 ### Alert

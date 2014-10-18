@@ -12,6 +12,8 @@
 * `bower install bootstrap --save`
 * `bower install jquery.gritter --save`
 * `bower install angular-translate --save`
+* `bower install angular-cookies --save`
+* `bower install angular-translate-storage-local --save`
 
 ## Js
 
