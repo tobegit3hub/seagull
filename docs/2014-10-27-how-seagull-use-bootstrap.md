@@ -15,7 +15,7 @@ Bootstrap is a JavaScript library so you just need to download it and include it
 
 If you're using Bower, just run `bower install bootstrap --save` to download the library. You can refer to [use-bower-to-manage-dependency](2014-10-26-use-bower-to-manage-dependency.md) to know about how seagull uses Bower.
 
-If you're not using Bower, just go to the official webiste and download the js file.
+If you're not using Bower, just go to the official website and download the js file.
 
 We have added the library in seagull/views/index.html.
 
@@ -27,7 +27,7 @@ We have added the library in seagull/views/index.html.
 
 ### Navigation Bar
 
-The navigation bar is a little complicated and you can view the source code in seagull/views/index.html. But the final effect aftering using Bootstrap is remarkable and easier to use.
+The navigation bar is a little complicated and you can view the source code in seagull/views/index.html. But the final effect after using Bootstrap is remarkable and easier to use.
 
 ```
  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
