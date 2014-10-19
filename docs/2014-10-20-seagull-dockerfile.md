@@ -11,7 +11,7 @@ The only problem for us is how to write the Dockerfile.
 
 Let me tell you how we implement the Dockerfile of seagull.
 
-First of all, you need to know the development guide in readme.md.
+First of all, you need to know the development guide in readme.md. It introduces how to setup seagull development environment in local host.
 
 * Setup go path and try `echo $GOPATH`
 * `go get github.com/astaxie/beego`
@@ -33,12 +33,10 @@ EXPOSE 10086
 CMD ["./seagull"]
 ```
 
-Maybe you have noticed something. The processes of Dockerfile are almost the same as the development guide. This is how we write the Dockerfile. 
+Maybe you have noticed something. The processes of Dockerfile are almost the same as the development guide. This is how we write the Dockerfile.
 
 If we need to some dependent libraries, we run `go get` to download. If we want to compile the project, we run `go build`. The Dockerfile just does these for us automatically. Once you have written the Dockerfile, you can push to docker hub and everyone can run it with one command.
 
 ## Any Problem?
 
 If you have any problem about this, don't hesitate to contact me.
-
-

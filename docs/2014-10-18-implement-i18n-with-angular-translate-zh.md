@@ -157,4 +157,4 @@ seagull.config(function ($translateProvider) {
 
 ## 是否有疑问？
 
-这就是海鸥使用Angular-translate的全部代码。如果你有任何疑问，不要犹豫马上联系我。
+这就是海鸥使用Angular-translate的全部代码。如果你有任何疑问，请不要犹豫马上联系我。
