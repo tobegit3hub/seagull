@@ -15,7 +15,7 @@ Here's a official post to use angular-translate in the easiest way, <http://www.
 
 ## Import Angular-translate Library
 
-Seagull use Bower to mange the dependency of JavaScript libraries. So you can run `bower install angular-translate --save` to download the angular-translate library.
+Seagull use Bower to mange the dependency of JavaScript libraries. So you can simply run `bower install angular-translate --save` to download the angular-translate library.
 
 Then you need to include it in your HTML file. Here's the source code in seagull/views/index.html.
 
@@ -25,11 +25,11 @@ Then you need to include it in your HTML file. Here's the source code in seagull
 
 It's in index.html page so that each page will include this library. If you're no familiar with Bower, please refer to [use-bower-to-manage-dependency](2014-10-26-use-bower-to-manage-dependency.md).
 
-If you don't want to use Bower, just download the js file and put it in the appropriate path.
+If you don't want to use Bower, just download the js file from the official website and put it in the appropriate path.
 
 ## How To Use It
 
-The official post has introduced the simple usage in detail. I just explain how seagull use it which is equally easy.
+The official post above has introduced the simple usage in detail. I just explain how seagull use it which is equally easy.
 
 Firstly I add the module pascalprecht.translate in seagull/static/js/app.js.
 
@@ -87,7 +87,7 @@ seagull.config(function ($translateProvider) {
 });
 ```
 
-Then how can we change the language? We need a controller to change the value of $translate.use(). The code is in the same app.js as well.
+But how can we change the current language? We need a controller to change the value of ``$translate.use()``. The code is in the same app.js as well.
 
 ```
 seagull.controller('IndexController', function ($scope, $translate) {
@@ -113,7 +113,7 @@ seagull.controller('IndexController', function ($scope, $translate) {
 });
 ```
 
-Then we can use it all my HTML files. I will take seagull/views/index.html for example.
+Then we can use it all our HTML files. I will take seagull/views/index.html for example.
 
 ```
 <a class="navbar-brand" href="/">{{'seagull'|translate}}</a>
@@ -125,11 +125,11 @@ Then we can use it all my HTML files. I will take seagull/views/index.html for e
 
 ## Use Cookie To Remember Language
 
-The choice of language is just for one time. When you refresh the page, the value of $translate.use() will be reset. If you want to remember the choice of your perference, you need cookies or local storage to store it.
+The change of language is just for one time. When you refresh the page, the value of $translate.use() will be reset. If you want to remember the choice of your preference, you need cookies or local storage to store it.
 
-Fortunately I have found the great projects, angular-cookies and angualar-translate-storage. You should refer to their official page first, <https://github.com/angular/bower-angular-cookies> and <https://github.com/angular-translate/bower-angular-translate-storage-cookie>.
+Fortunately we have found the great projects, angular-cookies and angualar-translate-storage. You should refer to their official page first, <https://github.com/angular/bower-angular-cookies> and <https://github.com/angular-translate/bower-angular-translate-storage-cookie>.
 
-So I ran `bower install angular-cookies --save` and ``bower install angular-translate-storage-cookies --save`` to download the libraries and include it in seagull/views/index.html.
+So I ran `bower install angular-cookies --save` and `bower install angular-translate-storage-cookies --save` to download the libraries and include it in seagull/views/index.html.
 
 ```
  <script src="static/bower_components/angular-cookies/angular-cookies.min.js"></script>
@@ -137,7 +137,7 @@ So I ran `bower install angular-cookies --save` and ``bower install angular-tran
  <script src="static/bower_components/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
 ```
 
-The other things I have to do is add code in seagull/static/js/app.js.
+The other things I have to do is adding code in seagull/static/js/app.js.
 
 ```
 var seagull = angular.module('seagull', [
