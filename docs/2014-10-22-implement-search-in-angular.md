@@ -1,19 +1,19 @@
 
 # Implement Search In Angular
 
-[中文文档](2014-10-14-seagull-design-and-implement-zh.md)
+[中文文档](2014-10-22-implement-search-in-angular-zh.md)
 
 If you have experienced seagull, you may notice that searching in seagull is super fast. Do you know why? Because it's implemented in front-end which benefics from AngularJS.
 
 ## Official Tutorial
 
-If you're new to AngularJS, I recommand you to read the simple tutorial from <https://docs.angularjs.org/tutorial/step_00>. It use AngualrJS in a simple but powerful single page application. One of those steps introduce how to implment search in AngularJS.
+If you're new to AngularJS, I recommand you to read the simple tutorial from <https://docs.angularjs.org/tutorial/step_00>. It use AngualrJS to implement a simple but powerful single page application. One of those steps introduce how to implement search in AngularJS.
 
 ## How To Implement It
 
-Now I would like to should you the code of seagull to implement search.
+Now I would like to show you the code of seagull to implement search.
 
-Firstly, we add a search filter when we list all objects in seagull/static/html/containers.html
+Firstly, we add a search filter when we list all objects in seagull/static/html/containers.html.
 
 ```
 <tbody>
@@ -24,7 +24,6 @@ Firstly, we add a search filter when we list all objects in seagull/static/html/
   </tr>
 </tbody>
 ```
-
 The name of this filter is arbitrary and here's "search". I will use "search" in the same containers.html.
 
 ```
@@ -33,7 +32,7 @@ The name of this filter is arbitrary and here's "search". I will use "search" in
  </div>
 ```
 
-The important code is `ng-model` which will get the data from the input. Because the data of AngularJS is two-way binding so the filter is dynamically changed when we input something.
+The most important code is `ng-model` which will get the data from the input. Because the data of AngularJS is two-way binding so the filter is dynamically changed when we input something.
 
 ## Any Problem?
 
