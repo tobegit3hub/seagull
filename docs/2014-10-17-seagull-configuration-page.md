@@ -3,7 +3,7 @@
 
 [中文文档](2014-10-15-seagull-configuration-page-zh.md)
 
-Configuration page display the basic version and information of your docker deamon. You can know about your version of go, the kernel of your operatioin system and so on.
+Configuration page display the basic version and information of your docker deamon. You can know about your version of go, the kernel of your operation system and so on.
 
 ## Why We Care
 
