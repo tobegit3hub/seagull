@@ -41,3 +41,15 @@ Seagull is implemented in Go and JavaScript with tools like Beego, AngularJS, Bo
 * `./seagull` or `sudo ./seagull` to access /var/run/docker.sock
 
 More detail in [seagull-design-and-implement](docs/2014-10-14-seagull-design-and-implement.md) and we have excellent documents in [docs](https://github.com/tobegit3hub/seagull/tree/master/docs).
+
+## Notice
+
+The [issue #2](https://github.com/tobegit3hub/seagull/issues/2) shows that everyone can access your docker deamon if the IP and port of seagull are exposed. For security, you can use `iptables` in your localhost to drop remote requests.
+
+* `sudo iptables -A INPUT -p tcp --dport 10086 -s 127.0.0.1 -j ACCEPT`
+* `sudo iptables -A INPUT -p tcp --dport 10086 -j DROP`
+
+If you want to revert the changes, just run the following commands.
+
+* `sudo iptables -D INPUT -p tcp --dport 10086 -s 127.0.0.1 -j ACCEPT`
+* `sudo iptables -D INPUT -p tcp --dport 10086 -j DROP`

@@ -41,3 +41,15 @@
 * `./seagull`或者运行`sudo ./seagull`来访问/var/run/docker.sock
 
 更多细节可以参考[海鸥的设计与实现](docs/2014-10-14-seagull-design-and-implement-zh.md)，我们在[docs](https://github.com/tobegit3hub/seagull/tree/master/docs)还有非常优秀的文档。
+
+## 注意
+
+[Issue #2](https://github.com/tobegit3hub/seagull/issues/2)表示一旦你暴露了IP和海鸥的端口，任何人都可以直接访问你的Docker守护进程。为了安全，你可以在本地使用`iptables`来拒绝其他机器的请求。
+
+* `sudo iptables -A INPUT -p tcp --dport 10086 -s 127.0.0.1 -j ACCEPT`
+* `sudo iptables -A INPUT -p tcp --dport 10086 -j DROP`
+
+如果你想恢复这些设置，只需要执行下面的命令。
+
+* `sudo iptables -D INPUT -p tcp --dport 10086 -s 127.0.0.1 -j ACCEPT`
+* `sudo iptables -D INPUT -p tcp --dport 10086 -j DROP`
