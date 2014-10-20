@@ -19,7 +19,7 @@ With seagull, you can watch the whole list of your containers. But why should we
 
 First of all, we can't run too many containers in one server. Although we don't have the limit of the precise number of running containers, but container is like process which occupies the resource of operation system.
 
-Secondly, we can reuse the containers that we have already created. I used to new a container every time I want to run a image. But with seagull, I know exactly what containers I have created and reuse them naturally. It helps to reduce the usage of you disk and manage your existing contaienrs.
+Secondly, we can reuse the containers that we have already created. I used to new a container every time I want to run a image. But with seagull, I know exactly what containers I have created and reuse them naturally. It helps to reduce the usage of you disk and manage your existing containers.
 
 Thirdly, the deprecated containers should be removed as soon as possible. But with command-line interface, it's hard to determine which one you want to delete and run the exact command. Seagull is a Web UI so that everyone can master it and easily start, stop or delete containers.
 
