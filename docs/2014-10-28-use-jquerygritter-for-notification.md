@@ -3,7 +3,7 @@
 
 [中文文档](2014-10-28-use-jquerygritter-for-notification-zh.md)
 
-JQuery.Gritter is A small growl-like notification plugin for jQuery. It's easy to use and leaves  users a imporessive experiences. Seagull has used it for notification and you can apply it for your websites, too.
+JQuery.Gritter is A small growl-like notification plugin for jQuery. It's easy to use and leaves  users a impressive experiences. Seagull has used it for notification and you can apply it for your websites, too.
 
 ## Official Tutorial
 
@@ -11,7 +11,7 @@ Here is the Github page of JQuery.Gritter, <https://github.com/jboesch/Gritter>.
 
 ## How To Use It
 
-Seagull has installed JQuery.Gritter by using Bower. Just run `bower install jquery.gritter --save` and it downloads the JS and CSS files in bower_components. If you're not familiar with Bower, I recommadn to read [use-bower-to-manage-dependency](2014-10-26-use-bower-to-manage-dependency.md).
+Seagull has installed JQuery.Gritter by using Bower. Just run `bower install jquery.gritter --save` and it automatically downloads the js and css files in bower_components. If you're not familiar with Bower, I recommand to read [use-bower-to-manage-dependency](2014-10-26-use-bower-to-manage-dependency.md).
 
 If you're not using Bower, you can go to the official website to download the js and css files. To notice that the css file is important which will style the notification box.
 
@@ -49,7 +49,7 @@ function alert_error(message) {
 }
 ```
 
-So when we want to notify something, we can call this JavaScript functions like these in the same controllers.js.
+So when we want to notify something, we can directly call this JavaScript functions like these in the same controllers.js.
 
 ```
 $scope.startContainer = function(id) {

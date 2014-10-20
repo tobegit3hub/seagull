@@ -13,7 +13,7 @@ Bootstrap是一个流行的前端框架。我不需要说太多关于它有多�
 
 Bootstrap是一个JavaScript类库，所以你需要下载它并引入到你的HTML文件中。
 
-如果你使用Bower，只要执行`bower install bootstrap --save`就可以下载类库。你可以参考[使用Bower来管理依赖](2014-10-26-use-bower-to-manage-dependency.md)了解海鸥是如何使用Bower的。
+如果你使用Bower，只要执行`bower install bootstrap --save`就可以下载类库。你可以参考[使用Bower来管理依赖](2014-10-26-use-bower-to-manage-dependency-zh.md)了解海鸥是如何使用Bower的。
 
 如果你没有使用Bower，那也只要到官方网站下载JS文件即可。
 
