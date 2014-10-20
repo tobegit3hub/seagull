@@ -1,5 +1,5 @@
 
-# 海鸥配置页面
+# 海鸥的配置页面
 
 [English Edition](2014-10-15-seagull-configuration-page.md)
 
