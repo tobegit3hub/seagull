@@ -62,7 +62,7 @@
 
       <tr>
         <td>{{'publishallports'|translate}}</td>
-        <td>{{container.PublishAllPorts}}</td>
+        <td>{{container.PublishAllPorts | boolean_to_string}}</td>
       </tr>
 
       <tr>
@@ -72,7 +72,7 @@
 
       <tr>
         <td>{{'openstdin'|translate}}</td>
-        <td>{{container.OpenStdin}}</td>
+        <td>{{container.OpenStdin | boolean_to_string}}</td>
       </tr>
     </tbody>
   </table>
