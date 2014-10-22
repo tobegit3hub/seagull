@@ -3,7 +3,9 @@
 
 [中文文档](2014-10-12-access-docker-remote-api-zh.md)
 
-## Updating ...
+Docker remote API is
+
+## Official Tutorial
 
 ## Access with unix sock
 
