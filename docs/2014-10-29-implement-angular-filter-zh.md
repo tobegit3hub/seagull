@@ -1,23 +1,23 @@
 
-# Implement Angular Filter
+# 实现Angular过滤器
 
-[中文文档](2014-10-29-implement-angular-filter-zh.md)
+[English Edition](2014-10-29-implement-angular-filter.md)
 
-Angular filter is the tool for user to process the data. Normally we use filter to get our interested data or format the output of them.
+Angular过滤器是用户处理数据的工具。通常我们使用过滤器来获得我们想要的数据，或者格式化数据的输出。
 
-Implementing our own filters is easy and necessary.
+实现我们自己的过滤器很简单而且很有必要。
 
-## Official Tutorial
+## 官方教程
 
-If you're not familiar with AngularJS, please refer to [Use Angular](2014-10-25-use-angular.md).
+如果你对AngularJS不熟悉，推荐你阅读[使用AngularJS](2014-10-25-use-angular-zh.md)
 
-Here is the official website of angular filter and a simple demo, <https://docs.angularjs.org/api/ng/filter/filter>.
+这里是Angular过滤器的官方网站和一个简单的示例程序，<https://docs.angularjs.org/api/ng/filter/filter>。
 
-## How Seagull Does It
+## 海鸥如何使用它
 
-Seagull has implemented three filters.
+海鸥已经是实现了三个过滤器。
 
-The first one is to convert file size into readable string. The source code is from <https://gist.github.com/yrezgui/5653591>.
+第一个过滤器用于将文件大小转化为用户可读的字符串。源代码来自于<https://gist.github.com/yrezgui/5653591>。
 
 ```
 seagull.filter( 'filesize', function () {
@@ -45,13 +45,13 @@ seagull.filter( 'filesize', function () {
 });
 ```
 
-Then we can use it when I want to print the size of images.
+当我们需要输出镜像大小的时候，我们就可以使用它。
 
 ```
  <td>{{image.VirtualSize | filesize:2}}</td>
 ```
 
-The second filter of seagull is to convert string array into string.
+海鸥的第二个过滤器是将数组转化成字符串。
 
 ```
 seagull.filter( 'array_to_string', function () {
@@ -72,13 +72,13 @@ seagull.filter( 'array_to_string', function () {
 });
 ```
 
-Then we use it in seagull/static/html/images.html to print the string array.
+然后我们就可以在seagull/static/html/images.html使用它来输出字符串数组了。
 
 ```
  <td>{{image.RepoTags | array_to_string}}</td>
 ```
 
-The third filter is to print the literal boolean as "true" or "false".
+第三个过滤器是将布尔型输出为“true”或者“false”。
 
 ```
 /* Filter to convert boolean into string */
@@ -98,4 +98,4 @@ seagull.filter( 'boolean_to_string', function () {
 });
 ```
 
-Finally seagull uses it anywhere we have to display the value of a boolean.
+最后海鸥就可以在任何需要输出布尔型数值的地方使用它。
