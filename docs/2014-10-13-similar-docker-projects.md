@@ -13,7 +13,7 @@ Here is the github page, <https://github.com/crosbymichael/dockerui>.
 
 You may notice that UI of seagull is kind of like dockerui. Because we both use Bootstap and AngularJS as front-end frameworks. It's great project and has almost 2000 stars in github.
 
-Seagull learns a lot from dockerui, including use JQuery.Gritter for notification. But the UI of dockerui is not clean. It will never think about i18n(internationalization) but I do. I could do more for developers all around the world. The dockerui hasn't supported search yet and seagull is good at this.
+Seagull learns a lot from dockerui, including use JQuery.Gritter for notification. But the UI of dockerui is not clean. It will never think about i18n(internationalization) but we do. We could do more for developers all around the world. The dockerui hasn't supported search yet and seagull is good at this.
 
 Dockerui and seagull are the same products to monitor docker deamon. You don't have to use both of them. And our goal is to replace dockerui with a more friendly and useful UI.
 
@@ -31,9 +31,9 @@ Here is the github page, <https://github.com/shipyard/shipyard>.
 
 Shipyard is designed for management of docker cluster. You have to input the ssh key of the server to deploy shipyard engine. Then you can run the container with command-line or web interfaces in your managed servers.
 
-It's quite different from seagull because seagull just monitors docker without asking for more permission. So you can use shipyard as management system and use seagull to minitor at the same time.
+It's quite different from seagull because seagull just monitors docker without asking for more permission. So you can use shipyard as management system and use seagull to monitor at the same time.
 
-## Cadvisor
+## CAdvisor
 
 Here's the github page, <https://github.com/google/cadvisor>.
 
@@ -45,11 +45,11 @@ However, you can't use cAdvisor to manage your images or containers.
 
 Here is the github page, <https://github.com/atc-/docker-registry-web>.
 
-It's the Web UI for private docker registry. The UI is nice but you have add the address manually. It uses cookies to store the address and you have to add it every time you run.
+It's the Web UI for private docker registry. The UI is nice but you have add the address of private registry manually. It uses cookies to store the address so you have to add it every time you run.
 
 It crashes when I try to search repositories. And it occurs "Method Not Allow" when I try to get the detail of the repository.
 
-I hope they can add official docker registry by default before we has added our private registry.
+I hope they can add official docker registry by default before we has added our private registry. But this will never work because <http://registry.hub.docker.com> doesn't support CORS.
 
 ## Docker Registry UI
 
