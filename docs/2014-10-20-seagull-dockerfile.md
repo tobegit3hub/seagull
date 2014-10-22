@@ -16,7 +16,7 @@ First of all, you need to know the development guide in readme.md. It introduces
 * Setup go path and try `echo $GOPATH`
 * `go get github.com/astaxie/beego`
 * `go get github.com/beego/bee`
-* `git clone https://github.com/tobegit3hub/seagull.git $GOPATH/src/github.com/tobegit3hub/seagull/`
+* `go get github.com/tobegit3hub/seagull`
 * `go build seagull.go` or `bee run seagull` for dubuging
 * `./seagull` or `sudo ./seagull` to access /var/run/docker.sock
 
@@ -26,7 +26,7 @@ It's the normal way to build seagull. It's a go project so you need to setup go 
 FROM golang
 RUN go get github.com/astaxie/beego
 RUN go get github.com/beego/bee
-RUN git clone https://github.com/tobegit3hub/seagull.git /go/src/github.com/tobegit3hub/seagull/
+RUN go get github.com/tobegit3hub/seagull
 WORKDIR /go/src/github.com/tobegit3hub/seagull/
 RUN go build seagull.go
 EXPOSE 10086

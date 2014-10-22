@@ -24,5 +24,3 @@ EXPOSE 10086
 # Run the server
 CMD ["./seagull"]
 
-
-
