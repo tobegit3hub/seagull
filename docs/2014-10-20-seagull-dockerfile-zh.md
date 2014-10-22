@@ -16,7 +16,7 @@ Dockerfile是构建Docker镜像的推荐方法。任何人都可以通过`docker
 * 配置Go路径然后尝试`echo $GOPATH`
 * `go get github.com/astaxie/beego`
 * `go get github.com/beego/bee`
-* `git clone https://github.com/tobegit3hub/seagull.git $GOPATH/src/github.com/tobegit3hub/seagull/`
+* `go get github.com/tobegit3hub/seagull`
 * `go build seagull.go`或者运行`bee run seagull`来调试
 * `./seagull`或者运行`sudo ./seagull`来访问/var/run/docker.sock
 
@@ -26,7 +26,7 @@ Dockerfile是构建Docker镜像的推荐方法。任何人都可以通过`docker
 FROM golang
 RUN go get github.com/astaxie/beego
 RUN go get github.com/beego/bee
-RUN git clone https://github.com/tobegit3hub/seagull.git /go/src/github.com/tobegit3hub/seagull/
+RUN go get github.com/tobegit3hub/seagull
 WORKDIR /go/src/github.com/tobegit3hub/seagull/
 RUN go build seagull.go
 EXPOSE 10086

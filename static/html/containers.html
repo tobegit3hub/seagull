@@ -14,11 +14,11 @@
     <!-- Display filter button in the right -->
     <div class="page-header-right btn-group filter-button">
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        {{'filter'|translate}} <span class="caret"></span>
+        {{'filter'|translate}}: {{currentFilterString}} <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="" ng-click="getRunningContainers()">{{'running'|translate}}</a></li>
-        <li><a href="" ng-click="getAllContainers()">{{'all'|translate}}</a></li>
+        <li ng-show="!isAllContainers"><a href="" ng-click="getAllContainers()">{{'all'|translate}}</a></li>
+        <li ng-show="isAllContainers"><a href="" ng-click="getRunningContainers()">{{'running'|translate}}</a></li>
       </ul>
     </div>
 

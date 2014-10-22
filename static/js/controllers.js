@@ -63,12 +63,16 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
 
   /* Get all container objects */
   $http.get('/dockerapi/containers/json?all=1').success(function(data) {
+    $scope.currentFilterString = "All"
+    $scope.isAllContainers = true;
     $scope.containers = data;
   });
 
   /* Get all containers objects */
   $scope.getAllContainers = function() {
     $http.get('/dockerapi/containers/json?all=1').success(function(data) {
+      $scope.currentFilterString = "All"
+      $scope.isAllContainers = true;
       $scope.containers = data;
       alert_success("Get all containers");
     });
@@ -77,6 +81,8 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
   /* Get running containers objects */
   $scope.getRunningContainers = function() {
     $http.get('/dockerapi/containers/json?all=0').success(function(data) {
+      $scope.currentFilterString = "Running"
+      $scope.isAllContainers = false;
       $scope.containers = data;
       alert_success("Get running containers");
     });

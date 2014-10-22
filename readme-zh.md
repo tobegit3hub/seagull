@@ -36,7 +36,7 @@
 * 配置Go路径然后尝试`echo $GOPATH`
 * `go get github.com/astaxie/beego`
 * `go get github.com/beego/bee`
-* `git clone https://github.com/tobegit3hub/seagull.git $GOPATH/src/github.com/tobegit3hub/seagull/`
+* `go get github.com/tobegit3hub/seagull`
 * `go build seagull.go`或者运行`bee run seagull`来调试
 * `./seagull`或者运行`sudo ./seagull`来访问/var/run/docker.sock
 

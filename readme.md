@@ -36,7 +36,7 @@ Seagull is implemented in Go and JavaScript with tools like Beego, AngularJS, Bo
 * Setup go path and try `echo $GOPATH`
 * `go get github.com/astaxie/beego`
 * `go get github.com/beego/bee`
-* `git clone https://github.com/tobegit3hub/seagull.git $GOPATH/src/github.com/tobegit3hub/seagull/`
+* `go get github.com/tobegit3hub/seagull`
 * `go build seagull.go` or `bee run seagull` for dubuging
 * `./seagull` or `sudo ./seagull` to access /var/run/docker.sock
 
