@@ -15,6 +15,11 @@
   padding-top: 21px; /* For search form */
 }
 
+/* Add margin of the right part of header */
+.filter-button {
+  margin-right: 10px;
+}
+
 /* The size of popup images in home page */
 #popupContainers .modal-dialog {
   width: 70%;

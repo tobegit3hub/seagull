@@ -175,6 +175,8 @@ seagull.config(function ($translateProvider) {
     seagull_is_open_source_in_Github_welcome_to_contribution_and_issues: 'Seagull is open source in Github. Welcome to contribution and issues.',
     // Containers page
     search: 'Search',
+    filter: 'Filter',
+    all: 'All',
     no_docker_container: 'No docker container!',
     id: 'Id',
     names: 'Names',
@@ -274,6 +276,8 @@ seagull.config(function ($translateProvider) {
     seagull_is_open_source_in_Github_welcome_to_contribution_and_issues: '海鸥项目已经在Github开源，欢迎任何人参与讨论和贡献。',
     // Containers page
     search: '搜索',
+    filter: '过滤器',
+    all: '全部',
     no_docker_container: '没有Docker容器！',
     id: 'Id',
     names: '名字',
@@ -373,6 +377,8 @@ seagull.config(function ($translateProvider) {
     seagull_is_open_source_in_Github_welcome_to_contribution_and_issues: '海鷗項目已經在Github開源，歡迎任何人參與討論和共享。',
     // Containers page
     search: '搜索',
+    filter: '過濾器',
+    all: '全部',
     no_docker_container: '沒有Docker容器！',
     id: 'Id',
     names: '名字',

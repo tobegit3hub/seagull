@@ -7,9 +7,21 @@
     <h1 class="page-header-left">{{'containers'|translate}} <a href="/dockerapi/containers/json?all=1" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
-    <div class="page-header-right input-group">
-      <input type="text" class="form-control" placeholder="{{'search'|translate}}" ng-model="search" autofocus>
+    <div class="page-header-right">
+      <input type="text" class="form-control search" placeholder="{{'search'|translate}}" ng-model="search" autofocus>
     </div>
+
+    <!-- Display filter button in the right -->
+    <div class="page-header-right btn-group filter-button">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        {{'filter'|translate}} <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="" ng-click="getRunningContainers()">{{'running'|translate}}</a></li>
+        <li><a href="" ng-click="getAllContainers()">{{'all'|translate}}</a></li>
+      </ul>
+    </div>
+
   </span> <!-- End of page header -->
 
   <!-- Todo: No need to use <br/> -->

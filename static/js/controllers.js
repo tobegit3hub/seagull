@@ -61,10 +61,26 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }]
   */
 
-  /* Get the container objects */
+  /* Get all container objects */
   $http.get('/dockerapi/containers/json?all=1').success(function(data) {
     $scope.containers = data;
   });
+
+  /* Get all containers objects */
+  $scope.getAllContainers = function() {
+    $http.get('/dockerapi/containers/json?all=1').success(function(data) {
+      $scope.containers = data;
+      alert_success("Get all containers");
+    });
+  };
+
+  /* Get running containers objects */
+  $scope.getRunningContainers = function() {
+    $http.get('/dockerapi/containers/json?all=0').success(function(data) {
+      $scope.containers = data;
+      alert_success("Get running containers");
+    });
+  };
 
   /* Enable to check startsWith, refer to http://stackoverflow.com/questions/646628/how-to-check-if-a-string-startswith-another-string */
   if (typeof String.prototype.startsWith != 'function') {

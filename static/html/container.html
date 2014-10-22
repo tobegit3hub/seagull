@@ -6,8 +6,8 @@
     <!-- Display container title and the JSON link -->
     <h1 class="page-header-left">{{'container'|translate}} <a ng-href="/dockerapi/containers/{{container.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
-    <!-- Display search form in the right -->
-    <div class="page-header-right input-group">
+    <!-- Display buttons in the right -->
+    <div class="page-header-right">
       <!-- If the container is running, display stop button -->
       <span ng-show="container.State.Running"><button class="btn btn-warning" ng-click="stopContainer(container.Id)">{{'stop'|translate}}</button>&nbsp;</span>
       <!-- Else display start and delete buttons -->
