@@ -566,3 +566,56 @@ seagullControllers.controller('ConfigurationController', ['$scope', '$routeParam
     $scope.info = data;
   });
 }]);
+
+/* Dockerhub controller requests beego API server to get search images */
+seagullControllers.controller('DockerhubController', ['$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+
+  /*
+    [{
+      description: "Friendly Web UI to monitor docker deamon",
+      is_official: false,
+      is_trusted: true,
+      name: "tobegit3hub/seagull",
+      star_count: 1
+    }]
+  */
+
+  /* Display the loading icon before get search images */
+  $scope.isSearching = true;
+
+  /* Request beego API server to get search images, default is seagull */
+  $http.get('/dockerapi/images/search?term=seagull').success(function(data) {
+    $scope.isSearching = false;
+    $scope.images = data;
+  });
+
+  /* Request beego API server to get search images */
+  $scope.getSearchImages = function(term) {
+    $scope.isSearching = true;
+
+    $http.get('/dockerapi/images/search?term=' + term).success(function(data) {
+      $scope.isSearching = false;
+      $scope.images = data;
+      alert_success("Search images of " + term);
+    }).error(function(data, status, headers, config) {
+      $scope.isSearching = false;
+      alert_error("Search images of " + term);
+    });
+  };
+
+  /* Generate the image link by judging it's official images or not */
+  $scope.getImageLink = function(name) {
+    var address;
+
+    if(name.indexOf('/') === -1) {
+      // Example: https://registry.hub.docker.com/_/golang
+      address = "https://registry.hub.docker.com/_/" + name;
+    } else {
+      // Example: https://registry.hub.docker.com/u/tobegit3hub/seagull
+      address = "https://registry.hub.docker.com/u/" + name;
+    }
+
+    return address;
+  };
+}]);

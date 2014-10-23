@@ -1,0 +1,46 @@
+
+<!-- The images page, refer to static/js/controller -->
+<div ng-controller="DockerhubController">
+
+  <span class="page-header">
+    <!-- Display images title and the JSON link -->
+    <h1 class="page-header-left">{{'dockerhub'|translate}} <a href="/dockerapi/images/search?term=seagull" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+
+    <!-- Display search form in the right -->
+    <span class="page-header-right"><button ng-click="getSearchImages(term)" class="btn btn-info" type="submit"><span ng-show="isSearching" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span><span ng-show="!isSearching">{{'search'|translate}}</span></button></span>
+    <div class="page-header-right input-group">
+      <input type="text" class="form-control" placeholder="seagull" ng-model="term" autofocus>
+    </div>
+
+  </span> <!-- End of page header -->
+
+  <!-- Todo: No need to use <br/> -->
+  <br/><br/><br/><br/>
+
+  <!-- Alert if we get nothing from server -->
+  <div ng-show="!images.length" class="alert alert-danger" role="alert">{{'search_no_docker_image'|translate}}</div>
+
+  <!-- Display all images information -->
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>{{'name'|translate}}</th>
+        <th>{{'description'|translate}}</th>
+        <th>{{'star_count'|translate}}</th>
+        <th>{{'is_official'|translate}}</th>
+        <th>{{'is_automated'|translate}}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="image in images track by $index">
+        <td><a ng-href="{{getImageLink(image.name)}}" target="_blank">{{image.name}}</a></td>
+        <td>{{image.description}}</td>
+        <td>{{image.star_count}}</td>
+        <td>{{image.is_official | boolean_to_string}}</td>
+        <td>{{image.is_automated | boolean_to_string}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div> <!-- End of this angular page -->

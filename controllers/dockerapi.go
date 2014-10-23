@@ -45,7 +45,6 @@ func RequestUnixSocket(address, method string) string {
 	query := ""
 	if len(u.RawQuery) > 0 {
 		query = "?" + u.RawQuery
-		fmt.Println(query)
 	}
 
 	request, err := http.NewRequest(method, u.Path+query, reader)
@@ -177,6 +176,16 @@ func (this *DockerapiController) GetVersion() {
 /* Wrap docker remote API to get docker info */
 func (this *DockerapiController) GetInfo() {
 	address := "/info"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
+}
+
+/* Wrap docker remote API to get search images */
+func (this *DockerapiController) GetSearchImages() {
+	address := "/images/search"
+	var term string
+	this.Ctx.Input.Bind(&term, "term")
+	address = address + "?term=" + term
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }

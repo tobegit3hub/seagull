@@ -14,6 +14,7 @@ func init() {
 	beego.Router("/images/:id", &controllers.MainController{})
 	beego.Router("/images/:user/:repo", &controllers.MainController{})
 	beego.Router("/configuration", &controllers.MainController{})
+	beego.Router("/dockerhub", &controllers.MainController{})
 
 	/* HTTP API for docker remote API */
 	beego.Router("/dockerapi/containers/json", &controllers.DockerapiController{}, "get:GetContainers")
@@ -28,5 +29,6 @@ func init() {
 	beego.Router("/dockerapi/images/:id", &controllers.DockerapiController{}, "delete:DeleteImage")
 	beego.Router("/dockerapi/version", &controllers.DockerapiController{}, "get:GetVersion")
 	beego.Router("/dockerapi/info", &controllers.DockerapiController{}, "get:GetInfo")
+	beego.Router("/dockerapi/images/search", &controllers.DockerapiController{}, "get:GetSearchImages")
 	// beego.Router("/dockerapi/events", &controllers.DockerapiController{}, "get:GetEvents") // Not support yet
 }
