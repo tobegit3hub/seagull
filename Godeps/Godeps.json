@@ -1,0 +1,11 @@
+{
+	"ImportPath": "github.com/tobegit3hub/seagull",
+	"GoVersion": "go1.1.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/astaxie/beego",
+			"Comment": "v1.4.1-2-gfcc359a",
+			"Rev": "fcc359af11650ff3c523ece170f9ec134ffa8aef"
+		}
+	]
+}
