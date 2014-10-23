@@ -14,6 +14,7 @@ func init() {
 	beego.Router("/images/:id", &controllers.MainController{})
 	beego.Router("/images/:user/:repo", &controllers.MainController{})
 	beego.Router("/configuration", &controllers.MainController{})
+	beego.Router("/dockerhub", &controllers.MainController{})
 
 	/* HTTP API for docker remote API */
 	beego.Router("/dockerapi/containers/json", &controllers.DockerapiController{}, "get:GetContainers")

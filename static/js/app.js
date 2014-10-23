@@ -44,6 +44,10 @@ seagull.config(['$locationProvider', '$routeProvider',
       when('/configuration', {
         templateUrl: '/static/html/configuration.html',
         controller: 'ConfigurationController'
+      }).
+      when('/dockerhub', {
+        templateUrl: '/static/html/dockerhub.html',
+        controller: 'DockerhubController'
       });
       /* No default page for angular so that beego can process API request
       otherwise({
@@ -149,6 +153,7 @@ seagull.config(function ($translateProvider) {
     containers: 'Containers',
     images: 'Images',
     configuration: 'Configuration',
+    dockerhub: 'Dockerhub',
     more: 'More',
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
@@ -240,7 +245,14 @@ seagull.config(function ($translateProvider) {
     memorylimit: 'MemoryLimit',
     swaplimit: 'SwapLimit',
     ipv4forwarding: 'IPv4Forwarding',
-    sockets: 'Sockets'
+    sockets: 'Sockets',
+    // Dockerhub page
+    search_image: 'Search Image',
+    search_no_docker_image: 'Search no docker image',
+    description: 'Description',
+    star_count: 'StarCount',
+    is_official: 'IsOfficial',
+    is_automated: 'IsAutomated'
   });
 
   /* Translate into simplified Chinese */
@@ -250,6 +262,7 @@ seagull.config(function ($translateProvider) {
     containers: '容器',
     images: '镜像',
     configuration: '配置',
+    dockerhub: '仓库',
     more: '更多',
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
@@ -341,7 +354,14 @@ seagull.config(function ($translateProvider) {
     memorylimit: '内存限制',
     swaplimit: 'SWAP限制',
     ipv4forwarding: 'IPv4转发',
-    sockets: '套接字'
+    sockets: '套接字',
+    // Dockerhub page
+    search_image: '搜索镜像',
+    search_no_docker_image: '搜索不到Docker镜像',
+    description: '描述',
+    star_count: '关注个数',
+    is_official: '官方镜像',
+    is_automated: '自动构建镜像'
   });
 
   /* Translate into traditional Chinese */
@@ -351,6 +371,7 @@ seagull.config(function ($translateProvider) {
     containers: '容器',
     images: '鏡像',
     configuration: '配置',
+    dockerhub: '倉庫',
     more: '更多',
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
@@ -442,6 +463,13 @@ seagull.config(function ($translateProvider) {
     memorylimit: '內存限制',
     swaplimit: 'SWAP限制',
     ipv4forwarding: 'IPv4轉發',
-    sockets: '套接字'
+    sockets: '套接字',
+    // Dockerhub page
+    search_image: '搜索鏡像',
+    search_no_docker_image: '搜索不到Docker鏡像',
+    description: '描述',
+    star_count: '關注個數',
+    is_official: '官方鏡像',
+    is_automated: '自動構建鏡像'
   });
 });
