@@ -4,6 +4,7 @@
 
 FROM golang
 MAINTAINER tobe tobeg3oogle@gmail.com
+ENV REFREST_AT 20141023
 
 # ENV GOPATH /go
 
