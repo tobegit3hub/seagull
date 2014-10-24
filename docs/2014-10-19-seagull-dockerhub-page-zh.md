@@ -1,17 +1,18 @@
-# 海鸥的Dockerhub页面
+
+# 海鸥的仓库页面
 
 [English Edition](2014-10-19-seagull-dockerhub-page.md)
 
-Dockerhub page displays the images in official docker registry. You can search the images from docker hub in this page.
+仓库页面展示了Docker官方仓库的镜像。你可以在这个页面搜索来自Docker Hub的任何镜像。
 
-## Why We Need This
+## 为什么我们需要它
 
-Now we can search images in dockerhub page of seagull or in command-line interface. But why do we need both of them?
+目前我们可以在仓库页面或者命令行界面搜索镜像。但为什么我们需要同时用它们呢？
 
-I think seagul just helps to make it easy to search and view images in Web UI. It's not an important improvement but it actually works.
+我认为海鸥仅仅是帮助我们更容易地在Web界面搜索和检查镜像。这不是一个很重要的改进但它确实有效。
 
-It would be better if we can download the images in this page. But the data from docker deamon is a stream so we have to think another way to handle it.
+如果我们可以在这个页面下载镜像就更好了。但从Docker后台进程拿到的数据时流式数据所以我们必须想另一个办法去解释它。
 
-## Bug Of This Page
+## 这个页面有Bug？
 
-If you have found bugs of this page, please don't hesitate to report issues. Any suggestion is welcome.
+如果你发现了这个页面的Bug，请不要犹豫马上提Issue。欢迎大家提任何建议。

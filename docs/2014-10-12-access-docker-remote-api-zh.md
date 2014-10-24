@@ -1,7 +1,7 @@
 
 # 访问Docker远程API
 
-[中文文档](2014-10-12-access-docker-remote-api.md)
+[English Edition](2014-10-12-access-docker-remote-api.md)
 
 Docker远程API是从Docker后台程序获取数据的接口。
 
@@ -9,29 +9,29 @@ Docker远程API是从Docker后台程序获取数据的接口。
 
 这里是Docker文档的官方网站，<https://docs.docker.com/reference/api/docker_remote_api/>。
 
-你
-You may know about the deatil of docker remote API. But how to use it? Actually there're two ways which are unix socket and HTTP port.
+你可以知道Docker远程API的所有细节。但怎样使用它呢？实际上有两种方法，使用Unix套接字或者HTTP端口。
 
-## Unix Socket Remote API
+## Unix套接字远程API
 
-By default the Docker daemon listens on the unix socket of unix:///var/run/docker.sock.
+Docker默认会监听unix:///var/run/docker.sock这个Unix套接字。
 
-I'm not familiar with unix socket but it's kind of like the pipe for communication. You can access it and get the data of docker from this file.
+我对Unix套接字也不太熟悉，它有点像一个通信的管道。你可以从这个文件中获得Docker的数据。
 
-But we need to write the program to access it. Fortunately, we have found curl-unix-socket in <https://github.com/Soulou/curl-unix-socket>. You can simply install it with `go get github.com/Soulou/curl-unix-socket` and just run `curl-unix-socket unix:///var/run/docker.sock:/images/json` for test.
+但我们需要写程序来访问它。幸运的是，我们找到了curl-unix-socket这个项目，地址是<https://github.com/Soulou/curl-unix-socket>。你可以通过`go get github.com/Soulou/curl-unix-socket`安装它，然后运行`curl-unix-socket unix:///var/run/docker.sock:/images/json`来测试。
 
-It's really useful and you can get all information to monitor your docker deamon. But it's a command-line tool and works like the official docker client.
+这是很有用的，你可以获得所有Docker信息来监控你的Docker后台进程。但这是个命令行工具而且它只能像Docker客户端那样工作。
 
-So seagull has used its code to get data from docker deamon. It's the easiest way to do that without extra operations.
+因此海鸥复用了它的代码，从Docker后台进程中获得数据。这是最便利的方法，无需额外的操作。
 
-## HTTP Remote API
+## HTTP远程API
 
-You can use docker HTTP remote API as well. But you have to expose the port manually.
+你也可以使用HTTP远程API。但你必须手动暴露这个端口。
 
-Firstly you need to stop the docker deamon by `service docker stop`. Then restart it with the parameters like `docker -d -H unix:///var/run/docker.sock -H 0.0.0.0:4243 &`. Now you can test it in your browser or just `curl -X GET http://127.0.0.1:4243`.
+首先你需要通过`service docker stop`停止Docker后台进程。然后加上参数重启它，就像这样`docker -d -H unix:///var/run/docker.sock -H 0.0.0.0:4243 &`。现在你可以在浏览器测试它，或者直接运行`curl -X GET http://127.0.0.1:4243`。
 
-HTTP remote API is useful but it requires users to restart the docker deamon.
 
-## Docker Client
+HTTP远程API是很有用的，但它要求用户重启Docker后台进程。
 
-If you're not developing a tool like seagull, I think the docker client is good enough. You can do anything with docker client and it's officially supported.
+## Docker客户端
+
+如果你不是要开发一个海鸥这样的工具，我觉得Docker客户端已经够用了。你可以用Docker客户端做任何操作，而且它是官方支持的。

@@ -1,12 +1,13 @@
+
 # Seagull Dockerhub Page
 
 [中文文档](2014-10-19-seagull-dockerhub-page-zh.md)
 
-Dockerhub page displays the images in official docker registry. You can search the images from docker hub in this page.
+Dockerhub page displays the images in official docker registry. You can search any image from docker hub in this page.
 
 ## Why We Need This
 
-Now we can search images in dockerhub page of seagull or in command-line interface. But why do we need both of them? 
+Now we can search images in dockerhub page of seagull or in command-line interface. But why do we need both of them?
 
 I think seagul just helps to make it easy to search and view images in Web UI. It's not an important improvement but it actually works.
 

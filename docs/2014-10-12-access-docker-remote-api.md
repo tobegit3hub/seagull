@@ -9,7 +9,7 @@ Docker remote API is the interface to access data from docker deamon.
 
 Here's the official website of docker document, <https://docs.docker.com/reference/api/docker_remote_api/>.
 
-You may know about the deatil of docker remote API. But how to use it? Actually there're two ways which are unix socket and HTTP port.
+You may know about the detail of docker remote API. But how to use it? Actually there're two ways which are unix socket and HTTP port.
 
 ## Unix Socket Remote API
 
@@ -34,5 +34,3 @@ HTTP remote API is useful but it requires users to restart the docker deamon.
 ## Docker Client
 
 If you're not developing a tool like seagull, I think the docker client is good enough. You can do anything with docker client and it's officially supported.
-
-

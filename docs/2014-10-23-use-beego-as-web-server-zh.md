@@ -3,26 +3,25 @@
 
 [English Edition](2014-10-23-use-beego-as-web-server.md)
 
-如果你刚接触Beego，欢迎来到
-If you're new to Beego, welcome to a better world with Beego. It's one of the best web frameworks and has complete document in Chinese(Well it's not important).
+如果你刚接触Beego，欢迎来到有了Beego后更好的世界。它是目前最好的Web框架之一，而且拥有完整的中文文档（好吧这也不重要）。
 
-Now we will introduce how to use Beego as a web server.
+现在我们将要介绍如何使用Beego作为Web服务器。
 
-## Official Tutorial
+## 官方教程
 
-Please refer to the official website of Beego, <http://beego.me/>.
+请先参考Beego的官方网站，<http://beego.me/>。
 
-You may know more about the basic of Beego.
+你可以知道更多关于Beego的基础知识。
 
-## How To Use It
+## 如何使用它
 
-Beego is written in go. If you want to use it for your project, you have to setup GOPATH first.
+Beego是用Go写的。如果你想在你的项目中使用它，你必须首先设置好Go路径。
 
-There's a tool named bee which helps to build a Beego website. You can install it by `go get github.com/beego/bee`.
+这里有个名为Bee的工具可以帮助你建立一个Beego网站。你可以通过`go get github.com/beego/bee`来安装它。
 
-Now you need to run `go get github.com/astaxie/beego` to download Beego in your GOPATH.
+现在你需要执行`go get github.com/astaxie/beego`吧Beego下载到你的Go路径里。
 
-The most simple source file of web server looks like the following server.go.
+最简单的Web服务器的源代码就像下面的server.go文件那样。
 
 ```
 package main
@@ -34,19 +33,19 @@ func main() {
 }
 ```
 
-Then you can `go build server.go` and `./server` to start a web server.
+然后你可以执行`go build server.go`或者`./server`来启动一个Web服务器。
 
-Is that quite simple? Yes, but we will not use Beego in this way because it lacks of routers or controllers.
+这很简单吧？是的，但我们不会这样使用Beego，因为这样就缺少了路由器和控制器。
 
-## How Seagull Use It
+## 海鸥如何使用它
 
-The recommanded way to build Beego server is using `bee`.
+构建Beego服务器的推荐方法是使用`bee`。
 
-### Bee New Project
+### Bee创建新项目
 
-If you have `go get github.com/beego/bee`, just run `bee new seagull`. It will generate many files and you just need to add your code.
+如果你已经执行过`go get github.com/beego/bee`，你就只需要运行`bee new seagull`。它会生成很多文件但你只需要加入你的代码就可以了。
 
-The tree of generated files should look like this.
+生成文件的目录树应该像下面这样的。
 
 <pre>
 seagull
@@ -68,11 +67,11 @@ seagull
     └── index.tpl
 </pre>
 
-Okay, now let's run `bee run seagull`. You can go to <http://127.0.0.1:8080> in your bowser to see the default page of Beego.
+好的，现在让我们执行`bee run seagull`。你可以在你的浏览器上输入<http://127.0.0.1:8080>并看到Beego的默认页面。
 
-### App Conf
+### 应用配置
 
-Let's go with app.conf in directory conf.
+让我们看看conf目录下的app.conf文件。
 
 ```
 appname = seagull
@@ -80,11 +79,11 @@ httpport = 8080
 runmode = dev
 ```
 
-All you have to is changing the name of app or the port of http. You can set runmode as "pro" when you want to run in production environment.
+你所需要做的仅仅是改变应用的名字或者HTTP服务的端口。你可以设置运行模式为“pro”，如果你想在生产环境使用它的话。
 
-### Router
+### 路由
 
-You can add your own routers in router.go.
+你可以在router.go加上你的路由。
 
 ```
 package routers
@@ -99,11 +98,11 @@ func init() {
 }
 ```
 
-Here's the default controller named MainController in controllers package. Add your controllers if you need.
+这是在controllers包里名为MainController的默认控制器。你可以根据你的需要加上新的控制器。
 
-But actually seagull is a single page application and we just need one default back-end controller.
+但实际上海鸥是一个单页应用，我们只需要一个默认的后台控制器就够了。
 
-There's the source code of seagull in seagull/routers/router.go.
+这是海鸥seagull/routers/router.go文件的源代码。
 
 ```
 beego.Router("/", &controllers.MainController{})
@@ -115,9 +114,9 @@ beego.Router("/images/:user/:repo", &controllers.MainController{})
 beego.Router("/configuration", &controllers.MainController{})
 ```
 
-### Controllers
+### 控制器
 
-Let's dive into the source code of default.go which is in directory controllers.
+让我们深入探讨在controllers目录下default.go文件的源代码吧。
 
 ```
 package controllers
@@ -137,9 +136,9 @@ func (this *MainController) Get() {
 }
 ```
 
-It uses the template index.tpl to display the default page of Beego.
+它使用了index.tpl模板来只是Beego的默认页面。
 
-We change a little for seagull.
+海鸥项目中我们稍微修改了一些。
 
 ```
 package controllers
@@ -160,11 +159,11 @@ func (this *MainController) Get() {
 }
 ```
 
-Now we use another template file, which is a simply HTML file.
+现在我们使用另一个模板文件，这只是一个简单的HTML文件。
 
-### Views
+### 视图
 
-If you're interested, I will show you the source code of index.tpl.
+如果你感兴趣，我来给你展示index.tpl文件的源代码。
 
 ```
  <!DOCTYPE html>
@@ -194,4 +193,4 @@ If you're interested, I will show you the source code of index.tpl.
  </html>
 ```
 
-It's so simple and you can build your web server with Beego like this.
+这一切都非常简单，你可以像这样使用Beego来构建你的Web服务器。

@@ -7,7 +7,7 @@
 
 Here is the official website of Beego, <http://beego.me/>.
 
-And you have to read [Use Beego as web server](2014-10-23-use-beego-as-web-server-zh.md) first.
+And you have to read [Use Beego as web server](2014-10-23-use-beego-as-web-server.md) first.
 
 ## How Seagull Uses It
 
