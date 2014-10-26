@@ -11,7 +11,7 @@ Seagull is the best friend of docker which provides Web UI to monitor docker dea
 
 Everybody wants Web UI for docker and seagull is the most suitable one for you. It's super easy to install with one command. You can know everything about your images and containers in this single page application. Now English, simplified Chinese and traditional Chinese are perfectly supported!
 
-Welcome to the demo website in <http://104.131.110.84:10086>.
+Welcome to the demo website in <http://96.126.127.93:10086>.
 
 ## Usage
 
