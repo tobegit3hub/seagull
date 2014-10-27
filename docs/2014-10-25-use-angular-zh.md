@@ -3,23 +3,23 @@
 
 [English Edition](2014-10-25-use-angular.md)
 
-## Official Tutorial
+## 官方教程
 
-If you're new to AngularJS, you have to read the official tutorial, <https://docs.angularjs.org/tutorial>. After reading this, I know almost I have to know about building a single page application.
+如果你刚接触AngularJS，你可以阅读它的官方教程，<https://docs.angularjs.org/tutorial>。读完以后，我基本知道我要实现一个单页应用所应该知道的知识。
 
-You can also go to w3school to learn more about AngularJS in <http://www.w3schools.com/angular/default.asp>.
+你也可以到W3school学习关于AngularJS的知识，地址在<http://www.w3schools.com/angular/default.asp>。
 
-## How To Use It
+## 如何使用它
 
-It's quite easy to use AngularJS in your project. I'm using Bower and just run `bower install angular --save` and `bower install angular-router --save` to download its libraries. You can also download the js files in the official website.
+在你的项目中使用AngularJS是很简单的。我正在使用Bower，只需要运行`bower install angular --save`和`bower install angular-router --save`酒可以下载它们的类库了。你也可以到官方网站去下载这些JS文件。
 
-Then we include it in our HTML files, write the controllers and use the directive in HTML files. For more basic tutorial of AngularJS, please refer to the official tutorials above.
+然后我们可以把它导入HTML文件中、编写控制器和在HTML文件中使用AngularJS标签。更详细的AngularJS基本教程请参考上面的官方教程。
 
-## How Seagull Use It
+## 海鸥如何使用它
 
-### Include The Library
+### 导入类库
 
-We have included AngularJS in our seagull/views/index.html.
+我们已经在seagull/views/index.html文件中导入AngularJS。
 
 ```
  <script src="static/bower_components/angular/angular.min.js"></script>
@@ -28,9 +28,9 @@ We have included AngularJS in our seagull/views/index.html.
  <script src="static/js/controllers.js"></script>
 ```
 
-### Modules And Router
+### 模块和路由
 
-We defined the AngualrJS application modules and routers in seagull/static/js/app.js.
+我们定义了AngularJS应用默认和路由，在seagull/static/js/app.js文件中。
 
 ```
 /* The seagull angular application */
@@ -89,9 +89,9 @@ seagull.config(['$locationProvider', '$routeProvider',
 );
 ```
 
-### Controllers
+### 控制器
 
-Then all the controllers are implemented in seagull/static/js/controllers.js.
+所有的控制器都是在seagull/static/js/controllers.js中实现的。
 
 ```
 /* All angular application controllers */
@@ -119,9 +119,9 @@ seagullControllers.controller('HomeController', ['$scope', '$routeParams', '$htt
 }]);
 ```
 
-### HTML View
+### HTML视图
 
-Then we can use AngularJS directives in seagull/static/html/image.html.
+然后我们可以就使用AngularJS标签，在seagull/static/html/image.html中。
 
 ```
  <!-- The image page, refer to static/js/controller -->

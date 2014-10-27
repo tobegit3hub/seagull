@@ -1,8 +1,6 @@
 
 # Tests
 
-## Updating ...
-
 ## How to test
 
 * Todo: Learn more about <https://github.com/smartystreets/goconvey>

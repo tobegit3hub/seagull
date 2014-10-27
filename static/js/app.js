@@ -153,7 +153,7 @@ seagull.config(function ($translateProvider) {
     containers: 'Containers',
     images: 'Images',
     configuration: 'Configuration',
-    dockerhub: 'Dockerhub',
+    dockerhub: 'DockerHub',
     more: 'More',
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
