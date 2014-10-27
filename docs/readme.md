@@ -25,7 +25,8 @@ No all the articles are translated into Chinese. If you need other languages, le
 * [Use angular](2014-10-25-use-angular.md)
 * [Use bower to manage dependency](2014-10-26-use-bower-to-manage-dependency.md)
 * [How seagull use bootstrap](2014-10-27-how-seagull-use-bootstrap.md)
-* [Use jquerygritter for notification](2014-10-28-use-jquerygritter-for-notification.md)
+* [Use jquery.gritter for notification](2014-10-28-use-jquerygritter-for-notification.md)
+* [Use animate.css](2014-10-30-use-animate-css.md)
 
 ## Catalog In Chinese
 
@@ -46,3 +47,4 @@ No all the articles are translated into Chinese. If you need other languages, le
 * [使用Bower管理依赖](2014-10-26-use-bower-to-manage-dependency-zh.md)
 * [海鸥的Bootstrap使用](2014-10-27-how-seagull-use-bootstrap-zh.md)
 * [使用JQuery.gritter实现通知](2014-10-28-use-jquerygritter-for-notification-zh.md)
+* [使用animate.css](2014-10-30-use-animate-css-zh.md)

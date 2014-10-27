@@ -17,6 +17,7 @@ And we have run the following commands to download our dependent libraries.
 * `bower install angular-translate --save`
 * `bower install angular-cookies --save`
 * `bower install angular-translate-storage-local --save`
+* `bower install animate.css --save`
 
 ## Bower_components
 
