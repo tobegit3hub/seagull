@@ -46,8 +46,8 @@ seagullControllers.controller('HomeController', ['$scope', '$routeParams', '$htt
 }]);
 
 /* Contaienrs controller requests beego API server to get/start/stop/delete containers */
-seagullControllers.controller('ContainersController', ['$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+seagullControllers.controller('ContainersController', ['$scope', '$routeParams', '$http', '$cookies',
+  function($scope, $routeParams, $http, $cookies) {
 
   /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#list-containers
     [{
@@ -61,18 +61,32 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }]
   */
 
-  /* Get all container objects */
-  $http.get('/dockerapi/containers/json?all=1').success(function(data) {
-    $scope.currentFilterString = "All"
-    $scope.isAllContainers = true;
-    $scope.containers = data;
-  });
+  /* For the first time, display all containers by default */
+  if (typeof $cookies.isAllContainers === "undefined") {
+    $cookies.isAllContainers = "true"; // Only string data in cookies
+  }
+
+  /* Check cookies and get all or running container objects */
+  if ($cookies.isAllContainers === "true") {
+    $http.get('/dockerapi/containers/json?all=1').success(function(data) {
+      $scope.currentFilterString = "All"
+      $scope.isAllContainers = true;
+      $scope.containers = data;
+    });
+  } else {
+    $http.get('/dockerapi/containers/json?all=0').success(function(data) {
+      $scope.currentFilterString = "Running"
+      $scope.isAllContainers = false;
+      $scope.containers = data;
+    });
+  }
 
   /* Get all containers objects */
   $scope.getAllContainers = function() {
     $http.get('/dockerapi/containers/json?all=1').success(function(data) {
       $scope.currentFilterString = "All"
       $scope.isAllContainers = true;
+      $cookies.isAllContainers = "true";
       $scope.containers = data;
       alert_success("Get all containers");
     });
@@ -83,6 +97,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     $http.get('/dockerapi/containers/json?all=0').success(function(data) {
       $scope.currentFilterString = "Running"
       $scope.isAllContainers = false;
+      $cookies.isAllContainers = "no";
       $scope.containers = data;
       alert_success("Get running containers");
     });
