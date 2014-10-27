@@ -22,6 +22,7 @@
     "jquery.gritter": "*",
     "angular-translate": "~2.4.1",
     "angular-translate-storage-local": "~2.4.1",
-    "angular-cookies": "~1.3.0"
+    "angular-cookies": "~1.3.0",
+    "animate.css": "~3.2.0"
   }
 }
