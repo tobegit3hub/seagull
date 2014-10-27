@@ -1,6 +1,8 @@
 
 # Use Animate.css
 
+[中文文档](2014-10-30-use-animate-css-zh.md)
+
 Animate.css is the best tool to add animation for your website. It's written in pure CSS and compatible with almost all browsers.
 
 ## Official Tutorial

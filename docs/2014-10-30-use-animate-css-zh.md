@@ -1,6 +1,8 @@
 
 # 使用Animate.css
 
+[English Edition](2014-10-30-use-animate.md)
+
 Animate.css是为你网站添加动画最好的工具。它是纯CSS实现并且兼容几乎所有浏览器。
 
 ## 官方教程
