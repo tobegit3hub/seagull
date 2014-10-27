@@ -38,7 +38,8 @@
         <th>{{'names'|translate}}</th>
         <th>{{'image'|translate}}</th>
         <th>{{'command'|translate}}</th>
-        <th>{{'created'|translate}}</th>
+        <th>{{'ports'|translate}}</th>
+        <!-- Not print this now, <th>{{'created'|translate}}</th> -->
         <th>{{'status'|translate}}</th>
         <th>{{'operation'|translate}}</th>
         <th></th>
@@ -51,7 +52,8 @@
         <td>{{container.Names | array_to_string}}</td> <!-- Add comma between names -->
         <td>{{container.Image}}</td>
         <td>{{container.Command}}</td>
-        <td>{{container.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- Full time with 'yyyy-MM-dd HH:mm:ss Z' -->
+        <td>{{printPorts(container.Ports)}}</td>
+        <!-- Not print this now, <td>{{container.Created * 1000 | date:'yyyy-MM-dd'}}</td>  Full time with 'yyyy-MM-dd HH:mm:ss Z' -->
         <td>{{container.Status}}</td>
         <!-- If the container is running, display stop button -->
         <td ng-show="checkRunning(container)"><button class="btn btn-warning" ng-click="stopContainer(container.Id)">{{'stop'|translate}}</button></td>

@@ -105,6 +105,51 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
     }
   };
 
+  /* Ports: [
+      {
+        PrivatePort: 16000,
+        Type: "tcp"
+      },
+      {
+        PrivatePort: 16010,
+        Type: "tcp"
+      },
+      {
+        PrivatePort: 16020,
+        Type: "tcp"
+      },
+      {
+        PrivatePort: 16030,
+        Type: "tcp"
+      },
+      {
+        IP: "0.0.0.0",
+        PrivatePort: 5000,
+        PublicPort: 5000,
+        Type: "tcp"
+      }
+    ]
+  */
+
+  /* Print ports in better way */
+  $scope.printPorts = function(data) {
+    var returnString = "";
+    for(var i = 0; i < data.length; i++) {
+      var object = data[i];
+      if (object["IP"]) {
+        returnString += object.IP + ":" + object.PublicPort + "->" + object.PrivatePort + "/" + object.Type;
+      } else {
+        returnString += object.PrivatePort + "/" + object.Type;
+      }
+
+      if (i != data.length-1) {
+        returnString += ", ";
+      }
+    }
+
+    return returnString;
+  }
+
   /* Request beego API server to start container */
   $scope.startContainer = function(id) {
     $http({
