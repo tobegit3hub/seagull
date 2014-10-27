@@ -13,3 +13,13 @@ $('.modal').on('show.bs.modal', centerModal);
 $(window).on("resize", function () {
     $('.modal:visible').each(centerModal);
 });
+
+
+$(function(){
+    /* Animation for nav in index page */
+    $('.animate-nav').hover(function(){
+        $(this).addClass('animated pulse');
+    },function(){
+        $(this).removeClass('animated pulse');
+    });
+});

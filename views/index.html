@@ -13,6 +13,7 @@
     <!-- Css -->
     <link rel="stylesheet" type="text/css" href="static/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/bower_components/jquery.gritter/css/jquery.gritter.css">
+    <link rel="stylesheet" type="text/css" href="static/bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
 
     <!-- JavaScript -->
@@ -31,33 +32,33 @@
   </head>
 
   <!-- The controller to change i18n language, refer to static/js/app.js -->
-  <body ng-controller="IndexController">
+  <body ng-controller="IndexController" class="animated fadeIn">
     <!-- Header with a navigation bar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <!-- Home page button -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">{{'seagull'|translate}}</a>
+          <a class="navbar-brand animate-nav" href="/">{{'seagull'|translate}}</a>
         </div>
 
         <!-- Containers page, images page and configuration page buttons -->
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/containers">{{'containers'|translate}}</a></li>
-            <li><a href="/images">{{'images'|translate}}</a></li>
-            <li><a href="/configuration">{{'configuration'|translate}}</a></li>
-            <li><a href="/dockerhub">{{'dockerhub'|translate}}</a></li>
+            <li class="animate-nav"><a href="/containers">{{'containers'|translate}}</a></li>
+            <li class="animate-nav"><a href="/images">{{'images'|translate}}</a></li>
+            <li class="animate-nav"><a href="/configuration">{{'configuration'|translate}}</a></li>
+            <li class="animate-nav"><a href="/dockerhub">{{'dockerhub'|translate}}</a></li>
           </ul>
 
           <!-- A more button to change i18n languages and email me -->
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="">{{'more'|translate}} <span class="caret"></span></a>
+              <a class="dropdown-toggle animate-nav" data-toggle="dropdown" href="">{{'more'|translate}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li ng-hide="isEnUs()"><a href="" ng-click="changeLanguage('en-us')">{{'en_us'|translate}}</a></li>
-                <li ng-hide="isZhCn()"><a href="" ng-click="changeLanguage('zh-cn')">{{'zh_cn'|translate}}</a></li>
-                <li ng-hide="isZhHant()"><a href="" ng-click="changeLanguage('zh-hant')">{{'zh_hant'|translate}}</a></li>
-                <li><a href="mailto:tobeg3oogle@gmail.com?Subject=seagull" target="_top">{{'need_help'|translate}}</a></li>
+                <li class="animate-nav" ng-hide="isEnUs()"><a href="" ng-click="changeLanguage('en-us')">{{'en_us'|translate}}</a></li>
+                <li class="animate-nav" ng-hide="isZhCn()"><a href="" ng-click="changeLanguage('zh-cn')">{{'zh_cn'|translate}}</a></li>
+                <li class="animate-nav" ng-hide="isZhHant()"><a href="" ng-click="changeLanguage('zh-hant')">{{'zh_hant'|translate}}</a></li>
+                <li class="animate-nav"><a href="mailto:tobeg3oogle@gmail.com?Subject=seagull" target="_top">{{'need_help'|translate}}</a></li>
               </ul>
             </li>
           </ul>
