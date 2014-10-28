@@ -3,7 +3,7 @@
 
 [中文文档](2014-10-15-seagull-containers-page-zh.md)
 
-Containers page displays all running or stopped containers from your docker deamon. You can know the basic status of these containers and start, stop or delete them easily.
+Containers page displays all running or stopped containers from your docker daemon. You can know the basic status of these containers and start, stop or delete them easily.
 
 ## What Is Container
 

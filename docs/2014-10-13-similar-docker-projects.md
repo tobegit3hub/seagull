@@ -15,7 +15,7 @@ You may notice that UI of seagull is kind of like dockerui. Because we both use 
 
 Seagull learns a lot from dockerui, including use JQuery.Gritter for notification. But the UI of dockerui is not clean. It will never think about i18n(internationalization) but we do. We could do more for developers all around the world. The dockerui hasn't supported search yet and seagull is good at this.
 
-Dockerui and seagull are the same products to monitor docker deamon. You don't have to use both of them. And our goal is to replace dockerui with a more friendly and useful UI.
+Dockerui and seagull are the same products to monitor docker daemon. You don't have to use both of them. And our goal is to replace dockerui with a more friendly and useful UI.
 
 ## Zdocker
 

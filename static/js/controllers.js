@@ -633,7 +633,7 @@ seagullControllers.controller('DockerhubController', ['$scope', '$routeParams', 
 
   /*
     [{
-      description: "Friendly Web UI to monitor docker deamon",
+      description: "Friendly Web UI to monitor docker daemon",
       is_official: false,
       is_trusted: true,
       name: "tobegit3hub/seagull",

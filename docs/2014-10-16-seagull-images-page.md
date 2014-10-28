@@ -3,7 +3,7 @@
 
 [中文文档](2014-10-15-seagull-images-page-zh.md)
 
-Images page displays all images from your docker deamon. You can know the basic status of these images and delete them easily.
+Images page displays all images from your docker daemon. You can know the basic status of these images and delete them easily.
 
 ## What Is Image
 

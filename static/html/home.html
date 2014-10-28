@@ -3,16 +3,16 @@
 <div ng-controller="HomeController">
 
   <!-- Alert if we get nothing from server -->
-  <div ng-show="!version || !info" class="alert alert-danger" role="alert">{{'error_to_load_data_from_docker_deanmon_please_check_seagull_and_configuration'|translate}}</div>
+  <div ng-show="!version || !info" class="alert alert-danger" role="alert">{{'error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration'|translate}}</div>
 
   <!-- Display a bootstrap-style jumbotron to display the basic info of docker -->
   <div class="jumbotron">
     <!-- Example: Seagull the best friend of docker -->
     <h1>{{'seagull'|translate}} <small>{{'the_best_friend_of_docker'|translate}}</small></h1>
 
-    <!-- Example: I'm using linux with kernel 3.11.0-12-generic, go1.2.1 and Docker 1.1.2. The docker deamon has 26 running/stopped containers and 359 images now. Docker is an open platform for distributed application for developers and sysadmins. And seagull provides a friendly Web UI to monitor docker. -->
+    <!-- Example: I'm using linux with kernel 3.11.0-12-generic, go1.2.1 and Docker 1.1.2. The docker daemon has 26 running/stopped containers and 359 images now. Docker is an open platform for distributed application for developers and sysadmins. And seagull provides a friendly Web UI to monitor docker. -->
     <h3>
-      {{'im_using'|translate}} <i>{{Os}}</i> {{'with_kernel'|translate}} <i>{{KernelVersion}}</i>, <i>{{GoVersion}}</i> {{'and_docker'|translate}} <i>{{Version}}</i>{{'period'|translate}} {{'the_docker_deamon_has'|translate}} <i>{{Containers}}</i> {{'running_stopped_containers_and'|translate}} <i>{{Images}}</i> {{'images_now'|translate}}{{'period'|translate}}
+      {{'im_using'|translate}} <i>{{Os}}</i> {{'with_kernel'|translate}} <i>{{KernelVersion}}</i>, <i>{{GoVersion}}</i> {{'and_docker'|translate}} <i>{{Version}}</i>{{'period'|translate}} {{'the_docker_daemon_has'|translate}} <i>{{Containers}}</i> {{'running_stopped_containers_and'|translate}} <i>{{Images}}</i> {{'images_now'|translate}}{{'period'|translate}}
       {{'docker_is_an_open_platform_for_distributed_application_for_developers_and_sysadmins'|translate}},
       {{'and_seagull_provides_a_friendly_web_ui_to_monitor_docker'|translate}}
     </h3>

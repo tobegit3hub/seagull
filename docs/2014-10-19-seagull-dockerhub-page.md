@@ -11,7 +11,7 @@ Now we can search images in dockerhub page of seagull or in command-line interfa
 
 I think seagul just helps to make it easy to search and view images in Web UI. It's not an important improvement but it actually works.
 
-It would be better if we can download the images in this page. But the data from docker deamon is a stream so we have to think another way to handle it.
+It would be better if we can download the images in this page. But the data from docker daemon is a stream so we have to think another way to handle it.
 
 ## Bug Of This Page
 
