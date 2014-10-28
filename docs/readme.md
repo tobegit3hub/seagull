@@ -47,4 +47,4 @@ No all the articles are translated into Chinese. If you need other languages, le
 * [使用Bower管理依赖](2014-10-26-use-bower-to-manage-dependency-zh.md)
 * [海鸥的Bootstrap使用](2014-10-27-how-seagull-use-bootstrap-zh.md)
 * [使用JQuery.gritter实现通知](2014-10-28-use-jquerygritter-for-notification-zh.md)
-* [使用animate.css](2014-10-30-use-animate-css-zh.md)
+* [使用Animate.css](2014-10-30-use-animate-css-zh.md)
