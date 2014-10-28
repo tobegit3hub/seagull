@@ -44,12 +44,10 @@ More detail in [seagull-design-and-implement](docs/2014-10-14-seagull-design-and
 
 ## Notice
 
-The [issue #2](https://github.com/tobegit3hub/seagull/issues/2) shows that everyone can access your docker deamon if the IP and port of seagull are exposed. For security, you can use `iptables` in your localhost to drop remote requests.
+The [issue #2](https://github.com/tobegit3hub/seagull/issues/2) shows that everyone can access your docker deamon if the IP and port of seagull are exposed as default. 
 
-* `sudo iptables -A INPUT -p tcp --dport 10086 -s 127.0.0.1 -j ACCEPT`
-* `sudo iptables -A INPUT -p tcp --dport 10086 -j DROP`
+For security, you can just bind to `localhost` or `127.0.0.1` to restrict the access locally in `-p` parameter.
 
-If you want to revert the changes, just run the following commands.
+    `docker run -d -p 127.0.0.1:10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull`
 
-* `sudo iptables -D INPUT -p tcp --dport 10086 -s 127.0.0.1 -j ACCEPT`
-* `sudo iptables -D INPUT -p tcp --dport 10086 -j DROP`
+Surely, you can use `iptables` in your localhost to control more.
