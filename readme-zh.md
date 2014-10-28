@@ -44,12 +44,10 @@
 
 ## 注意
 
-[Issue #2](https://github.com/tobegit3hub/seagull/issues/2)表示一旦你暴露了IP和海鸥的端口，任何人都可以直接访问你的Docker守护进程。为了安全，你可以在本地使用`iptables`来拒绝其他机器的请求。
+[Issue #2](https://github.com/tobegit3hub/seagull/issues/2)表示一旦你暴露了IP和海鸥的端口，任何人都可以直接访问你的Docker守护进程。
 
-* `sudo iptables -A INPUT -p tcp --dport 10086 -s 127.0.0.1 -j ACCEPT`
-* `sudo iptables -A INPUT -p tcp --dport 10086 -j DROP`
+为了安全，你可以在`-p`参数中加上`localhost`或`127.0.0.1`，这样就只有本地主机上才可以访问了。
 
-如果你想恢复这些设置，只需要执行下面的命令。
+    `docker run -d -p 127.0.0.1:10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull`
 
-* `sudo iptables -D INPUT -p tcp --dport 10086 -s 127.0.0.1 -j ACCEPT`
-* `sudo iptables -D INPUT -p tcp --dport 10086 -j DROP`
+当然你总是可以使用`iptables`来进行更多的访问请求控制。
