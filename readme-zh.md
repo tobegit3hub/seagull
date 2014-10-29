@@ -11,7 +11,7 @@
 
 使用Docker都希望有Web监控和管理界面，海鸥就是为此量身订造的。它可以通过一行命令安装运行，你在此能够监控你的所有Docker容器和镜像。现在，海鸥已经完美支持英语、简体中文和繁体中文了！
 
-欢迎看看Demo网站，地址是<http://96.126.127.93:10086>。
+欢迎观看[三分钟演示视频](http://v.youku.com/v_show/id_XODEzOTUzMTgw.html)，或者到[Demo网站](http://96.126.127.93:10086)试用。
 
 ## 使用
 
@@ -44,10 +44,6 @@
 
 ## 注意
 
-[Issue #2](https://github.com/tobegit3hub/seagull/issues/2)表示一旦你暴露了IP和海鸥的端口，任何人都可以直接访问你的Docker守护进程。
+[Issue #2](https://github.com/tobegit3hub/seagull/issues/2)表示一旦你暴露了IP和海鸥的端口，任何人都可以直接访问你的Docker守护进程。为了提高安全性，你可以绑定localhost或127.0.0.1来限制只有本地才能访问Seagull。
 
-为了安全，你可以在`-p`参数中加上`localhost`或`127.0.0.1`，这样就只有本地主机上才可以访问了。
-
-    `docker run -d -p 127.0.0.1:10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull`
-
-当然你总是可以使用`iptables`来进行更多的访问请求控制。
+然后执行`docker run -d -p 127.0.0.1:10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull`。
