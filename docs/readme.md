@@ -27,6 +27,7 @@ No all the articles are translated into Chinese. If you need other languages, le
 * [How seagull use bootstrap](2014-10-27-how-seagull-use-bootstrap.md)
 * [Use jquery.gritter for notification](2014-10-28-use-jquerygritter-for-notification.md)
 * [Use animate.css](2014-10-30-use-animate-css.md)
+* [Use drone for ci](2014-11-02-use-drone-for-ci.md)
 
 ## Catalog In Chinese
 
@@ -48,3 +49,4 @@ No all the articles are translated into Chinese. If you need other languages, le
 * [海鸥的Bootstrap使用](2014-10-27-how-seagull-use-bootstrap-zh.md)
 * [使用JQuery.gritter实现通知](2014-10-28-use-jquerygritter-for-notification-zh.md)
 * [使用Animate.css](2014-10-30-use-animate-css-zh.md)
+* [使用Drone做持续集成](2014-11-02-use-drone-for-ci-zh.md)
