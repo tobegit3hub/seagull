@@ -2,8 +2,9 @@
 # Seagull
 
 * [中文文档](readme-zh.md)
-* [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 * [Docker Hub](https://registry.hub.docker.com/u/tobegit3hub/seagull/)
+* [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+* [![Build Status](https://drone.io/github.com/tobegit3hub/seagull/status.png)](https://drone.io/github.com/tobegit3hub/seagull/latest)
 
 ## Introduction
 
