@@ -1,6 +1,8 @@
 site_name: Seagull Docs
 
-#site_url: /
+site_url: /
+
+dev_addr: '0.0.0.0:8000'
 
 site_description: Documentation for fast and lightweight Docker container based virtualization framework.
 
@@ -14,8 +16,10 @@ use_absolute_urls: true
 
 #theme: readthedocs
 
-pages:
+#copyright: Copyright &copy; 2014, <a href="https://twitter.com/_tomchristie">Tom Christie</a>.
+#google_analytics: ['UA-27795084-5', 'mkdocs.org']
 
+pages:
 
 # Home
 - ['index.md', 'Home']
