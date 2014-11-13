@@ -1,5 +1,4 @@
 
-# Some problems when use pip in ubuntu:14.04
 FROM ubuntu:12.04
 MAINTAINER tobe <tobeg3oogle@gmail.com>
 
