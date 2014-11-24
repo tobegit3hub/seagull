@@ -136,6 +136,11 @@ seagull.controller('IndexController', function ($scope, $translate) {
   $scope.isZhHant = function () {
      return $translate.use() == "zh-hant";
   }
+
+  /* Determine it is German or not */
+  $scope.isDeDe = function () {
+     return $translate.use() == "de-de";
+  }
 });
 
 /* Use angular-translate for i18n and all text should be translated here */
@@ -267,6 +272,7 @@ seagull.config(function ($translateProvider) {
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
     en_us: 'English',
+    de_de: 'Deutsch',
     need_help: '帮助',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: '从Docker中获取数据失败，请检查Docker和海鸥的配置',
@@ -376,6 +382,7 @@ seagull.config(function ($translateProvider) {
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
     en_us: 'English',
+    de_de: 'Deutsch',
     need_help: '幫助',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: '從Docker中獲取數據失敗，請檢查Docker和海鷗的配置',
@@ -471,5 +478,115 @@ seagull.config(function ($translateProvider) {
     star_count: '關注個數',
     is_official: '官方鏡像',
     is_automated: '自動構建鏡像'
+  });
+
+  /* Translate into German */
+  $translateProvider.translations('de-de', {
+    // Index html
+    seagull: 'Seagull',
+    containers: 'Container',
+    images: 'Images',
+    configuration: 'Einstellungen',
+    dockerhub: 'DockerHub',
+    more: 'Mehr',
+    zh_cn: '简体中文',
+    zh_hant: '繁體中文',
+    en_us: 'English',
+    de_de: 'Deutsch',
+    need_help: 'Hilfe',
+    // Home page
+    error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Beim Laden von Daten vom Docker-Dienst trat ein Fehler auf. Bitte überprüfe Seagull und die Einstellungen.',
+    period: '.',
+    the_best_friend_of_docker: 'der beste Freund von Docker',
+    im_using: 'Ich nutze',
+    with_kernel: 'mit Kernel',
+    and_docker: 'und Docker',
+    the_docker_daemon_has: 'Der Docker-Dienst hat',
+    running_stopped_containers_and: 'laufende/gestoppte Container und aktuell',
+    images_now: 'Images',
+    docker_is_an_open_platform_for_distributed_application_for_developers_and_sysadmins: 'Docker ist eine offene Plattform für verteilte Anwendungen für Entwickler und Administratoren',
+    and_seagull_provides_a_friendly_web_ui_to_monitor_docker: 'und Seagull stellt eine einfach zu bedienende Web-Oberfläche zum Verwalten von Docker zur Verfügung.',
+    github: 'Github',
+    go_now: 'Hier lang!',
+    learn_more: 'Erfahre mehr',
+    containers_page_display_all_running_and_stopped_docker_containers: 'Die Container-Seite zeigt alle laufenden und gestoppten Docker-Container an.',
+    images_page_display_all_docker_images_to_start_stop_and_delete: 'Die Images-Seite zeigt alle Docker-Images an und ermöglicht das Starten, Stoppen und Löschen von Images.',
+    configuration_page_display_all_your_docker_environment_and_settings:'Die Einstellungsseite zeigt die gesamte Docker-Umgebung und deren Einstellungen an.',
+    seagull_is_open_source_in_Github_welcome_to_contribution_and_issues: 'Seagull ist Open-Source und auf Github verfügbar. Beteiligung an der Entwicklung und Fehlermeldungen sind gerne gesehen.',
+    // Containers page
+    search: 'Suche',
+    filter: 'Filter',
+    all: 'Alle',
+    no_docker_container: 'Keine Docker-Container!',
+    id: 'ID',
+    names: 'Namen',
+    image: 'Image',
+    command: 'Befehl',
+    created: 'Erstellt am',
+    status: 'Status',
+    ports: 'Ports',
+    operation: 'Anweisung',
+    // Images page
+    no_docker_image: 'Kein Docker-Image!',
+    repotags: 'Bezeichnung (Tag)',
+    virtualsize: 'Virtuelle Größe',
+    delete: 'Löschen',
+    // Container page
+    container: 'Container',
+    start: 'Starten',
+    stop: 'Anhalten',
+    refresh: 'Aktualisieren',
+    no_such_container: 'Kein solcher Container!',
+    attribute: 'Attribute',
+    value: 'Wert',
+    name: 'Name',
+    running: 'Laufend',
+    startedat: 'Gestartet am',
+    publishallports: 'Alle Ports freigeben',
+    links: 'Links',
+    openstdin: 'Stdin offen halten',
+    uid: 'UID',
+    pid: 'PID',
+    c: 'C',
+    stime: 'STIME',
+    tty: 'TTY',
+    time: 'TIME',
+    cmd: 'CMD',
+    // Image page
+    no_such_image: 'Kein solches Image!',
+    author: 'Autor',
+    architecture: 'Architektur',
+    comment: 'Kommentar',
+    dockerversion: 'Docker-Version',
+    os: 'Betriebssystem',
+    parent: 'Basis',
+    size: 'Größe',
+    // Configuration page
+    no_data_of_version_or_info: 'Keine Versionsinformation.',
+    goversion: 'Go-Version',
+    version: 'Version',
+    gitcommit: 'Git-Commit',
+    apiversion: 'API-Version',
+    driver: 'Treiber',
+    executiondriver: 'Ausführungs-Treiber',
+    KernelVersion: 'Kernel-Version',
+    debug: 'Debug',
+    nfd: 'NFD',
+    ngoroutines: 'NGoroutines',
+    neventslistener: 'NEventsListener',
+    initpath: 'Init-Pfad',
+    initsha1: 'Init-Sha1',
+    indexserveraddress: 'Index-Server-Adresse',
+    memorylimit: 'Speicher-Limit',
+    swaplimit: 'Swap-Limit',
+    ipv4forwarding: 'IPv4-Weiterleitung',
+    sockets: 'Sockets',
+    // Dockerhub page
+    search_image: 'Suche Image',
+    search_no_docker_image: 'Suche: Kein Docker-Image gefunden',
+    description: 'Beschreibung',
+    star_count: 'Anzahl an Sternen',
+    is_official: 'Offiziell',
+    is_automated: 'Automatisch erstellt'
   });
 });
