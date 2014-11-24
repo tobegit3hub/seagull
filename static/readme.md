@@ -48,3 +48,5 @@ Finally we introduce all our JavaScript files in this folder.
 The AngularJS code of applicaton and controllers is in app.js and controllers.js. It maintains the main logic of the whole website.
 
 By the way, we have added some helper JavaScript functions in style.js here.
+
+Currently Chinese is maintained by [tobegit3hub](https://github.com/tobegit3hub) and [MorrisJobke](https://github.com/MorrisJobke) is the maintainer of German.
