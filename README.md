@@ -1,7 +1,7 @@
 
 # Seagull
 
-* [中文文档](readme-zh.md)
+* [中文文档](README_ZH.md)
 * [Docker Hub](https://registry.hub.docker.com/u/tobegit3hub/seagull/)
 * [![Build Status](https://drone.io/github.com/tobegit3hub/seagull/status.png)](https://drone.io/github.com/tobegit3hub/seagull/latest)
 * [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
