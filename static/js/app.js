@@ -174,7 +174,7 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
      return $translate.use() == "de-de";
   }
 
-  /* Determine it is German or not */
+  /* Determine it is French or not */
   $scope.isFrFr = function () {
      return $translate.use() == "fr-fr";
   }
