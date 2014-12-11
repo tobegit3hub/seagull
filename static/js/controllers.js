@@ -25,11 +25,11 @@ function alert_error(message) {
 var seagullControllers = angular.module('seagullControllers', []);
 
 /* This controller to get comment from beego api */
-seagullControllers.controller('HomeController', ['$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+seagullControllers.controller('HomeController', ['$scope', '$rootScope', '$routeParams', '$http',
+  function($scope, $rootScope, $routeParams, $http) {
 
   /* Get the version object */
-  $http.get('/dockerapi/version').success(function(data) {
+  $http.get($rootScope.canonicalServer + '/version').success(function(data) {
     $scope.version = data;
     $scope.Os = $scope.version.Os;
     $scope.KernelVersion = $scope.version.KernelVersion;
@@ -38,7 +38,7 @@ seagullControllers.controller('HomeController', ['$scope', '$routeParams', '$htt
   });
 
   /* Get the info object */
-  $http.get('/dockerapi/info').success(function(data) {
+  $http.get($rootScope.canonicalServer + '/info').success(function(data) {
     $scope.info = data;
     $scope.Containers = $scope.info.Containers;
     $scope.Images = $scope.info.Images;
@@ -46,8 +46,8 @@ seagullControllers.controller('HomeController', ['$scope', '$routeParams', '$htt
 }]);
 
 /* Contaienrs controller requests beego API server to get/start/stop/delete containers */
-seagullControllers.controller('ContainersController', ['$scope', '$routeParams', '$http', '$cookies',
-  function($scope, $routeParams, $http, $cookies) {
+seagullControllers.controller('ContainersController', ['$scope', '$rootScope', '$routeParams', '$http', '$cookies',
+  function($scope, $rootScope, $routeParams, $http, $cookies) {
 
   /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#list-containers
     [{
@@ -68,13 +68,13 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
 
   /* Check cookies and get all or running container objects */
   if ($cookies.isAllContainers === "true") {
-    $http.get('/dockerapi/containers/json?all=1').success(function(data) {
+    $http.get($rootScope.canonicalServer + '/containers/json?all=1').success(function(data) {
       $scope.currentFilterString = "All"
       $scope.isAllContainers = true;
       $scope.containers = data;
     });
   } else {
-    $http.get('/dockerapi/containers/json?all=0').success(function(data) {
+    $http.get($rootScope.canonicalServer + '/containers/json?all=0').success(function(data) {
       $scope.currentFilterString = "Running"
       $scope.isAllContainers = false;
       $scope.containers = data;
@@ -83,7 +83,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
 
   /* Get all containers objects */
   $scope.getAllContainers = function() {
-    $http.get('/dockerapi/containers/json?all=1').success(function(data) {
+    $http.get($rootScope.canonicalServer + '/containers/json?all=1').success(function(data) {
       $scope.currentFilterString = "All"
       $scope.isAllContainers = true;
       $cookies.isAllContainers = "true";
@@ -94,7 +94,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
 
   /* Get running containers objects */
   $scope.getRunningContainers = function() {
-    $http.get('/dockerapi/containers/json?all=0').success(function(data) {
+    $http.get($rootScope.canonicalServer + '/containers/json?all=0').success(function(data) {
       $scope.currentFilterString = "Running"
       $scope.isAllContainers = false;
       $cookies.isAllContainers = "no";
@@ -169,13 +169,13 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
   $scope.startContainer = function(id) {
     $http({
       method: 'POST',
-      url: '/dockerapi/containers/' + id + "/start",
+      url: $rootScope.canonicalServer + '/containers/' + id + "/start",
       data: '',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Start container " + id.substring(0,12));
-        $http.get('/dockerapi/containers/json?all=1').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/containers/json?all=1').success(function(data) {
           $scope.containers = data;
         });
       } else {
@@ -190,13 +190,13 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
   $scope.stopContainer = function(id) {
     $http({
       method: 'POST',
-      url: '/dockerapi/containers/' + id + "/stop",
+      url: $rootScope.canonicalServer + '/containers/' + id + "/stop",
       data: '',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Stop container " + id.substring(0,12));
-        $http.get('/dockerapi/containers/json?all=1').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/containers/json?all=1').success(function(data) {
           $scope.containers = data;
         });
       } else {
@@ -211,13 +211,13 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
   $scope.deleteContainer = function(id) {
     $http({
       method: 'DELETE',
-      url: '/dockerapi/containers/' + id,
+      url: $rootScope.canonicalServer + '/containers/' + id,
       data: '',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Delete container " + id.substring(0,12));
-        $http.get('/dockerapi/containers/json?all=1').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/containers/json?all=1').success(function(data) {
           $scope.containers = data;
         });
       } else {
@@ -234,8 +234,8 @@ seagullControllers.controller('ContainersController', ['$scope', '$routeParams',
  * Contaienr controller requests beego API server to get/start/stop/delete container
  * Todo: Remove the duplicated code from ContainersController
  */
-seagullControllers.controller('ContainerController', ['$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+seagullControllers.controller('ContainerController', ['$scope', '$rootScope', '$routeParams', '$http',
+  function($scope, $rootScope, $routeParams, $http) {
 
   /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#inspect-a-container
     {
@@ -322,12 +322,12 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
   */
 
   /* Get the container object */
-  $http.get('/dockerapi/containers/' + $routeParams.id + '/json').success(function(data) {
+  $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/json').success(function(data) {
     $scope.container = data;
   });
 
   /* Get the container top status */
-  $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
+  $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/top').success(function(data) {
     $scope.top = data;
   });
 
@@ -340,17 +340,17 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
   $scope.startContainer = function(id) {
     $http({
       method: 'POST',
-      url: '/dockerapi/containers/' + id + "/start",
+      url: $rootScope.canonicalServer + '/containers/' + id + "/start",
       data: '',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Start container " + id.substring(0,12));
-        $http.get('/dockerapi/containers/' + $routeParams.id + '/json').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/json').success(function(data) {
           $scope.container = data;
         });
 
-        $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/top').success(function(data) {
           $scope.top = data;
         });
       } else {
@@ -365,17 +365,17 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
   $scope.stopContainer = function(id) {
     $http({
       method: 'POST',
-      url: '/dockerapi/containers/' + id + "/stop",
+      url: $rootScope.canonicalServer + '/containers/' + id + "/stop",
       data: '',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Stop container " + id.substring(0,12));
-        $http.get('/dockerapi/containers/' + $routeParams.id + '/json').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/json').success(function(data) {
           $scope.container = data;
         });
 
-        $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/top').success(function(data) {
           $scope.top = data;
         });
       } else {
@@ -390,17 +390,17 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
   $scope.deleteContainer = function(id) {
     $http({
       method: 'DELETE',
-      url: '/dockerapi/containers/' + id,
+      url: $rootScope.canonicalServer + '/containers/' + id,
       data: '',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Delete container " + id.substring(0,12));
-        $http.get('/dockerapi/containers/' + $routeParams.id + '/json').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/json').success(function(data) {
           $scope.container = data;
         });
 
-        $http.get('/dockerapi/containers/' + $routeParams.id + '/top').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/top').success(function(data) {
           $scope.top = data;
         });
       } else {
@@ -414,8 +414,8 @@ seagullControllers.controller('ContainerController', ['$scope', '$routeParams', 
 }]);
 
 /* Images controller requests beego API server to get/delete images */
-seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+seagullControllers.controller('ImagesController', ['$scope', '$rootScope', '$routeParams', '$http',
+  function($scope, $rootScope, $routeParams, $http) {
 
   /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#inspect-an-image
     [{
@@ -433,7 +433,7 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
   */
 
   /* Request beego API server to get images */
-  $http.get('/dockerapi/images/json').success(function(data) {
+  $http.get($rootScope.canonicalServer + '/images/json').success(function(data) {
     $scope.images = data;
   });
 
@@ -441,13 +441,13 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
   $scope.deleteImage = function(id) {
     $http({
       method: 'DELETE',
-      url: '/dockerapi/images/' + id,
+      url: $rootScope.canonicalServer + '/images/' + id,
       data: '',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Delete image " + id.substring(0,12));
-        $http.get('/dockerapi/images/json').success(function(data) {
+        $http.get($rootScope.canonicalServer + '/images/json').success(function(data) {
           $scope.images = data;
         });
       } else {
@@ -463,8 +463,8 @@ seagullControllers.controller('ImagesController', ['$scope', '$routeParams', '$h
  * Image controller requests beego API server to get image
  * Todo: Remove the duplicated code from ImagesController
  */
-seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+seagullControllers.controller('ImageController', ['$scope', '$rootScope', '$routeParams', '$http',
+  function($scope, $rootScope, $routeParams, $http) {
 
   /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#inspect-an-image
     {
@@ -561,19 +561,19 @@ seagullControllers.controller('ImageController', ['$scope', '$routeParams', '$ht
 
   /* Request beego API server to get image */
   if(typeof $routeParams.id === 'undefined' || $routeParams.id == null){
-    $http.get('/dockerapi/images/' + $routeParams.user + "/" + $routeParams.repo + '/json').success(function(data) {
+    $http.get($rootScope.canonicalServer + '/images/' + $routeParams.user + "/" + $routeParams.repo + '/json').success(function(data) {
       $scope.image = data;
     });
   }else{
-    $http.get('/dockerapi/images/' + $routeParams.id + '/json').success(function(data) {
+    $http.get($rootScope.canonicalServer + '/images/' + $routeParams.id + '/json').success(function(data) {
       $scope.image = data;
     });
   };
 }]);
 
 /* Contaienrs controller requests beego API server to get configuration */
-seagullControllers.controller('ConfigurationController', ['$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+seagullControllers.controller('ConfigurationController', ['$scope', '$rootScope', '$routeParams', '$http',
+  function($scope, $rootScope, $routeParams, $http) {
 
     /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#show-the-docker-version-information
       {
@@ -617,19 +617,19 @@ seagullControllers.controller('ConfigurationController', ['$scope', '$routeParam
     */
 
   /*   /* Request beego API server to get the version object */
-  $http.get('/dockerapi/version').success(function(data) {
+  $http.get($rootScope.canonicalServer + '/version').success(function(data) {
     $scope.version = data;
   });
 
   /* Request beego API server to get the info object */
-  $http.get('/dockerapi/info').success(function(data) {
+  $http.get($rootScope.canonicalServer + '/info').success(function(data) {
     $scope.info = data;
   });
 }]);
 
 /* Dockerhub controller requests beego API server to get search images */
-seagullControllers.controller('DockerhubController', ['$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+seagullControllers.controller('DockerhubController', ['$scope', '$rootScope', '$routeParams', '$http',
+  function($scope, $rootScope, $routeParams, $http) {
 
   /*
     [{
@@ -645,7 +645,7 @@ seagullControllers.controller('DockerhubController', ['$scope', '$routeParams', 
   $scope.isSearching = true;
 
   /* Request beego API server to get search images, default is seagull */
-  $http.get('/dockerapi/images/search?term=seagull').success(function(data) {
+  $http.get($rootScope.canonicalServer + '/images/search?term=seagull').success(function(data) {
     $scope.isSearching = false;
     $scope.images = data;
   });
@@ -654,7 +654,7 @@ seagullControllers.controller('DockerhubController', ['$scope', '$routeParams', 
   $scope.getSearchImages = function(term) {
     $scope.isSearching = true;
 
-    $http.get('/dockerapi/images/search?term=' + term).success(function(data) {
+    $http.get($rootScope.canonicalServer + '/images/search?term=' + term).success(function(data) {
       $scope.isSearching = false;
       $scope.images = data;
       alert_success("Search images of " + term);

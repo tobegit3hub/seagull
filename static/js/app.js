@@ -1,6 +1,37 @@
 
 'use strict';
 
+/* Remove one or more strings */
+Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
+
+/* Remove the duplicated strings */
+function unique(list) {
+  var result = [];
+  $.each(list, function(i, e) {
+    if ($.inArray(e, result) == -1) result.push(e);
+  });
+  return result;
+}
+
+/* Canonicalize server name for remote servers or localhost */
+function canonicalizeServer(server) {
+  if (server == "Local") {
+    return "/dockerapi";
+  } else {
+    return "http://" + server
+  }
+
+}
+
 /* The seagull angular application */
 var seagull = angular.module('seagull', [
   'ngRoute',
@@ -116,7 +147,8 @@ seagull.filter( 'boolean_to_string', function () {
 });
 
 /* Refer to http://www.ng-newsletter.com/posts/angular-translate.html for i18n */
-seagull.controller('IndexController', function ($scope, $translate) {
+seagull.controller('IndexController', function ($scope, $rootScope, $translate, $route) {
+
   /* Change languages with the language string */
   $scope.changeLanguage = function (key) {
     $translate.use(key);
@@ -140,6 +172,47 @@ seagull.controller('IndexController', function ($scope, $translate) {
   /* Determine it is German or not */
   $scope.isDeDe = function () {
      return $translate.use() == "de-de";
+  }
+
+  /* The default server is local */
+  $scope.currentServer = "Local"; // TODO: Use cookies or something to store them
+  $scope.servers = ["Local"];
+  $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
+  $scope.notCurrentServers = [];
+
+  /* Change the server */
+  $scope.changeServer = function (server) { // TODO: Remove duplicated code
+    $scope.currentServer = server;
+    $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
+    $scope.notCurrentServers = unique($scope.servers.slice(0).remove($scope.currentServer)); // Deep copy
+
+    $route.reload();
+  };
+
+  /* Prompt a dialog to add server in list */
+  $scope.addServer = function () {
+    var newServer = prompt("Please add new server", "96.126.127.93:2375");
+    if (newServer) {
+      $scope.servers.push(newServer)
+      $scope.currentServer = newServer;
+      $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
+      $scope.notCurrentServers = unique($scope.servers.slice(0).remove($scope.currentServer)); // Deep copy
+
+      $route.reload();
+    }
+  };
+
+  /* Clear all servers but Local */
+  $scope.clearServers = function () {
+    var isClear = confirm('Are you sure clear all servers?')
+    if (isClear) {
+      $scope.currentServer = "Local";
+      $scope.servers = ["Local"];
+      $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
+      $scope.notCurrentServers = [];
+
+      $route.reload();
+    }
   }
 });
 
