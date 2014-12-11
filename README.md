@@ -24,9 +24,7 @@ Welcome to watch the [three-minute presentation](https://www.youtube.com/watch?v
 
 Seagull supports to monitor multiple servers. Make sure you start docker daemon like this.
 
-```
-sudo docker -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -api-enable-cors=true -d &
-```
+`docker -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -api-enable-cors=true -d`
 
 ## Screenshot
 

@@ -20,6 +20,12 @@
 * 然后在这个地址<http://127.0.0.1:10086>监控你的Docker容器。
 * 对于boot2docker用户，请运行`boot2docker ip`找到真正的IP地址。
 
+## 多服务器
+
+海鸥已经支持监控多台服务器，请确保你是这样运行Docker守护程序的。
+
+`docker -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -api-enable-cors=true -d`
+
 ## 截图
 
 ![](https://raw.github.com/tobegit3hub/seagull/master/screenshot.png)
