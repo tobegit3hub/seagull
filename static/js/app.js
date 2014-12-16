@@ -174,6 +174,11 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
      return $translate.use() == "de-de";
   }
 
+  /* Determine it is French or not */
+  $scope.isFrFr = function () {
+     return $translate.use() == "fr-fr";
+  }
+
   /* The default server is local */
   $scope.currentServer = "Local"; // TODO: Use cookies or something to store them
   $scope.servers = ["Local"];
@@ -237,6 +242,7 @@ seagull.config(function ($translateProvider) {
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
     de_de: 'Deutsch',
+    fr_fr: 'Français',
     need_help: 'Need Help',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Error to load data from docker daemon. Please check seagull and configuration.',
@@ -347,6 +353,7 @@ seagull.config(function ($translateProvider) {
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
     de_de: 'Deutsch',
+    fr_fr: 'Français',
     need_help: '帮助',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: '从Docker中获取数据失败，请检查Docker和海鸥的配置',
@@ -457,6 +464,7 @@ seagull.config(function ($translateProvider) {
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
     de_de: 'Deutsch',
+    fr_fr: 'Français',
     need_help: '幫助',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: '從Docker中獲取數據失敗，請檢查Docker和海鷗的配置',
@@ -567,6 +575,7 @@ seagull.config(function ($translateProvider) {
     zh_cn: '简体中文',
     zh_hant: '繁體中文',
     de_de: 'Deutsch',
+    fr_fr: 'Français',
     need_help: 'Hilfe',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Beim Laden von Daten vom Docker-Dienst trat ein Fehler auf. Bitte überprüfe Seagull und die Einstellungen.',
@@ -663,4 +672,118 @@ seagull.config(function ($translateProvider) {
     is_official: 'Offiziell',
     is_automated: 'Automatisch erstellt'
   });
+
+
+
+  /* Translate into French */
+  $translateProvider.translations('fr-fr', {
+    // Index html
+    seagull: 'Seagull',
+    containers: 'Conteneurs',
+    images: 'Images',
+    configuration: 'Configuration',
+    dockerhub: 'DockerHub',
+    more: 'Plus',
+    zh_cn: '简体中文',
+    zh_hant: '繁體中文',
+    en_us: 'English',
+    fr_fr: 'Français',
+    de_de: 'German',
+    need_help: 'Assistance',
+    // Home page
+    error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Erreur de chargement des données depuis le démon docker. Merci de vérifier la configuration de seagull.',
+    period: '.',
+    the_best_friend_of_docker: 'le meilleur ami de docker',
+    im_using: 'J\'utilise',
+    with_kernel: 'avec le noyau',
+    and_docker: 'et Docker',
+    the_docker_daemon_has: 'Le démon docker a',
+    running_stopped_containers_and: 'conteneurs démarrés ou arrêtés, ainsi que',
+    images_now: 'images stockées',
+    docker_is_an_open_platform_for_distributed_application_for_developers_and_sysadmins: 'Docker est une plateforme ouverte pour partager des applications entre développeurs ou administrateurs système',
+    and_seagull_provides_a_friendly_web_ui_to_monitor_docker: 'seagull fournit une interface web pour monitorer docker.',
+    github: 'Github',
+    go_now: 'Visiter',
+    learn_more: 'En savoir plus',
+    containers_page_display_all_running_and_stopped_docker_containers: 'La page des conteneurs affiche tous les conteneurs docker démarrés ou arrêtés.',
+    images_page_display_all_docker_images_to_start_stop_and_delete: 'La page des images affiche toutes les images docker à démarrer, arrêter ou supprimer.',
+    configuration_page_display_all_your_docker_environment_and_settings:'La page de configuration affiche les informations relatives à l\'environment d\'execution de docker.',
+    seagull_is_open_source_in_Github_welcome_to_contribution_and_issues: 'Seagull est open source disponible sur Github. Contributions et retours utilisateurs sont les bienvenus.',
+    // Containers page
+    search: 'Recherche',
+    filter: 'Filtre',
+    all: 'Tous',
+    no_docker_container: 'Aucun conteneur docker !',
+    id: 'Id',
+    names: 'Noms',
+    image: 'Image',
+    command: 'Commande',
+    created: 'Création',
+    status: 'Statut',
+    ports: 'Ports',
+    operation: 'Opération',
+    // Images page
+    no_docker_image: 'Aucune image docker !',
+    repotags: 'Tag',
+    virtualsize: 'Espace disque',
+    delete: 'Delete',
+    // Container page
+    container: 'Conteneur',
+    start: 'Démarrer',
+    stop: 'Arrêter',
+    refresh: 'Rafraîchir',
+    no_such_container: 'conteneur non trouvé!',
+    attribute: 'Attribut',
+    value: 'Valeur',
+    name: 'Nom',
+    running: 'démarré',
+    startedat: 'StartedAt',
+    publishallports: 'PublishAllPorts',
+    links: 'Links',
+    openstdin: 'OpenStdin',
+    uid: 'UID',
+    pid: 'PID',
+    c: 'C',
+    stime: 'STIME',
+    tty: 'TTY',
+    time: 'TIME',
+    cmd: 'CMD',
+    // Image page
+    no_such_image: 'Impossible de trouver cette image!',
+    author: 'Auteur',
+    architecture: 'Architecture',
+    comment: 'Comment',
+    dockerversion: 'DockerVersion',
+    os: 'Os',
+    parent: 'Parent',
+    size: 'Size',
+    // Configuration page
+    no_data_of_version_or_info: 'No data of version or info',
+    goversion: 'GoVersion',
+    version: 'Version',
+    gitcommit: 'GitCommit',
+    apiversion: 'ApiVersion',
+    driver: 'Driver',
+    executiondriver: 'ExecutionDriver',
+    KernelVersion: 'KernelVersion',
+    debug: 'Debug',
+    nfd: 'NFD',
+    ngoroutines: 'NGoroutines',
+    neventslistener: 'NEventsListener',
+    initpath: 'InitPath',
+    initsha1: 'InitSha1',
+    indexserveraddress: 'IndexServerAddress',
+    memorylimit: 'MemoryLimit',
+    swaplimit: 'SwapLimit',
+    ipv4forwarding: 'IPv4Forwarding',
+    sockets: 'Sockets',
+    // Dockerhub page
+    search_image: 'Recherche d\'Images',
+    search_no_docker_image: 'La recherche n\'a retourné aucun résultat',
+    description: 'Description',
+    star_count: 'Nombre d\'étoiles',
+    is_official: 'Officiel',
+    is_automated: 'Automatisé'
+  });
+
 });
