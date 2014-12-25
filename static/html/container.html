@@ -4,7 +4,7 @@
 
   <span class="page-header">
     <!-- Display container title and the JSON link -->
-    <h1 class="page-header-left">{{'container'|translate}} <a ng-href="/dockerapi/containers/{{container.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-left">{{'container'|translate}} <a ng-href="{{canonicalServer}}/containers/{{container.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display buttons in the right -->
     <div class="page-header-right">
