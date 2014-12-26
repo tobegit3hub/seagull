@@ -147,7 +147,7 @@ seagull.filter( 'boolean_to_string', function () {
 });
 
 /* Refer to http://www.ng-newsletter.com/posts/angular-translate.html for i18n */
-seagull.controller('IndexController', function ($scope, $rootScope, $translate, $route) {
+seagull.controller('IndexController', function ($scope, $rootScope, $translate, $route, $http) {
 
   // Default new server and display in add server dialog
   $scope.newServer = "http://96.126.127.93:2375";
@@ -199,12 +199,21 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
 
   /* Prompt a dialog to add server in list */
   $scope.addServer = function (newServer) {
-    $scope.servers.push(newServer)
-    $scope.currentServer = newServer;
-    $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
-    $scope.notCurrentServers = unique($scope.servers.slice(0).remove($scope.currentServer)); // Deep copy
 
-    $route.reload();
+    /* Check if we can access the new server */
+    $http.get(canonicalizeServer(newServer) + '/_ping').success(function(data) {
+      if (data === "OK") {
+        alert_success("Add server " + newServer);
+
+        $scope.servers.push(newServer)
+        $scope.currentServer = newServer;
+        $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
+        $scope.notCurrentServers = unique($scope.servers.slice(0).remove($scope.currentServer)); // Deep copy
+
+        $route.reload();
+      }
+    }).error(function(data){alert_error('Can\'t add this server')});
+
   };
 
   /* Clear all servers but Local */
