@@ -218,15 +218,14 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
 
   /* Clear all servers but Local */
   $scope.clearServers = function () {
-    var isClear = confirm('Are you sure clear all servers?')
-    if (isClear) {
-      $scope.currentServer = "Local";
-      $scope.servers = ["Local"];
-      $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
-      $scope.notCurrentServers = [];
+    alert_success("Clear all servers");
 
-      $route.reload();
-    }
+    $scope.currentServer = "Local";
+    $scope.servers = ["Local"];
+    $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
+    $scope.notCurrentServers = [];
+
+    $route.reload();
   }
 });
 
