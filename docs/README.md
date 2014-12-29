@@ -1,11 +1,15 @@
-
 # Docs
 
 There're excellent articles about the implement of seagull.
 
 We recommend you to read all these documents if you want to learn web programming or get involved to develop seagull.
 
-No all the articles are translated into Chinese. If you need other languages, let us know and the pull-request is always welcome.
+## Usage
+
+```
+pip install mkdocs
+mkdocs serve
+```
 
 ## Catalog
 
@@ -29,7 +33,7 @@ No all the articles are translated into Chinese. If you need other languages, le
 * [Use animate.css](en/development/2014-10-30-use-animate-css.md)
 * [Use drone for ci](en/development/2014-11-02-use-drone-for-ci.md)
 
-## Catalog In Chinese
+## 目录
 
 * [请求Docker远程API](zh/development/2014-10-12-access-docker-remote-api.md)
 * [类似的Docker项目](en/development/2014-10-13-similar-docker-projects.md)
