@@ -200,3 +200,10 @@ func (this *DockerapiController) GetEvents() {
 	this.Ctx.WriteString(result)
 }
 */
+
+/* Warp docker remote API to ping docker daemon */
+func (this *DockerapiController) Ping() {
+	address := "/_ping"
+	result := RequestUnixSocket(address, "GET")
+	this.Ctx.WriteString(result)
+}

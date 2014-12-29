@@ -4,7 +4,7 @@
 
   <span class="page-header">
     <!-- Display images title and the JSON link -->
-    <h1 class="page-header-left">{{'dockerhub'|translate}} <a href="/dockerapi/images/search?term=seagull" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-left">{{'dockerhub'|translate}} <a ng-href="{{canonicalServer}}/images/search?term=seagull" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
     <span class="page-header-right"><button ng-click="getSearchImages(term)" class="btn btn-info" type="submit"><span ng-show="isSearching" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span><span ng-show="!isSearching">{{'search'|translate}}</span></button></span>

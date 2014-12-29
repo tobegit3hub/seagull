@@ -3,8 +3,8 @@
 <div ng-controller="ContainersController">
 
   <span class="page-header">
-    <!-- Display containers title and the JSON link --> <!-- TODO: Fix JSON link with multiple servers -->
-    <h1 class="page-header-left">{{'containers'|translate}} <a href="/dockerapi/containers/json?all=1" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <!-- Display containers title and the JSON link -->
+    <h1 class="page-header-left">{{'containers'|translate}} <a ng-href="{{canonicalServer}}/containers/json?all=1" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
     <div class="page-header-right">
@@ -34,20 +34,20 @@
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>{{'id'|translate}}</th>
-        <th>{{'names'|translate}}</th>
-        <th>{{'image'|translate}}</th>
-        <th>{{'command'|translate}}</th>
-        <th>{{'ports'|translate}}</th>
+        <th><a href="" ng-click="predicate='Id'; reverse=!reverse">{{'id'|translate}}</a></th>
+        <th><a href="" ng-click="predicate='Names'; reverse=!reverse">{{'names'|translate}}</a></th>
+        <th><a href="" ng-click="predicate='Image'; reverse=!reverse">{{'image'|translate}}</a></th>
+        <th><a href="" ng-click="predicate='Command'; reverse=!reverse">{{'command'|translate}}</a></th>
+        <th><a href="" ng-click="predicate='Ports'; reverse=!reverse">{{'ports'|translate}}</a></th>
         <!-- Not print this now, <th>{{'created'|translate}}</th> -->
-        <th>{{'status'|translate}}</th>
+        <th><a href="" ng-click="predicate='Status'; reverse=!reverse">{{'status'|translate}}</a></th>
         <th>{{'operation'|translate}}</th>
         <th></th>
       </tr>
     </thead>
 
     <tbody>
-      <tr ng-repeat="container in containers | filter: search track by $index">
+      <tr ng-repeat="container in containers | filter: search | orderBy:predicate:reverse track by $index">
         <td><a ng-href="/containers/{{container.Id}}">{{container.Id | limitTo:12}}</a></td> <!-- Shorten container id -->
         <td>{{container.Names | array_to_string}}</td> <!-- Add comma between names -->
         <td>{{container.Image}}</td>

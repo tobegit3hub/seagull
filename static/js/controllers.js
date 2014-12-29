@@ -49,6 +49,9 @@ seagullControllers.controller('HomeController', ['$scope', '$rootScope', '$route
 seagullControllers.controller('ContainersController', ['$scope', '$rootScope', '$routeParams', '$http', '$cookies',
   function($scope, $rootScope, $routeParams, $http, $cookies) {
 
+  $scope.predicate = '';
+  $scope.reverse = false;
+
   /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#list-containers
     [{
       "Id": "d0bd54b5889f73ced793007ecdb3a1f923b3bc6d47979e9b24a8c7f1906aee5a", // I edit it
@@ -431,6 +434,10 @@ seagullControllers.controller('ImagesController', ['$scope', '$rootScope', '$rou
       "ParentId": c738822faf4d5f2c93632645b4a2870a668357e961f2731a1da460d9f0001b4a // I add it
     }]
   */
+
+  // Sort table, refer to https://docs.angularjs.org/api/ng/filter/orderBy
+  $scope.predicate = '';
+  $scope.reverse = false;
 
   /* Request beego API server to get images */
   $http.get($rootScope.canonicalServer + '/images/json').success(function(data) {

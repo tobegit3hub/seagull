@@ -4,7 +4,7 @@
 
   <span class="page-header">
     <!-- Display images title and the JSON link -->
-    <h1 class="page-header-left">{{'images'|translate}} <a href="/dockerapi/images/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-left">{{'images'|translate}} <a ng-href="{{canonicalServer}}/images/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
     <div class="page-header-right">
@@ -22,16 +22,16 @@
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>{{'id'|translate}}</th>
-        <th>{{'repotags'|translate}}</th>
-        <th>{{'created'|translate}}</th>
-        <th>{{'virtualsize'|translate}}</th>
+        <th><a href="" ng-click="predicate='Id'; reverse=!reverse">{{'id'|translate}}</a></th>
+        <th><a href="" ng-click="predicate='RepoTags'; reverse=!reverse">{{'repotags'|translate}}</a></th>
+        <th><a href="" ng-click="predicate='Created'; reverse=!reverse">{{'created'|translate}}</a></th>
+        <th><a href="" ng-click="predicate='VirtualSize'; reverse=!reverse">{{'virtualsize'|translate}}</a></th>
         <th>{{'operation'|translate}}</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr ng-repeat="image in images | filter: search track by $index">
+      <tr ng-repeat="image in images | filter: search | orderBy:predicate:reverse track by $index ">
         <td><a ng-href="/images/{{image.Id}}">{{image.Id | limitTo:12}}</a></td> <!-- Shorten image id -->
         <td>{{image.RepoTags | array_to_string}}</td> <!-- Add comma between tags -->
         <td>{{image.Created * 1000 | date:'yyyy-MM-dd'}}</td> <!-- Full time with 'yyyy-MM-dd HH:mm:ss Z' -->

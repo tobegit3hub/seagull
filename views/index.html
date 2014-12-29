@@ -71,14 +71,56 @@
               <ul class="dropdown-menu" role="menu">
                 <li ng-repeat-start="server in notCurrentServers track by $index" class="animate-nav"><a href="" ng-click="changeServer(server)">{{server}}</a></li>
                 <li ng-repeat-end></li>
-                <li class="animate-nav"><a href="" ng-click="addServer()">{{'Add Server'}}</a></li>
-                <li class="animate-nav"><a href="" ng-click="clearServers()">{{'Clear Servers'}}</a></li>
+                <li class="animate-nav"><a href="" data-toggle="modal" data-target="#addServerModal">{{'Add Server'}}</a></li>
+                <li class="animate-nav"><a href="" data-toggle="modal" data-target="#clearServersModal">{{'Clear Servers'}}</a></li>
               </ul>
             </li>
           </ul>
         </div>
       </div>
     </div> <!-- End of navbar -->
+
+    <!-- Modal to add server -->
+    <div class="modal fade" id="addServerModal" tabindex="-1" role="dialog" aria-labelledby="addServerModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="addServerModalLabel">Add Remote Server</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form" >
+              <div class="form-group">
+                <input class="form-control" placeholder="http://96.126.127.93:2375" ng-model="newServer">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="addServer(newServer)">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal to clear servers -->
+    <div class="modal fade" id="clearServersModal" tabindex="-1" role="dialog" aria-labelledby="clearServersModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="clearServersModalLabel">Clear Servers</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Are you sure to clear all servers?</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" ng-click="clearServers()">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Todo: No need to use <br/> to move content below the navigation bar -->
     <br/><br/><br/><br/>

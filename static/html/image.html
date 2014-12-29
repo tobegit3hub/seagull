@@ -4,7 +4,7 @@
 
   <span class="page-header">
     <!-- Display image title and the JSON link -->
-    <h1 class="page-header-left">{{'image'|translate}} <a ng-href="/dockerapi/images/{{image.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
+    <h1 class="page-header-left">{{'image'|translate}} <a ng-href="{{canonicalServer}}/images/{{image.Id}}/json" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
   </span> <!-- End of page header -->
 
   <!-- Alert if we get nothing from server -->
