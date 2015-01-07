@@ -4,8 +4,8 @@
 	"Deps": [
 		{
 			"ImportPath": "github.com/astaxie/beego",
-			"Comment": "v1.4.1-2-gfcc359a",
-			"Rev": "fcc359af11650ff3c523ece170f9ec134ffa8aef"
+			"Comment": "v1.4.2",
+			"Rev": "07c628c7e9f813efc3f7e1785f667e08f2340d53"
 		}
 	]
 }
