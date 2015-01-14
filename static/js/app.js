@@ -184,15 +184,26 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
 
   /* The default server is local */
   $scope.currentServer = "Local"; // TODO: Use cookies or something to store them
-  $scope.servers = ["Local"];
+  
+    
+    if(localStorage.servers){
+        $scope.servers = JSON.parse(localStorage.servers);
+        
+    }
+    else{
+        $scope.servers = ["Local"];
+        
+    }
+    
+  $scope.json_servers;
   $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
-  $scope.notCurrentServers = [];
+  $scope.notCurrentServers = $scope.servers;
 
   /* Change the server */
   $scope.changeServer = function (server) { // TODO: Remove duplicated code
     $scope.currentServer = server;
     $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
-    $scope.notCurrentServers = unique($scope.servers.slice(0).remove($scope.currentServer)); // Deep copy
+    $scope.notCurrentServers = unique($scope.servers); // Deep copy
 
     $route.reload();
   };
@@ -201,18 +212,21 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
   $scope.addServer = function (newServer) {
 
     /* Check if we can access the new server */
-    $http.get(canonicalizeServer(newServer) + '/_ping').success(function(data) {
-      if (data === "OK") {
+    //$http.get(canonicalizeServer(newServer) + '/_ping').success(function(data) {
+      //if (data === "OK") {
         alert_success("Add server " + newServer);
-
+    
         $scope.servers.push(newServer)
+        $scope.json_servers = JSON.stringify($scope.servers);
+        localStorage.setItem("servers", $scope.json_servers);
+        console.log(JSON.parse(localStorage.servers));
         $scope.currentServer = newServer;
         $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
         $scope.notCurrentServers = unique($scope.servers.slice(0).remove($scope.currentServer)); // Deep copy
 
         $route.reload();
-      }
-    }).error(function(data){alert_error('Can\'t add this server')});
+      //}
+    //}).error(function(data){alert_error('Can\'t add this server')});
 
   };
 
@@ -224,6 +238,7 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
     $scope.servers = ["Local"];
     $rootScope.canonicalServer = canonicalizeServer($scope.currentServer);
     $scope.notCurrentServers = [];
+      localStorage.removeItem("servers")
 
     $route.reload();
   }
