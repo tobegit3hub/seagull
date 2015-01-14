@@ -188,12 +188,11 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
     
     if(localStorage.servers){
         $scope.servers = JSON.parse(localStorage.servers);
-        console.log("serveri su");
-        console.log($scope.servers);
+        
     }
     else{
         $scope.servers = ["Local"];
-        console.log($scope.servers);
+        
     }
     
   $scope.json_servers;
