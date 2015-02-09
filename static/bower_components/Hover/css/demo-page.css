@@ -1,0 +1,256 @@
+/*
+ * Hover.css - Demo Page
+ * Author: Ian Lunn @IanLunn
+ * Author URL: http://ianlunn.co.uk/
+ * Github: https://github.com/IanLunn/Hover
+
+ * Made available under a MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
+
+ * Hover.css Copyright Ian Lunn 2014.
+ */
+
+/**
+ * The following are default styles for the demo page,
+ * you don't need to include these on your own site.
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 40px 20px 20px 20px;
+  font-family: sans-serif;
+  color: #333;
+  line-height: 140%;
+}
+
+.browsehappy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 1em;
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+img {
+  border: none;
+}
+
+small {
+    display: block;
+}
+
+p,
+[class^="hvr-"] {
+    font-family: 'Roboto', sans-serif;
+}
+
+[class^="hvr-"] {
+  /*display: inline-block;*/
+  /*vertical-align: middle;*/
+  margin: .4em;
+  padding: 1em;
+  cursor: pointer;
+  background: #e1e1e1;
+  text-decoration: none;
+  color: #666;
+  /* Prevent highlight colour when element is tapped */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.aligncenter {
+  text-align: center;
+}
+
+.sup {
+    vertical-align: super;
+    margin-left: -1em;
+    padding: .21875em;
+    line-height: 100%;
+    font-size: .21875em;
+    border: #eee solid 1px;
+    border-radius: 4px;
+    color: inherit;
+}
+
+.sup:hover {
+    background: #eee;
+}
+
+a {
+    color: #2098D1;
+    text-decoration: none;
+}
+
+.footer a:hover,
+.tutorial:hover {
+    color: #207AD1;
+}
+
+.tutorial {
+  display: inline-block;
+  font-size: .8em;
+  font-weight: bold;
+}
+
+.tutorial:hover,
+.tutorial:focus,
+.tutorial:active {
+  text-decoration: none;
+}
+
+.intro {
+  max-width: 680px;
+  margin: 20px auto 0 auto;
+}
+
+.button.cta {
+  display: inline-block;
+  position: relative;
+  margin: 1.2em 0 1em 0;
+  padding: 1em;
+  background: #2098D1;
+  border: none;
+  text-decoration: none;
+  font-weight: 700;
+  color: white;
+}
+
+.effects {
+  margin-top: 6em;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4em;
+}
+
+h2 {
+  margin-top: 2em;
+}
+
+.about {
+  border-top: #333 solid 2px;
+  border-bottom: #333 solid 2px;
+}
+
+.footer {
+  overflow: hidden;
+  width: auto;
+  margin-top: 6em;
+  font-size: .9em;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.credit {
+  font-size: .8em;
+  font-weight: normal;
+}
+
+.social {
+  margin-top: 2.6em;
+}
+
+.social-button {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.twitter-follow-button {
+    display: block;
+    margin: 0 auto;
+}
+
+.follow {
+    margin-bottom: 20px;
+    line-height: 200%;
+}
+
+.author {
+  margin: 6em auto 0 auto;
+  text-align: center;
+  font-weight: 900;
+}
+
+.author [class^="hvr-"] {
+    background: transparent;
+}
+
+.author .logo {
+  display: block;
+  margin-bottom: .8em;
+}
+
+#forkongithub {
+    display: none;
+}
+
+#forkongithub a {
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-family: arial, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 40px;
+  font-size: 1rem;
+  line-height: 2rem;
+  position: relative;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#forkongithub a:hover,
+#forkongithub a:focus,
+#forkongithub a:active {
+  background: #2098D1;
+  color: #fff;
+}
+
+#forkongithub a::before,
+#forkongithub a::after {
+  content: "";
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 1px;
+  background: #fff;
+}
+
+#forkongithub a::after {
+  bottom: 1px;
+  top: auto;
+}
+
+@media screen and (min-width: 640px) {
+  #forkongithub {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    width: 200px;
+    overflow: hidden;
+    height: 200px;
+  }
+
+  #forkongithub a {
+    width: 200px;
+    position: absolute;
+    top: 60px;
+    right: -60px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+  }
+}
