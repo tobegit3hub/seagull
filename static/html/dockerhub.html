@@ -7,7 +7,7 @@
     <h1 class="page-header-left">{{'dockerhub'|translate}} <a ng-href="{{canonicalServer}}/images/search?term=seagull" target="_blank"><img src="static/img/json-logo.png" height="32"></a></h1>
 
     <!-- Display search form in the right -->
-    <span class="page-header-right"><button ng-click="getSearchImages(term)" class="btn btn-info" type="submit"><span ng-show="isSearching" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span><span ng-show="!isSearching">{{'search'|translate}}</span></button></span>
+    <span class="page-header-right"><button ng-click="getSearchImages(term)" class="btn btn-info hvr-shadow" type="submit"><span ng-show="isSearching" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span><span ng-show="!isSearching">{{'search'|translate}}</span></button></span>
     <div class="page-header-right input-group">
       <input type="text" class="form-control" placeholder="seagull" ng-model="term" autofocus>
     </div>
