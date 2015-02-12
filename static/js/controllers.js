@@ -324,6 +324,55 @@ seagullControllers.controller('ContainerController', ['$scope', '$rootScope', '$
     }
   */
 
+  /* Docker stats response data
+  {
+    read: "2015-02-12T12:00:52.090624461Z",
+    network: {
+      rx_bytes: 648,
+      rx_packets: 8,
+      rx_errors: 0,
+      rx_dropped: 0,
+      tx_bytes: 648,
+      tx_packets: 8,
+      tx_errors: 0,
+      tx_dropped: 0
+    },
+    cpu_stats: {
+      cpu_usage: {
+        total_usage: 37191018,
+        percpu_usage: [
+          37191018
+        ],
+        usage_in_kernelmode: 10000000,
+        usage_in_usermode: 10000000
+      },
+      system_cpu_usage: 6146786210000000,
+      throttling_data: {
+        periods: 0,
+        throttled_periods: 0,
+        throttled_time: 0
+      }
+    },
+    memory_stats: {
+      usage: 0,
+      max_usage: 0,
+      stats: { },
+      failcnt: 0,
+      limit: 1037299712
+    },
+    blkio_stats: {
+      io_service_bytes_recursive: [ ],
+      io_serviced_recursive: [ ],
+      io_queue_recursive: [ ],
+      io_service_time_recursive: [ ],
+      io_wait_time_recursive: [ ],
+      io_merged_recursive: [ ],
+      io_time_recursive: [ ],
+      sectors_recursive: [ ]
+    }
+  }
+  */
+
   /* Get the container object */
   $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/json').success(function(data) {
     $scope.container = data;
