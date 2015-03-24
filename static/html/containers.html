@@ -42,27 +42,27 @@
         <!-- Not print this now, <th>{{'created'|translate}}</th> -->
         <th><a href="" ng-click="predicate='Status'; reverse=!reverse">{{'status'|translate}}</a></th>
         <th>{{'operation'|translate}}</th>
-        <th></th>
       </tr>
     </thead>
 
     <tbody>
       <tr ng-repeat="container in containers | filter: search | orderBy:predicate:reverse track by $index">
         <td><a ng-href="/containers/{{container.Id}}">{{container.Id | limitTo:12}}</a></td> <!-- Shorten container id -->
-        <td>{{container.Names | array_to_string}}</td> <!-- Add comma between names -->
-        <td>{{container.Image}}</td>
-        <td>{{container.Command}}</td>
-        <td>{{printPorts(container.Ports)}}</td>
+        <td class="wrap-td" title="{{container.Names | array_to_string}}">{{container.Names | array_to_string}}</td> <!-- Add comma between names -->
+        <td class="wrap-td" title="{{container.Image}}">{{container.Image}}</td>
+        <td class="wrap-td" title="{{container.Command}}">{{container.Command}}</td>
+        <td class="wrap-td" title="{{printPorts(container.Ports)}}">{{printPorts(container.Ports)}}</td>
         <!-- Not print this now, <td>{{container.Created * 1000 | date:'yyyy-MM-dd'}}</td>  Full time with 'yyyy-MM-dd HH:mm:ss Z' -->
-        <td>{{container.Status}}</td>
+        <td class="wrap-td" title="{{container.Status}}">{{container.Status}}</td>
         <!-- If the container is running, display stop button -->
         <td ng-show="checkRunning(container)"><button class="btn btn-warning" ng-click="stopContainer(container.Id)">{{'stop'|translate}}</button></td>
         <!-- Else display start button -->
-        <td ng-show="!checkRunning(container)"><button class="btn btn-success" ng-click="startContainer(container.Id)">{{'start'|translate}}</button></td>
-        <!-- If the container is running, display nothing -->
-        <td ng-show="checkRunning(container)"></td>
-        <!-- Else display delete button -->
-        <td ng-show="!checkRunning(container)"><button class="btn btn-danger" ng-click="deleteContainer(container.Id)">{{'delete'|translate}}</button></td>
+        <td ng-show="!checkRunning(container)"><button class="btn btn-success" ng-click="startContainer(container.Id)">{{'start'|translate}}</button>
+          <!-- If the container is running, display nothing -->
+          <span ng-show="checkRunning(container)"></span>
+          <!-- Else display delete button -->
+          <span ng-show="!checkRunning(container)"><button class="btn btn-danger" ng-click="deleteContainer(container.Id)">{{'delete'|translate}}</button></span>
+	</td>
       </tr>
     </tbody>
   </table>
