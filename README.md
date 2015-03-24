@@ -13,9 +13,11 @@ Welcome to watch the [three-minute presentation](https://www.youtube.com/watch?v
 
 ## Usage
 
-* Run `docker run -d -p 10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull`.
-* Then monitor your docker daemon in <http://127.0.0.1:10086>.
-* For boot2docker users, please run `boot2docker ip` to find out the real IP.
+* Run `docker run -d -p 10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull`
+* Then monitor your docker daemon in <http://127.0.0.1:10086>
+* For boot2docker users, please run `boot2docker ip` to find out the real IP
+
+Don't remember the lengthy command? [Run](https://github.com/runscripts/run) is well supported by `run github:tobegit3hub/seagull/run`.
 
 ## Multi-host
 
