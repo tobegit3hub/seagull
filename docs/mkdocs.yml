@@ -8,7 +8,7 @@ site_description: Documentation for fast and lightweight Docker container based 
 
 repo_url: https://github.com/tobegit3hub/seagull
 
-docs_dir: zh #en
+docs_dir: en
 
 #include_search: true
 

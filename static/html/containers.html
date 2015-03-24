@@ -61,7 +61,7 @@
           <!-- If the container is running, display nothing -->
           <span ng-show="checkRunning(container)"></span>
           <!-- Else display delete button -->
-          <span ng-show="!checkRunning(container)"><button class="btn btn-danger" ng-click="deleteContainer(container.Id)">{{'delete'|translate}}</button></span>
+          <span ng-show="!checkRunning(container)">&nbsp;&nbsp;<button class="btn btn-danger" ng-click="deleteContainer(container.Id)">{{'delete'|translate}}</button></span>
 	</td>
       </tr>
     </tbody>
