@@ -33,6 +33,11 @@
     </thead>
 
     <tbody>
+      <!-- When search result is null, display the message -->
+      <tr ng-show="(images | filter: search).length == 0">
+        <td colspan="7" align="center">No search result</td>
+      </tr>
+
       <tr ng-repeat="image in images track by $index">
         <td><a ng-href="{{getImageLink(image.name)}}" target="_blank">{{image.name}}</a></td>
         <td>{{image.description}}</td>

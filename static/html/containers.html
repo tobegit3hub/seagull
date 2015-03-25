@@ -46,6 +46,11 @@
     </thead>
 
     <tbody>
+      <!-- When search result is null, display the message -->
+      <tr ng-show="(containers | filter: search).length == 0">
+	<td colspan="7" align="center">No search result for <b style="color:blue">{{search}}</b></td>
+      </tr>
+
       <tr ng-repeat="container in containers | filter: search | orderBy:predicate:reverse track by $index">
         <td><a ng-href="/containers/{{container.Id}}">{{container.Id | limitTo:12}}</a></td> <!-- Shorten container id -->
         <td class="wrap-td" title="{{container.Names | array_to_string}}">{{container.Names | array_to_string}}</td> <!-- Add comma between names -->
