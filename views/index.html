@@ -70,6 +70,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle animate-nav" data-toggle="dropdown" href="">{{currentServer}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+               
                 <li ng-repeat-start="server in notCurrentServers track by $index" class="animate-nav"><a href="" ng-click="changeServer(server)">{{server}}</a></li>
                 <li ng-repeat-end></li>
                 <li class="animate-nav"><a href="" data-toggle="modal" data-target="#addServerModal">{{'Add Server'}}</a></li>

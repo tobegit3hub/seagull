@@ -28,7 +28,9 @@ _cgo_gotypes.go
 _cgo_export.*
 
 _testmain.go
-
+Dockerfile
 *.exe
 *.test
 *.prof
+run
+run.sh
