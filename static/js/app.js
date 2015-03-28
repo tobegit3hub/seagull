@@ -289,6 +289,7 @@ seagull.config(function ($translateProvider) {
     repotags: 'RepoTags',
     virtualsize: 'VirtualSize',
     delete: 'Delete',
+    no_search_result_for: 'No search result for',
     // Container page
     container: 'Container',
     start: 'Start',
@@ -400,6 +401,7 @@ seagull.config(function ($translateProvider) {
     repotags: '项目标签',
     virtualsize: '虚拟大小',
     delete: '删除',
+    no_search_result_for: '找不到相关搜索结果',
     // Container page
     container: '容器',
     start: '启动',
@@ -511,6 +513,7 @@ seagull.config(function ($translateProvider) {
     repotags: '項目標籤',
     virtualsize: '虛擬大小',
     delete: '刪除',
+    no_search_result_for: '找不到相關搜索結果',
     // Container page
     container: '容器',
     start: '啓動',
@@ -622,6 +625,7 @@ seagull.config(function ($translateProvider) {
     repotags: 'Bezeichnung (Tag)',
     virtualsize: 'Virtuelle Größe',
     delete: 'Löschen',
+    no_search_result_for: 'No search result for', // TODO translate for French
     // Container page
     container: 'Container',
     start: 'Starten',
@@ -735,6 +739,7 @@ seagull.config(function ($translateProvider) {
     repotags: 'Tag',
     virtualsize: 'Espace disque',
     delete: 'Delete',
+    no_search_result_for: 'No search result for', // TODO: Translate for German
     // Container page
     container: 'Conteneur',
     start: 'Démarrer',

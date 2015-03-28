@@ -33,7 +33,7 @@
     <tbody>
       <!-- When search result is null, display the message -->
       <tr ng-show="(images | filter: search).length == 0">
-        <td colspan="7" align="center">No search result for <b style="color:blue">{{search}}</b></td>
+        <td colspan="7" align="center">{{'no_search_result_for'|translate}} <b style="color:blue">{{search}}</b></td>
       </tr>
 
       <tr ng-repeat="image in images | filter: search | orderBy:predicate:reverse track by $index ">
