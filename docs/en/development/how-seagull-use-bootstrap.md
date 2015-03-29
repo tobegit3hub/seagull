@@ -1,4 +1,3 @@
-
 # How Seagull Use Bootstrap
 
 Bootstrap is a popular front-end framework. I don't need to talk about how great it is. It's not only the best choice for normal users but also for developers. All the pages of seagull are styled by Bootstrap.
@@ -11,7 +10,7 @@ If you haven't known about Bootstrap, please refer to its official website, <htt
 
 Bootstrap is a JavaScript library so you just need to download it and include it in your HTML file.
 
-If you're using Bower, just run `bower install bootstrap --save` to download the library. You can refer to [use-bower-to-manage-dependency](2014-10-26-use-bower-to-manage-dependency.md) to know about how seagull uses Bower.
+If you're using Bower, just run `bower install bootstrap --save` to download the library. You can refer to [use-bower-to-manage-dependency](use-bower-to-manage-dependency.md) to know about how seagull uses Bower.
 
 If you're not using Bower, just go to the official website and download the js file.
 

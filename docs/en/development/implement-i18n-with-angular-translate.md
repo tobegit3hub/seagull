@@ -21,7 +21,7 @@ Then you need to include it in your HTML file. Here's the source code in seagull
  <script src="static/bower_components/angular-translate/angular-translate.min.js"></script>
 ```
 
-It's in index.html page so that each page will include this library. If you're no familiar with Bower, please refer to [use-bower-to-manage-dependency](2014-10-26-use-bower-to-manage-dependency.md).
+It's in index.html page so that each page will include this library. If you're no familiar with Bower, please refer to [use-bower-to-manage-dependency](use-bower-to-manage-dependency.md).
 
 If you don't want to use Bower, just download the js file from the official website and put it in the appropriate path.
 

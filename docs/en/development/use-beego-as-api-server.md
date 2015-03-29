@@ -1,15 +1,15 @@
 
-# 使用Beego作为API服务器
+# Use Beego As API Server
 
-## 官方教程
+## Official Tutorial
 
-这里是Beego的官方网站，<http://beego.me/>。
+Here is the official website of Beego, <http://beego.me/>.
 
-你最好先阅读[Web](2014-10-23-use-beego-as-web-server.md)
+And you have to read [Use Beego as web server](use-beego-as-web-server.md) first.
 
-## 海鸥如何使用它
+## How Seagull Uses It
 
-目前海鸥已经实现了一些关于Docker的API，你可以在seagull/routers/router.go找到它们。
+Currently seagull has implemented some APIs about docker. You can check it out in seagull/routers/router.go.
 
 ```
 beego.Router("/dockerapi/containers/json", &controllers.DockerapiController{}, "get:GetContainers")
@@ -27,9 +27,9 @@ beego.Router("/dockerapi/info", &controllers.DockerapiController{}, "get:GetInfo
 beego.Router("/dockerapi/images/search", &controllers.DockerapiController{}, "get:GetSearchImages")
 ```
 
-而这些API的实现细节在seagull/controllers/dockerapi.go文件中。
+And the detail of these APIs is in seagull/controllers/dockerapi.go.
 
-我将会那下面这个为例子。
+I will take the simple for example.
 
 ```
 /* Wrap docker remote API to get docker info */
@@ -40,6 +40,6 @@ func (this *DockerapiController) GetInfo() {
 }
 ```
 
-它请求了Docker的Unix套接字并返回JSON数据给前端框架。你也可以访问这个URL或者使用`curl`来获得这些数据。
+This requests the docker unix socket and return the JSON data to front-end framework. You can also go to this url or just `curl` to get the data.
 
-实现API的最佳实践是定义为RESTful接口。
+The best practice is to implement the API as RESTful interfaces.

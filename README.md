@@ -1,4 +1,3 @@
-
 # Seagull
 
 [![Build Status](https://drone.io/github.com/tobegit3hub/seagull/status.png)](https://drone.io/github.com/tobegit3hub/seagull/latest) [![GoDoc](https://godoc.org/github.com/tobegit3hub/seagull?status.svg)](https://godoc.org/github.com/tobegit3hub/seagull) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -13,7 +12,7 @@ Welcome to watch the [three-minute presentation](https://www.youtube.com/watch?v
 
 ## Usage
 
-* Run `docker run -d -p 10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull`
+* `docker run -d -p 10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull`
 * Then monitor your docker daemon in <http://127.0.0.1:10086>
 * For boot2docker users, please run `boot2docker ip` to find out the real IP
 
@@ -46,7 +45,7 @@ Seagull is implemented in Go and JavaScript with tools like Beego, AngularJS, Bo
 * `go build seagull.go` or `bee run seagull` for dubuging
 * `./seagull` or `sudo ./seagull` to access /var/run/docker.sock
 
-More detail in [seagull-design-and-implement](docs/en/development/2014-10-14-seagull-design-and-implement.md) and we have excellent documents in [docs](docs/).
+More detail in [seagull-design-and-implement](docs/en/development/seagull-design-and-implement.md) and we have excellent documents in [docs](docs/).
 
 ## Notice
 

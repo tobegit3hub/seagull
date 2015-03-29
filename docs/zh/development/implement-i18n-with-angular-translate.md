@@ -1,4 +1,3 @@
-
 # Angular-translate实现国际化
 
 国际化意味着你的网站必须支持多种语言。这并不是一个功能需求，但对于母语不是英语的用户，这极大提高了用户的使用体验。
@@ -21,7 +20,7 @@
  <script src="static/bower_components/angular-translate/angular-translate.min.js"></script>
 ```
 
-这是index.html首页页面，其他页面都嵌入在它里面，所以它能保证所有页面都所有页面都引入了这个类库。如果你不熟悉Bower，建议阅读[使用Bower来管理依赖](2014-10-26-use-bower-to-manage-dependency.md)。
+这是index.html首页页面，其他页面都嵌入在它里面，所以它能保证所有页面都所有页面都引入了这个类库。如果你不熟悉Bower，建议阅读[使用Bower来管理依赖](use-bower-to-manage-dependency.md)。
 
 如果你不想使用Bower，只需要从官网中下载JS文件然后把它放到合适的目录。
 

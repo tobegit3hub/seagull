@@ -9,7 +9,7 @@ Here is the Github page of JQuery.Gritter, <https://github.com/jboesch/Gritter>.
 
 ## How To Use It
 
-Seagull has installed JQuery.Gritter by using Bower. Just run `bower install jquery.gritter --save` and it automatically downloads the js and css files in bower_components. If you're not familiar with Bower, I recommand to read [use-bower-to-manage-dependency](2014-10-26-use-bower-to-manage-dependency.md).
+Seagull has installed JQuery.Gritter by using Bower. Just run `bower install jquery.gritter --save` and it automatically downloads the js and css files in bower_components. If you're not familiar with Bower, I recommand to read [use-bower-to-manage-dependency](use-bower-to-manage-dependency.md).
 
 If you're not using Bower, you can go to the official website to download the js and css files. To notice that the css file is important which will style the notification box.
 

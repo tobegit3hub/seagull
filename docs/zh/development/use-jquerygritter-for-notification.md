@@ -9,7 +9,7 @@ JQuery.Gritter是一个基于JQuery的类似Growl的通知插件。它很容易�
 
 ## 如何使用它
 
-海鸥已经通过Bower来安装JQuery.Gritter。只需要执行`bower install jquery.gritter --save`就会自动将JS和CSS文件下载到bower_components目录。如果你对Bower不熟悉，我建议你阅读[使用Bower来管理依赖](2014-10-26-use-bower-to-manage-dependency.md)。
+海鸥已经通过Bower来安装JQuery.Gritter。只需要执行`bower install jquery.gritter --save`就会自动将JS和CSS文件下载到bower_components目录。如果你对Bower不熟悉，我建议你阅读[使用Bower来管理依赖](use-bower-to-manage-dependency.md)。
 
 如果你不想使用Bower，你可以到它的官方网站下载JS和CSS文件。注意CSS文件也是很重要的，它会为你美化通知窗口。
 

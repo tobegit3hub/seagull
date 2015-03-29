@@ -1,21 +1,21 @@
 
-# 实现Angular过滤器
+# Implement Angular Filter
 
-Angular过滤器是用户处理数据的工具。通常我们使用过滤器来获得我们想要的数据，或者格式化数据的输出。
+Angular filter is the tool for user to process the data. Normally we use filter to get our interested data or format the output of them.
 
-实现我们自己的过滤器很简单而且很有必要。
+Implementing our own filters is easy and necessary.
 
-## 官方教程
+## Official Tutorial
 
-如果你对AngularJS不熟悉，推荐你阅读[使用AngularJS](2014-10-25-use-angularjs.md)
+If you're not familiar with AngularJS, please refer to [Use Angular](use-angularjs.md).
 
-这里是Angular过滤器的官方网站和一个简单的示例程序，<https://docs.angularjs.org/api/ng/filter/filter>。
+Here is the official website of angular filter and a simple demo, <https://docs.angularjs.org/api/ng/filter/filter>.
 
-## 海鸥如何使用它
+## How Seagull Does It
 
-海鸥已经是实现了三个过滤器。
+Seagull has implemented three filters.
 
-第一个过滤器用于将文件大小转化为用户可读的字符串。源代码来自于<https://gist.github.com/yrezgui/5653591>。
+The first one is to convert file size into readable string. The source code is from <https://gist.github.com/yrezgui/5653591>.
 
 ```
 seagull.filter( 'filesize', function () {
@@ -43,13 +43,13 @@ seagull.filter( 'filesize', function () {
 });
 ```
 
-当我们需要输出镜像大小的时候，我们就可以使用它。
+Then we can use it when I want to print the size of images.
 
 ```
  <td>{{image.VirtualSize | filesize:2}}</td>
 ```
 
-海鸥的第二个过滤器是将数组转化成字符串。
+The second filter of seagull is to convert string array into string.
 
 ```
 seagull.filter( 'array_to_string', function () {
@@ -70,13 +70,13 @@ seagull.filter( 'array_to_string', function () {
 });
 ```
 
-然后我们就可以在seagull/static/html/images.html使用它来输出字符串数组了。
+Then we use it in seagull/static/html/images.html to print the string array.
 
 ```
  <td>{{image.RepoTags | array_to_string}}</td>
 ```
 
-第三个过滤器是将布尔型输出为“true”或者“false”。
+The third filter is to print the literal boolean as "true" or "false".
 
 ```
 /* Filter to convert boolean into string */
@@ -96,4 +96,4 @@ seagull.filter( 'boolean_to_string', function () {
 });
 ```
 
-最后海鸥就可以在任何需要输出布尔型数值的地方使用它。
+Finally seagull uses it anywhere we have to display the value of a boolean.
