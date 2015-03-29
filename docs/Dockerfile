@@ -1,15 +1,14 @@
-
-FROM ubuntu:12.04
+FROM ubuntu:14.10
 MAINTAINER tobe <tobeg3oogle@gmail.com>
 
-RUN apt-get update
+RUN apt-get -y update
 
+# Install mkdocs
 RUN apt-get install -y python-pip
-
 RUN pip install mkdocs
 
+# Add seagull docs
 ADD . /docs
-
 WORKDIR /docs
 
 EXPOSE 8000
