@@ -1,23 +1,18 @@
 site_name: Seagull Docs
 
 site_url: /
-
+use_absolute_urls: true
 dev_addr: '0.0.0.0:8000'
 
-site_description: Documentation for fast and lightweight Docker container based virtualization framework.
-
 repo_url: https://github.com/tobegit3hub/seagull
+site_description: Seagull docs.
+copyright: Copyright &copy; 2015, <a href="https://github.com/tobegit3hub/seagull">Seagull</a>.
 
 docs_dir: en
+#docs_dir: zh
 
 #include_search: true
-
-use_absolute_urls: true
-
 #theme: readthedocs
-
-#copyright: Copyright &copy; 2014, <a href="https://twitter.com/_tomchristie">Tom Christie</a>.
-#google_analytics: ['UA-27795084-5', 'mkdocs.org']
 
 pages:
 
@@ -25,7 +20,6 @@ pages:
 - ['index.md', 'Home']
 
 # User Guide
-
 - ['user_guide/2014-10-13-similar-docker-projects.md', 'User Guide', 'Similar Docker Projects']
 - ['user_guide/2014-10-15-seagull-containers-page.md', 'User Guide', 'Seagull Container Page']
 - ['user_guide/2014-10-16-seagull-images-page.md', 'User Guide', 'Seagull Images Page']
@@ -48,4 +42,3 @@ pages:
 - ['development/2014-10-29-implement-angular-filter.md', 'Development', 'Implement Angular Filter']
 - ['development/2014-10-30-use-animate-css.md', 'Development', 'Use Animate.css']
 - ['development/2014-11-02-use-drone-for-ci.md', 'Development', 'Use Drone For CI']
-
