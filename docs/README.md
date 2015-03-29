@@ -1,6 +1,6 @@
 # Docs
 
-There're excellent articles about the implement of seagull.
+There're excellent articles about the implementation of seagull.
 
 We recommend you to read all these documents if you want to learn web programming or get involved to develop seagull.
 
