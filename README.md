@@ -4,11 +4,11 @@
 
 ## Introduction
 
-Seagull is the best friend of docker which provides Web UI to monitor docker daemon.
+Seagull is the Web UI to monitor docker daemon.
 
 Everybody wants Web UI for docker and seagull is the most suitable one for you. It's super easy to install with one command. You can know everything about your images and containers in this single page application. Now English, simplified Chinese, traditional Chinese, German and French are well supported!
 
-Welcome to watch the [three-minute presentation](https://www.youtube.com/watch?v=0BAiSx7l7Y4) or go to the [demo website](http://96.126.127.93:10086).
+Welcome to watch the [three-minute video](https://www.youtube.com/watch?v=0BAiSx7l7Y4) or go to the website [dockerseagull.com](http://dockerseagull.com).
 
 ## Usage
 
@@ -22,7 +22,9 @@ Don't remember the lengthy command? [Run](https://github.com/runscripts/run) is 
 
 Seagull supports to monitor multiple servers. Make sure you start docker daemon like this.
 
-`docker -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -api-enable-cors=true -d`
+```
+docker -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -api-enable-cors=true -d
+```
 
 ## Screenshot
 
