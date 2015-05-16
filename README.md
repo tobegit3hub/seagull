@@ -16,8 +16,6 @@ Welcome to watch the [three-minute video](https://www.youtube.com/watch?v=0BAiSx
 * Then monitor your docker daemon in <http://127.0.0.1:10086>
 * For boot2docker users, please run `boot2docker ip` to find out the real IP
 
-Don't remember the lengthy command? [Run](https://github.com/runscripts/run) is well supported by `run github:tobegit3hub/seagull/run`.
-
 ## Multi-host
 
 Seagull supports to monitor multiple servers. Make sure you start docker daemon like this.
