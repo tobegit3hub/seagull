@@ -78,7 +78,7 @@
   </table>
 
   <!-- If the container is running, add a break line for the next table -->
-  <br ng-show="container.State.Running"/>
+  <h2 ng-show="container.State.Running">Processes</h2>
 
   <!-- If the container is running, display its running status -->
   <table ng-show="container.State.Running" class="table table-striped table-hover">
@@ -95,7 +95,7 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="processe in top.Processes">
+      <tr ng-repeat="processe in top.Process">
         <td>{{processe[0]}}</td>
         <td>{{processe[1]}}</td>
         <td>{{processe[2]}}</td>
@@ -107,4 +107,47 @@
     </tbody>
   </table>
 
+  <h2 ng-show="container.State.Running">Resource</h2>
+
+  <!-- If the container is running, display the resource stats -->
+  <table ng-show="container.State.Running" class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th>{{'attribute'|translate}}</th>
+      <th>{{'value'|translate}}</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td>{{'read'|translate}}</td>
+      <td>{{stats.read}}</td>
+    </tr>
+    <tr>
+      <td>{{'network_rx_bytes'|translate}}</td>
+      <td>{{stats.network.rx_bytes}}</td>
+    </tr>
+    <tr>
+      <td>{{'network_tx_bytes'|translate}}</td>
+      <td>{{stats.network.tx_bytes}}</td>
+    </tr>
+    <tr>
+      <td>{{'cpu_total_usage'|translate}}</td>
+      <td>{{stats.cpu_stats.cpu_usage.total_usage}}</td>
+    </tr>
+    <tr>
+      <td>{{'memory_usage'|translate}}</td>
+      <td>{{stats.memory_stats.usage}}</td>
+    </tr>
+    <tr>
+      <td>{{'memory_max_usage'|translate}}</td>
+      <td>{{stats.memory_stats.max_usage}}</td>
+    </tr>
+  </table>
+  <!--
+  {"read":"2015-05-27T21:24:05.914568588+08:00","network":{"rx_bytes":648,"rx_packets":8,"rx_errors":0,"rx_dropped":0,"tx_bytes":648,"tx_packets":8,"tx_errors":0,"tx_dropped":0},
+  "cpu_stats":{"cpu_usage":{"total_usage":18237355,"percpu_usage":[1410861,4663601,4933587,7229306],"usage_in_kernelmode":0,"usage_in_usermode":0},
+  "system_cpu_usage":770066880000000,"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},
+  "memory_stats":{"usage":7393280,"max_usage":7688192,"stats":{"active_anon":1392640,"active_file":180224,"cache":6017024,"hierarchical_memory_limit":9223372036854771712,"inactive_anon":16384,"inactive_file":5804032,"mapped_file":4198400,"pgfault":872,"pgmajfault":46,"pgpgin":2030,"pgpgout":225,"rss":1376256,"rss_huge":0,"total_active_anon":1392640,"total_active_file":180224,"total_cache":6017024,"total_inactive_anon":16384,"total_inactive_file":5804032,"total_mapped_file":4198400,"total_pgfault":872,"total_pgmajfault":46,"total_pgpgin":2030,"total_pgpgout":225,"total_rss":1376256,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"failcnt":0,"limit":8330776576},"blkio_stats":{"io_service_bytes_recursive":[{"major":8,"minor":0,"op":"Read","value":6012928},{"major":8,"minor":0,"op":"Write","value":0},{"major":8,"minor":0,"op":"Sync","value":0},{"major":8,"minor":0,"op":"Async","value":6012928},{"major":8,"minor":0,"op":"Total","value":6012928}],"io_serviced_recursive":[{"major":8,"minor":0,"op":"Read","value":133},{"major":8,"minor":0,"op":"Write","value":0},{"major":8,"minor":0,"op":"Sync","value":0},{"major":8,"minor":0,"op":"Async","value":133},{"major":8,"minor":0,"op":"Total","value":133}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]}}
+  -->
 </div> <!-- End of this angular page -->

@@ -383,6 +383,11 @@ seagullControllers.controller('ContainerController', ['$scope', '$rootScope', '$
     $scope.top = data;
   });
 
+  /* Get the container stats */
+  $http.get($rootScope.canonicalServer + '/containers/' + $routeParams.id + '/stats').success(function(data) {
+    $scope.stats = data;
+  });
+
   /* Refresh the page */
   $scope.refresh = function() {
     location.reload();
