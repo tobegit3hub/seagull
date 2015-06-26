@@ -7,7 +7,7 @@ docs/site/
 # Platform-sensitive executable file of go
 seagull
 
-# For Idea
+# IDE files
 seagull.iml
 .idea/
 

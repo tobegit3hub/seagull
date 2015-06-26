@@ -24,10 +24,6 @@ docker run -d -p 10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegi
 
 ![](https://raw.github.com/tobegit3hub/seagull/master/static/img/containers-page.png)
 
-![](https://raw.github.com/tobegit3hub/seagull/master/static/img/images-page.png)
-
-![](https://raw.github.com/tobegit3hub/seagull/master/static/img/configuration-page.png)
-
 ## Multi-host
 
 Seagull supports monitoring multiple servers. Make sure you start docker daemon like this.
