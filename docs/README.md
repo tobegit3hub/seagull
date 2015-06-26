@@ -31,13 +31,11 @@ You can edit `mkdocs.yml` and change for Chinese.
 * [Use Godep to manage dependency](en/development/use-godep-to-manage-dependency.md)
 * [Use JQuery.Gritter for notification](en/development/use-jquerygritter-for-notification.md)
 * [Seagull dockerfile](en/development/write-seagull-dockerfile.md)
-
 * [Seagull containers page](en/development/seagull-containers-page.md)
 * [Seagull images page](en/development/seagull-images-page.md)
 * [Seagull configuration page](en/development/seagull-configuration-page.md)
 * [Seagull dockerhub page](en/development/seagull-dockerhub-page.md)
 * [Similar docker projects](en/user_guide/similar-docker-projects.md)
-
 
 ## 目录
 
@@ -57,7 +55,6 @@ You can edit `mkdocs.yml` and change for Chinese.
 * [使用Godep管理依赖](zh/development/use-godep-to-manage-dependency.md)
 * [使用JQuery.gritter实现通知](zh/development/use-jquerygritter-for-notification.md)
 * [编写海鸥的Dockerfile](zh/development/write-seagull-dockerfile.md)
-
 * [海鸥的容器页面](zh/development/seagull-containers-page.md)
 * [海鸥的镜像页面](zh/development/seagull-images-page.md)
 * [海鸥的配置页面](zh/development/seagull-configuration-page.md)
