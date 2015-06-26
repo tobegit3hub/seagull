@@ -119,35 +119,166 @@
     </thead>
 
     <tbody>
+    <!-- Basic data -->
     <tr>
       <td>{{'read'|translate}}</td>
       <td>{{stats.read}}</td>
     </tr>
+
+    <!-- Network data -->
     <tr>
       <td>{{'network_rx_bytes'|translate}}</td>
       <td>{{stats.network.rx_bytes}}</td>
+    </tr>
+    <tr>
+        <td>{{'network_rx_packets'|translate}}</td>
+        <td>{{stats.network.rx_packets}}</td>
+    </tr>
+    <tr>
+        <td>{{'network_rx_errors'|translate}}</td>
+        <td>{{stats.network.rx_errors}}</td>
+    </tr>
+    <tr>
+        <td>{{'network_rx_dropped'|translate}}</td>
+        <td>{{stats.network.rx_dropped}}</td>
     </tr>
     <tr>
       <td>{{'network_tx_bytes'|translate}}</td>
       <td>{{stats.network.tx_bytes}}</td>
     </tr>
     <tr>
-      <td>{{'cpu_total_usage'|translate}}</td>
-      <td>{{stats.cpu_stats.cpu_usage.total_usage}}</td>
+        <td>{{'network_tx_packets'|translate}}</td>
+        <td>{{stats.network.tx_packets}}</td>
     </tr>
     <tr>
-      <td>{{'memory_usage'|translate}}</td>
-      <td>{{stats.memory_stats.usage}}</td>
+        <td>{{'network_tx_errors'|translate}}</td>
+        <td>{{stats.network.tx_errors}}</td>
     </tr>
     <tr>
-      <td>{{'memory_max_usage'|translate}}</td>
-      <td>{{stats.memory_stats.max_usage}}</td>
+        <td>{{'network_tx_dropped'|translate}}</td>
+        <td>{{stats.network.tx_dropped}}</td>
     </tr>
+
+    <!-- CPU data -->
+    <tr>
+        <td>{{'cpu_total_usage'|translate}}</td>
+        <td>{{stats.cpu_stats.cpu_usage.total_usage}}</td>
+    </tr>
+    <tr>
+        <td>{{'cpu_usage_in_kernelmode'|translate}}</td>
+        <td>{{stats.cpu_stats.cpu_usage.usage_in_kernelmode}}</td>
+    </tr>
+    <tr>
+        <td>{{'cpu_usage_in_usermode'|translate}}</td>
+        <td>{{stats.cpu_stats.cpu_usage.usage_in_usermode}}</td>
+    </tr>
+    <tr>
+        <td>{{'cpu_system_cpu_usage'|translate}}</td>
+        <td>{{stats.cpu_stats.system_cpu_usage}}</td>
+    </tr>
+    <tr>
+        <td>{{'cpu_throttling_periods'|translate}}</td>
+        <td>{{stats.cpu_stats.throttling_data.periods}}</td>
+    </tr>
+    <tr>
+        <td>{{'cpu_throttling_throttled_periods'|translate}}</td>
+        <td>{{stats.cpu_stats.throttling_data.throttled_periods}}</td>
+    </tr>
+    <tr>
+        <td>{{'cpu_throttling_throttled_time'|translate}}</td>
+        <td>{{stats.cpu_stats.throttling_data.throttled_time}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_usage'|translate}}</td>
+        <td>{{stats.memory_stats.usage}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_max_usage'|translate}}</td>
+        <td>{{stats.memory_stats.max_usage}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_active_anon'|translate}}</td>
+        <td>{{stats.memory_stats.stats.active_anon}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_active_file'|translate}}</td>
+        <td>{{stats.memory_stats.stats.active_file}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_cache'|translate}}</td>
+        <td>{{stats.memory_stats.stats.cache}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_hierarchical_memory_limit'|translate}}</td>
+        <td>{{stats.memory_stats.stats.hierarchical_memory_limit}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_inactive_anon'|translate}}</td>
+        <td>{{stats.memory_stats.stats.inactive_anon}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_inactive_file'|translate}}</td>
+        <td>{{stats.memory_stats.stats.inactive_file}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_mapped_file'|translate}}</td>
+        <td>{{stats.memory_stats.stats.mapped_file}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_pgfault'|translate}}</td>
+        <td>{{stats.memory_stats.stats.pgfault}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_pgpgin'|translate}}</td>
+        <td>{{stats.memory_stats.stats.pgpgin}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_pgpgout'|translate}}</td>
+        <td>{{stats.memory_stats.stats.pgpgout}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_rss'|translate}}</td>
+        <td>{{stats.memory_stats.stats.rss}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_rss_huge'|translate}}</td>
+        <td>{{stats.memory_stats.stats.rss_huge}}</td>
+    </tr>
+    <!-- TODO: These data is not used yet
+    total_active_anon: 1585152,
+    total_active_file: 24576,
+    total_cache: 278528,
+    total_inactive_anon: 4096,
+    total_inactive_file: 241664,
+    total_mapped_file: 0,
+    total_pgfault: 888,
+    total_pgmajfault: 6,
+    total_pgpgin: 687,
+    total_pgpgout: 234,
+    total_rss: 1576960,
+    total_rss_huge: 0,
+    total_unevictable: 0,
+    total_writeback: 0,
+    -->
+    <tr>
+        <td>{{'memory_unevictable'|translate}}</td>
+        <td>{{stats.memory_stats.stats.unevictable}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_writeback'|translate}}</td>
+        <td>{{stats.memory_stats.stats.writeback}}</td>
+    </tr>
+
+    <tr>
+        <td>{{'memory_failcnt'|translate}}</td>
+        <td>{{stats.memory_stats.failcnt}}</td>
+    </tr>
+    <tr>
+        <td>{{'memory_limit'|translate}}</td>
+        <td>{{stats.memory_stats.limit}}</td>
+    </tr>
+
+    <!-- Blkio data(TODO: currently not parse array data) -->
   </table>
-  <!--
-  {"read":"2015-05-27T21:24:05.914568588+08:00","network":{"rx_bytes":648,"rx_packets":8,"rx_errors":0,"rx_dropped":0,"tx_bytes":648,"tx_packets":8,"tx_errors":0,"tx_dropped":0},
-  "cpu_stats":{"cpu_usage":{"total_usage":18237355,"percpu_usage":[1410861,4663601,4933587,7229306],"usage_in_kernelmode":0,"usage_in_usermode":0},
-  "system_cpu_usage":770066880000000,"throttling_data":{"periods":0,"throttled_periods":0,"throttled_time":0}},
-  "memory_stats":{"usage":7393280,"max_usage":7688192,"stats":{"active_anon":1392640,"active_file":180224,"cache":6017024,"hierarchical_memory_limit":9223372036854771712,"inactive_anon":16384,"inactive_file":5804032,"mapped_file":4198400,"pgfault":872,"pgmajfault":46,"pgpgin":2030,"pgpgout":225,"rss":1376256,"rss_huge":0,"total_active_anon":1392640,"total_active_file":180224,"total_cache":6017024,"total_inactive_anon":16384,"total_inactive_file":5804032,"total_mapped_file":4198400,"total_pgfault":872,"total_pgmajfault":46,"total_pgpgin":2030,"total_pgpgout":225,"total_rss":1376256,"total_rss_huge":0,"total_unevictable":0,"total_writeback":0,"unevictable":0,"writeback":0},"failcnt":0,"limit":8330776576},"blkio_stats":{"io_service_bytes_recursive":[{"major":8,"minor":0,"op":"Read","value":6012928},{"major":8,"minor":0,"op":"Write","value":0},{"major":8,"minor":0,"op":"Sync","value":0},{"major":8,"minor":0,"op":"Async","value":6012928},{"major":8,"minor":0,"op":"Total","value":6012928}],"io_serviced_recursive":[{"major":8,"minor":0,"op":"Read","value":133},{"major":8,"minor":0,"op":"Write","value":0},{"major":8,"minor":0,"op":"Sync","value":0},{"major":8,"minor":0,"op":"Async","value":133},{"major":8,"minor":0,"op":"Total","value":133}],"io_queue_recursive":[],"io_service_time_recursive":[],"io_wait_time_recursive":[],"io_merged_recursive":[],"io_time_recursive":[],"sectors_recursive":[]}}
-  -->
+
 </div> <!-- End of this angular page -->

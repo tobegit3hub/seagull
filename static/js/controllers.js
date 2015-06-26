@@ -326,50 +326,145 @@ seagullControllers.controller('ContainerController', ['$scope', '$rootScope', '$
 
   /* Docker stats response data
   {
-    read: "2015-02-12T12:00:52.090624461Z",
-    network: {
-      rx_bytes: 648,
-      rx_packets: 8,
-      rx_errors: 0,
-      rx_dropped: 0,
-      tx_bytes: 648,
-      tx_packets: 8,
-      tx_errors: 0,
-      tx_dropped: 0
-    },
-    cpu_stats: {
-      cpu_usage: {
-        total_usage: 37191018,
-        percpu_usage: [
-          37191018
-        ],
-        usage_in_kernelmode: 10000000,
-        usage_in_usermode: 10000000
-      },
-      system_cpu_usage: 6146786210000000,
-      throttling_data: {
-        periods: 0,
-        throttled_periods: 0,
-        throttled_time: 0
-      }
-    },
-    memory_stats: {
-      usage: 0,
-      max_usage: 0,
-      stats: { },
-      failcnt: 0,
-      limit: 1037299712
-    },
-    blkio_stats: {
-      io_service_bytes_recursive: [ ],
-      io_serviced_recursive: [ ],
-      io_queue_recursive: [ ],
-      io_service_time_recursive: [ ],
-      io_wait_time_recursive: [ ],
-      io_merged_recursive: [ ],
-      io_time_recursive: [ ],
-      sectors_recursive: [ ]
-    }
+   read: "2015-06-26T20:46:48.370740376+08:00",
+   network: {
+     rx_bytes: 648,
+     rx_packets: 8,
+     rx_errors: 0,
+     rx_dropped: 0,
+     tx_bytes: 648,
+     tx_packets: 8,
+     tx_errors: 0,
+     tx_dropped: 0
+   },
+   cpu_stats: {
+     cpu_usage: {
+       total_usage: 22209029,
+       percpu_usage: [
+         12950040,
+         3858257,
+         1717359,
+         3683373
+       ],
+       usage_in_kernelmode: 0,
+       usage_in_usermode: 10000000
+     },
+     system_cpu_usage: 1066183930000000,
+     throttling_data: {
+       periods: 0,
+       throttled_periods: 0,
+       throttled_time: 0
+     }
+   },
+   memory_stats: {
+     usage: 1855488,
+     max_usage: 2297856,
+     stats: {
+       active_anon: 1585152,
+       active_file: 24576,
+       cache: 278528,
+       hierarchical_memory_limit: 9223372036854772000,
+       inactive_anon: 4096,
+       inactive_file: 241664,
+       mapped_file: 0,
+       pgfault: 888,
+       pgmajfault: 6,
+       pgpgin: 687,
+       pgpgout: 234,
+       rss: 1576960,
+       rss_huge: 0,
+       total_active_anon: 1585152,
+       total_active_file: 24576,
+       total_cache: 278528,
+       total_inactive_anon: 4096,
+       total_inactive_file: 241664,
+       total_mapped_file: 0,
+       total_pgfault: 888,
+       total_pgmajfault: 6,
+       total_pgpgin: 687,
+       total_pgpgout: 234,
+       total_rss: 1576960,
+       total_rss_huge: 0,
+       total_unevictable: 0,
+       total_writeback: 0,
+       unevictable: 0,
+       writeback: 0
+     },
+     failcnt: 0,
+     limit: 8330768384
+   },
+   blkio_stats: {
+     io_service_bytes_recursive: [
+       {
+         major: 8,
+         minor: 0,
+         op: "Read",
+         value: 282624
+       },
+       {
+         major: 8,
+         minor: 0,
+         op: "Write",
+         value: 0
+       },
+       {
+         major: 8,
+         minor: 0,
+         op: "Sync",
+         value: 0
+       },
+       {
+         major: 8,
+         minor: 0,
+         op: "Async",
+         value: 282624
+       },
+       {
+         major: 8,
+         minor: 0,
+         op: "Total",
+         value: 282624
+       }
+     ],
+     io_serviced_recursive: [
+       {
+         major: 8,
+         minor: 0,
+         op: "Read",
+         value: 25
+       },
+       {
+         major: 8,
+         minor: 0,
+         op: "Write",
+         value: 0
+       },
+       {
+         major: 8,
+         minor: 0,
+         op: "Sync",
+         value: 0
+       },
+       {
+         major: 8,
+         minor: 0,
+         op: "Async",
+         value: 25
+       },
+       {
+         major: 8,
+         minor: 0,
+         op: "Total",
+         value: 25
+       }
+     ],
+     io_queue_recursive: [ ],
+     io_service_time_recursive: [ ],
+     io_wait_time_recursive: [ ],
+     io_merged_recursive: [ ],
+     io_time_recursive: [ ],
+     sectors_recursive: [ ]
+   }
   }
   */
 
