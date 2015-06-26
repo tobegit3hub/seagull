@@ -38,13 +38,13 @@ docker -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -api-enable-cors=tru
 
 ## Get Involved
 
-Seagull is implemented in Go with tools like Beego, AngularJS, Bootstrap, Bower, JQuery and Docker. Feel free to fork and send pull-requests for us.
+Seagull is written in Go with tools like Docker, Beego, AngularJS, Bootstrap and JQuery.
 
-* Install golang and setup `$GOPATH`
-* `go get github.com/astaxie/beego`
-* `go get github.com/tobegit3hub/seagull`
-* `go build seagull.go`
-* `sudo ./seagull`
+1. Install golang and setup `$GOPATH`
+2. `go get github.com/astaxie/beego`
+3. `go get github.com/tobegit3hub/seagull`
+4. `go build seagull.go`
+5. `sudo ./seagull`
 
 More detail in [seagull-design-and-implement](docs/en/development/seagull-design-and-implement.md) and we have excellent documents in [docs](docs/).
 
