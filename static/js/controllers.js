@@ -25,29 +25,23 @@ function alert_error(message) {
 var seagullControllers = angular.module('seagullControllers', []);
 
 /* This controller to get comment from beego api */
-seagullControllers.controller('HomeController', ['$scope', '$rootScope', '$routeParams', '$http',
-  function($scope, $rootScope, $routeParams, $http) {
+seagullControllers.controller('HomeController',
+  function($scope, $rootScope, $routeParams, version, info) {
 
-  /* Get the version object */
-  $http.get($rootScope.canonicalServer + '/version').success(function(data) {
-    $scope.version = data;
-    $scope.Os = $scope.version.Os;
-    $scope.KernelVersion = $scope.version.KernelVersion;
-    $scope.GoVersion = $scope.version.GoVersion;
-    $scope.Version = $scope.version.Version;
-  });
+  $scope.version = version;
+  $scope.Os = $scope.version.Os;
+  $scope.KernelVersion = $scope.version.KernelVersion;
+  $scope.GoVersion = $scope.version.GoVersion;
+  $scope.Version = $scope.version.Version;
 
-  /* Get the info object */
-  $http.get($rootScope.canonicalServer + '/info').success(function(data) {
-    $scope.info = data;
-    $scope.Containers = $scope.info.Containers;
-    $scope.Images = $scope.info.Images;
-  });
-}]);
+  $scope.info = info;
+  $scope.Containers = $scope.info.Containers;
+  $scope.Images = $scope.info.Images;
+});
 
 /* Contaienrs controller requests beego API server to get/start/stop/delete containers */
-seagullControllers.controller('ContainersController', ['$scope', '$rootScope', '$routeParams', '$http', '$cookies',
-  function($scope, $rootScope, $routeParams, $http, $cookies) {
+seagullControllers.controller('ContainersController',
+  function($scope, $rootScope, $routeParams, $http, $cookies, allContainers, runningContainers) {
 
   $scope.predicate = '';
   $scope.reverse = false;
@@ -71,23 +65,19 @@ seagullControllers.controller('ContainersController', ['$scope', '$rootScope', '
 
   /* Check cookies and get all or running container objects */
   if ($cookies.isAllContainers === "true") {
-    $http.get($rootScope.canonicalServer + '/containers/json?all=1').success(function(data) {
-      $scope.currentFilterString = "All"
-      $scope.isAllContainers = true;
-      $scope.containers = data;
-    });
+    $scope.currentFilterString = "All";
+    $scope.isAllContainers = true;
+    $scope.containers = allContainers;
   } else {
-    $http.get($rootScope.canonicalServer + '/containers/json?all=0').success(function(data) {
-      $scope.currentFilterString = "Running"
-      $scope.isAllContainers = false;
-      $scope.containers = data;
-    });
+    $scope.currentFilterString = "Running";
+    $scope.isAllContainers = false;
+    $scope.containers = runningContainers;
   }
 
   /* Get all containers objects */
   $scope.getAllContainers = function() {
     $http.get($rootScope.canonicalServer + '/containers/json?all=1').success(function(data) {
-      $scope.currentFilterString = "All"
+      $scope.currentFilterString = "All";
       $scope.isAllContainers = true;
       $cookies.isAllContainers = "true";
       $scope.containers = data;
@@ -98,7 +88,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$rootScope', '
   /* Get running containers objects */
   $scope.getRunningContainers = function() {
     $http.get($rootScope.canonicalServer + '/containers/json?all=0').success(function(data) {
-      $scope.currentFilterString = "Running"
+      $scope.currentFilterString = "Running";
       $scope.isAllContainers = false;
       $cookies.isAllContainers = "no";
       $scope.containers = data;
@@ -231,7 +221,7 @@ seagullControllers.controller('ContainersController', ['$scope', '$rootScope', '
     });
   };
 
-}]);
+});
 
 /*
  * Contaienr controller requests beego API server to get/start/stop/delete container
@@ -566,8 +556,8 @@ seagullControllers.controller('ContainerController', ['$scope', '$rootScope', '$
 }]);
 
 /* Images controller requests beego API server to get/delete images */
-seagullControllers.controller('ImagesController', ['$scope', '$rootScope', '$routeParams', '$http',
-  function($scope, $rootScope, $routeParams, $http) {
+seagullControllers.controller('ImagesController',
+  function($scope, $rootScope, $routeParams, $http, images) {
 
   /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#inspect-an-image
     [{
@@ -588,10 +578,7 @@ seagullControllers.controller('ImagesController', ['$scope', '$rootScope', '$rou
   $scope.predicate = '';
   $scope.reverse = false;
 
-  /* Request beego API server to get images */
-  $http.get($rootScope.canonicalServer + '/images/json').success(function(data) {
-    $scope.images = data;
-  });
+  $scope.images = images;
 
   /* Request beego API server to delete image */
   $scope.deleteImage = function(id) {
@@ -613,14 +600,14 @@ seagullControllers.controller('ImagesController', ['$scope', '$rootScope', '$rou
       alert_error("Delete image " + id.substring(0,12));
     });
   };
-}]);
+});
 
 /*
  * Image controller requests beego API server to get image
  * Todo: Remove the duplicated code from ImagesController
  */
-seagullControllers.controller('ImageController', ['$scope', '$rootScope', '$routeParams', '$http',
-  function($scope, $rootScope, $routeParams, $http) {
+seagullControllers.controller('ImageController',
+  function($scope, $rootScope, $routeParams, image) {
 
   /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#inspect-an-image
     {
@@ -715,21 +702,12 @@ seagullControllers.controller('ImageController', ['$scope', '$rootScope', '$rout
     }
   */
 
-  /* Request beego API server to get image */
-  if(typeof $routeParams.id === 'undefined' || $routeParams.id == null){
-    $http.get($rootScope.canonicalServer + '/images/' + $routeParams.user + "/" + $routeParams.repo + '/json').success(function(data) {
-      $scope.image = data;
-    });
-  }else{
-    $http.get($rootScope.canonicalServer + '/images/' + $routeParams.id + '/json').success(function(data) {
-      $scope.image = data;
-    });
-  };
-}]);
+  $scope.image = image;
+});
 
 /* Contaienrs controller requests beego API server to get configuration */
-seagullControllers.controller('ConfigurationController', ['$scope', '$rootScope', '$routeParams', '$http',
-  function($scope, $rootScope, $routeParams, $http) {
+seagullControllers.controller('ConfigurationController',
+  function($scope, $rootScope, $routeParams, $http, version, info) {
 
     /* Refer to https://docs.docker.com/reference/api/docker_remote_api_v1.14/#show-the-docker-version-information
       {
@@ -772,20 +750,14 @@ seagullControllers.controller('ConfigurationController', ['$scope', '$rootScope'
       }
     */
 
-  /*   /* Request beego API server to get the version object */
-  $http.get($rootScope.canonicalServer + '/version').success(function(data) {
-    $scope.version = data;
-  });
+  $scope.version = version;
+  $scope.info = info;
 
-  /* Request beego API server to get the info object */
-  $http.get($rootScope.canonicalServer + '/info').success(function(data) {
-    $scope.info = data;
-  });
-}]);
+});
 
 /* Dockerhub controller requests beego API server to get search images */
-seagullControllers.controller('DockerhubController', ['$scope', '$rootScope', '$routeParams', '$http',
-  function($scope, $rootScope, $routeParams, $http) {
+seagullControllers.controller('DockerhubController',
+  function($scope, $rootScope, $routeParams, $http, images) {
 
   /*
     [{
@@ -797,14 +769,7 @@ seagullControllers.controller('DockerhubController', ['$scope', '$rootScope', '$
     }]
   */
 
-  /* Display the loading icon before get search images */
-  $scope.isSearching = true;
-
-  /* Request beego API server to get search images, default is seagull */
-  $http.get($rootScope.canonicalServer + '/images/search?term=seagull').success(function(data) {
-    $scope.isSearching = false;
-    $scope.images = data;
-  });
+  $scope.images = images;
 
   /* Request beego API server to get search images */
   $scope.getSearchImages = function(term) {
@@ -834,4 +799,4 @@ seagullControllers.controller('DockerhubController', ['$scope', '$rootScope', '$
 
     return address;
   };
-}]);
+});

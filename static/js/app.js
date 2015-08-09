@@ -50,11 +50,37 @@ seagull.config(['$locationProvider', '$routeProvider',
     $routeProvider.
       when('/', {
         templateUrl: '/static/html/home.html',
-        controller: 'HomeController'
+        controller: 'HomeController',
+        resolve: {
+          version: function($rootScope, $http) {
+            /* Get the version object */
+            return $http.get($rootScope.canonicalServer + '/version').then(function(response) {
+              return response.data;
+            });
+          },
+          info: function($rootScope, $http) {
+            /* Get the info object */
+            return $http.get($rootScope.canonicalServer + '/info').then(function(response) {
+              return response.data;
+            });
+          }
+        }
       }).
       when('/containers', {
         templateUrl: '/static/html/containers.html',
-        controller: 'ContainersController'
+        controller: 'ContainersController',
+        resolve: {
+          allContainers: function($rootScope, $http) {
+            return $http.get($rootScope.canonicalServer + '/containers/json?all=1').then(function(response) {
+              return response.data;
+            });
+          },
+          runningContainers: function($rootScope, $http) {
+            return $http.get($rootScope.canonicalServer + '/containers/json?all=0').then(function(response) {
+              return response.data;
+            });
+          }
+        }
       }).
       when('/containers/:id', {
         templateUrl: '/static/html/container.html',
@@ -62,23 +88,68 @@ seagull.config(['$locationProvider', '$routeProvider',
       }).
       when('/images', {
         templateUrl: '/static/html/images.html',
-        controller: 'ImagesController'
+        controller: 'ImagesController',
+        resolve: {
+          images: function($rootScope, $http) {
+            /* Request beego API server to get images */
+            return $http.get($rootScope.canonicalServer + '/images/json').then(function(response) {
+              return response.data;
+            });
+          }
+        }
       }).
       when('/images/:id', {
         templateUrl: '/static/html/image.html',
-        controller: 'ImageController'
+        controller: 'ImageController',
+        resolve: {
+          image: function($rootScope, $route, $http) {
+            /* Request beego API server to get image */
+            return $http.get($rootScope.canonicalServer + '/images/' + $route.current.params.id + '/json').then(function(response) {
+              return response.data;
+            });
+          }
+        }
       }).
       when('/images/:user/:repo', {
         templateUrl: '/static/html/image.html',
-        controller: 'ImageController'
+        controller: 'ImageController',
+        resolve: {
+          image: function($rootScope, $route, $http) {
+            return $http.get($rootScope.canonicalServer + '/images/' + $route.current.params.user + "/" + $route.current.params.repo + '/json').then(function(response) {
+              return response.data;
+            });
+          }
+        }
       }).
       when('/configuration', {
         templateUrl: '/static/html/configuration.html',
-        controller: 'ConfigurationController'
+        controller: 'ConfigurationController',
+        resolve: {
+          version: function($rootScope, $http) {
+            /* Request beego API server to get the version object */
+            return $http.get($rootScope.canonicalServer + '/version').then(function(response) {
+              return response.data
+            });
+          },
+          info: function($rootScope, $http) {
+            /* Request beego API server to get the info object */
+            return $http.get($rootScope.canonicalServer + '/info').then(function(response) {
+              return response.data;
+            });
+          }
+        }
       }).
       when('/dockerhub', {
         templateUrl: '/static/html/dockerhub.html',
-        controller: 'DockerhubController'
+        controller: 'DockerhubController',
+        resolve: {
+          images: function($rootScope, $http) {
+            /* Request beego API server to get search images, default is seagull */
+            return $http.get($rootScope.canonicalServer + '/images/search?term=seagull').then(function(response) {
+              return response.data;
+            });
+          }
+        }
       });
       /* No default page for angular so that beego can process API request
       otherwise({
