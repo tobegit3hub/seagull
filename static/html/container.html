@@ -86,6 +86,7 @@
       <tr>
         <th>{{'uid'|translate}}</th>
         <th>{{'pid'|translate}}</th>
+        <th>{{'ppid'|translate}}</th>
         <th>{{'c'|translate}}</th>
         <th>{{'stime'|translate}}</th>
         <th>{{'tty'|translate}}</th>
@@ -95,7 +96,7 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="processe in top.Process">
+      <tr ng-repeat="processe in top.Processes">
         <td>{{processe[0]}}</td>
         <td>{{processe[1]}}</td>
         <td>{{processe[2]}}</td>
@@ -103,6 +104,8 @@
         <td>{{processe[4]}}</td>
         <td>{{processe[5]}}</td>
         <td>{{processe[6]}}</td>
+        <td>{{processe[7]}}</td>
+
       </tr>
     </tbody>
   </table>
