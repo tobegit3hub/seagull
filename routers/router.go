@@ -33,4 +33,5 @@ func init() {
 	beego.Router("/dockerapi/images/search", &controllers.DockerapiController{}, "get:GetSearchImages")
 	// beego.Router("/dockerapi/events", &controllers.DockerapiController{}, "get:GetEvents") // Not support yet
 	beego.Router("/dockerapi/_ping", &controllers.DockerapiController{}, "get:Ping")
+        beego.Router("/dockerapi/containers/:id/restart", &controllers.DockerapiController{}, "post:RestartContainer")
 }
