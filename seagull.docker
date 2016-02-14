@@ -1,0 +1,22 @@
+FROM alpine:3.3
+MAINTAINER tobe "tobeg3oogle@gmail.com"
+MAINTAINER Florin Patan "florinpatan@gmail.com"
+
+ARG BINARY_FILE
+
+# DNS stuff
+RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
+
+# SSL certs
+RUN apk add --update ca-certificates \
+    && rm -rf /var/cache/apk/*
+
+# Binary
+ADD conf/app.conf /seagull/conf/app.conf
+COPY views /seagull/views
+COPY static /seagull/static
+ADD $BINARY_FILE /seagull/seagull
+
+# Runtime
+EXPOSE 10086
+CMD ["/seagull/seagull"]
