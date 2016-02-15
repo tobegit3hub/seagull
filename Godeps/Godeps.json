@@ -1,11 +1,32 @@
 {
 	"ImportPath": "github.com/tobegit3hub/seagull",
-	"GoVersion": "go1.1.2",
+	"GoVersion": "go1.5",
+	"Packages": [
+		"./..."
+	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/astaxie/beego",
-			"Comment": "v1.4.3-4-gc4aa33f",
-			"Rev": "c4aa33fb1b7ee01fa7dcc9bb29bbdf408b47fa72"
+			"Comment": "v1.6.0-9-gfbb98fb",
+			"Rev": "fbb98fbe1fe5f6a4209772b44e2547714992340c"
+		},
+		{
+			"ImportPath": "github.com/gopherjs/gopherjs/js",
+			"Rev": "92fdcd6510eab1f81f1b4e03bc18e6c8a763a05b"
+		},
+		{
+			"ImportPath": "github.com/jtolds/gls",
+			"Rev": "8ddce2a84170772b95dd5d576c48d517b22cac63"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions",
+			"Comment": "1.5.0-414-g287b434",
+			"Rev": "287b4346dc4e71a038c346375a9d572453bc469b"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey",
+			"Comment": "1.6.0-13-gbf58a9a",
+			"Rev": "bf58a9a1291224109919756b4dcc469c670cc7e4"
 		}
 	]
 }
