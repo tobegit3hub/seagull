@@ -23,11 +23,11 @@ import (
 type dbIndex struct {
 	Table string
 	Name  string
-	Sql   string
+	SQL   string
 }
 
 // create database drop sql.
-func getDbDropSql(al *alias) (sqls []string) {
+func getDbDropSQL(al *alias) (sqls []string) {
 	if len(modelCache.cache) == 0 {
 		fmt.Println("no Model found, need register your model")
 		os.Exit(2)
@@ -45,13 +45,14 @@ func getDbDropSql(al *alias) (sqls []string) {
 func getColumnTyp(al *alias, fi *fieldInfo) (col string) {
 	T := al.DbBaser.DbTypes()
 	fieldType := fi.fieldType
+	fieldSize := fi.size
 
 checkColumn:
 	switch fieldType {
 	case TypeBooleanField:
 		col = T["bool"]
 	case TypeCharField:
-		col = fmt.Sprintf(T["string"], fi.size)
+		col = fmt.Sprintf(T["string"], fieldSize)
 	case TypeTextField:
 		col = T["string-text"]
 	case TypeDateField:
@@ -65,7 +66,7 @@ checkColumn:
 	case TypeIntegerField:
 		col = T["int32"]
 	case TypeBigIntegerField:
-		if al.Driver == DR_Sqlite {
+		if al.Driver == DRSqlite {
 			fieldType = TypeIntegerField
 			goto checkColumn
 		}
@@ -89,6 +90,7 @@ checkColumn:
 		}
 	case RelForeignKey, RelOneToOne:
 		fieldType = fi.relModelInfo.fields.pk.fieldType
+		fieldSize = fi.relModelInfo.fields.pk.size
 		goto checkColumn
 	}
 
@@ -112,7 +114,7 @@ func getColumnAddQuery(al *alias, fi *fieldInfo) string {
 }
 
 // create database creation string.
-func getDbCreateSql(al *alias) (sqls []string, tableIndexes map[string][]dbIndex) {
+func getDbCreateSQL(al *alias) (sqls []string, tableIndexes map[string][]dbIndex) {
 	if len(modelCache.cache) == 0 {
 		fmt.Println("no Model found, need register your model")
 		os.Exit(2)
@@ -142,7 +144,7 @@ func getDbCreateSql(al *alias) (sqls []string, tableIndexes map[string][]dbIndex
 
 			if fi.auto {
 				switch al.Driver {
-				case DR_Sqlite, DR_Postgres:
+				case DRSqlite, DRPostgres:
 					column += T["auto"]
 				default:
 					column += col + " " + T["auto"]
@@ -201,7 +203,7 @@ func getDbCreateSql(al *alias) (sqls []string, tableIndexes map[string][]dbIndex
 		sql += strings.Join(columns, ",\n")
 		sql += "\n)"
 
-		if al.Driver == DR_MySQL {
+		if al.Driver == DRMySQL {
 			var engine string
 			if mi.model != nil {
 				engine = getTableEngine(mi.addrField)
@@ -237,7 +239,7 @@ func getDbCreateSql(al *alias) (sqls []string, tableIndexes map[string][]dbIndex
 			index := dbIndex{}
 			index.Table = mi.table
 			index.Name = name
-			index.Sql = sql
+			index.SQL = sql
 
 			tableIndexes[mi.table] = append(tableIndexes[mi.table], index)
 		}
@@ -262,14 +264,18 @@ func getColumnDefault(fi *fieldInfo) string {
 
 	// These defaults will be useful if there no config value orm:"default" and NOT NULL is on
 	switch fi.fieldType {
-	case TypeDateField, TypeDateTimeField:
+	case TypeDateField, TypeDateTimeField, TypeTextField:
 		return v
 
-	case TypeBooleanField, TypeBitField, TypeSmallIntegerField, TypeIntegerField,
+	case TypeBitField, TypeSmallIntegerField, TypeIntegerField,
 		TypeBigIntegerField, TypePositiveBitField, TypePositiveSmallIntegerField,
 		TypePositiveIntegerField, TypePositiveBigIntegerField, TypeFloatField,
 		TypeDecimalField:
+		t = " DEFAULT %s "
 		d = "0"
+	case TypeBooleanField:
+		t = " DEFAULT %s "
+		d = "FALSE"
 	}
 
 	if fi.colDefault {

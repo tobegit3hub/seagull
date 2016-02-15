@@ -16,6 +16,9 @@ func init() {
 	_, file, _, _ := runtime.Caller(1)
 	apppath, _ := filepath.Abs(filepath.Dir(filepath.Join(file, ".."+string(filepath.Separator))))
 	beego.TestBeegoInit(apppath)
+	if err := beego.BuildTemplate(apppath+string(filepath.Separator)+"views", "index.html"); err != nil {
+		panic(err)
+	}
 }
 
 // TestMain is a sample to run an endpoint test
