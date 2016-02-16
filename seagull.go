@@ -7,6 +7,6 @@ import (
 
 /* The main function of beego application */
 func main() {
-     	// Build the binary to run web server
+	// Build the binary to run web server
 	beego.Run()
 }

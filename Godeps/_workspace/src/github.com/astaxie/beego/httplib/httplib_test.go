@@ -180,7 +180,7 @@ func TestToJson(t *testing.T) {
 		Origin string `json:"origin"`
 	}
 	var ip Ip
-	err = req.ToJson(&ip)
+	err = req.ToJSON(&ip)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -25,7 +25,7 @@ func TestCache(t *testing.T) {
 	if err != nil {
 		t.Error("init err")
 	}
-	if err = bm.Put("astaxie", 1, 10); err != nil {
+	if err = bm.Put("astaxie", 1, 10*time.Second); err != nil {
 		t.Error("set Error", err)
 	}
 	if !bm.IsExist("astaxie") {
@@ -42,7 +42,7 @@ func TestCache(t *testing.T) {
 		t.Error("check err")
 	}
 
-	if err = bm.Put("astaxie", 1, 10); err != nil {
+	if err = bm.Put("astaxie", 1, 10*time.Second); err != nil {
 		t.Error("set Error", err)
 	}
 
@@ -72,7 +72,7 @@ func TestFileCache(t *testing.T) {
 	if err != nil {
 		t.Error("init err")
 	}
-	if err = bm.Put("astaxie", 1, 10); err != nil {
+	if err = bm.Put("astaxie", 1, 10*time.Second); err != nil {
 		t.Error("set Error", err)
 	}
 	if !bm.IsExist("astaxie") {
@@ -103,7 +103,7 @@ func TestFileCache(t *testing.T) {
 		t.Error("delete err")
 	}
 	//test string
-	if err = bm.Put("astaxie", "author", 10); err != nil {
+	if err = bm.Put("astaxie", "author", 10*time.Second); err != nil {
 		t.Error("set Error", err)
 	}
 	if !bm.IsExist("astaxie") {

@@ -13,7 +13,7 @@ Here's almost all the code of it.
 
 ```
 func (this *MainController) Get() {
-  this.TplNames = "index.html"
+  this.TplName = "index.html"
   this.Render()
 }
 ```

@@ -29,7 +29,7 @@ func serverStaticRouter(ctx *context.Context) {
 	if ctx.Input.Method() != "GET" && ctx.Input.Method() != "HEAD" {
 		return
 	}
-	requestPath := path.Clean(ctx.Input.Request.URL.Path)
+	requestPath := path.Clean(ctx.Input.Context.Request.URL.Path)
 	i := 0
 	for prefix, staticDir := range StaticDir {
 		if len(prefix) == 0 {
@@ -68,8 +68,8 @@ func serverStaticRouter(ctx *context.Context) {
 				if !DirectoryIndex {
 					exception("403", ctx)
 					return
-				} else if ctx.Input.Request.URL.Path[len(ctx.Input.Request.URL.Path)-1] != '/' {
-					http.Redirect(ctx.ResponseWriter, ctx.Request, ctx.Input.Request.URL.Path+"/", 302)
+				} else if ctx.Input.Context.Request.URL.Path[len(ctx.Input.Context.Request.URL.Path)-1] != '/' {
+					http.Redirect(ctx.ResponseWriter, ctx.Request, ctx.Input.Context.Request.URL.Path+"/", 302)
 					return
 				}
 			} else if strings.HasSuffix(requestPath, "/index.html") {

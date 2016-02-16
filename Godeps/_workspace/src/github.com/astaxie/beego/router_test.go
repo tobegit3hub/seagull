@@ -45,7 +45,7 @@ func (tc *TestController) List() {
 }
 
 func (tc *TestController) Params() {
-	tc.Ctx.Output.Body([]byte(tc.Ctx.Input.Params["0"] + tc.Ctx.Input.Params["1"] + tc.Ctx.Input.Params["2"]))
+	tc.Ctx.Output.Body([]byte(tc.Ctx.Input.Param("0"] + tc.Ctx.Input.Params["1"] + tc.Ctx.Input.Params["2")))
 }
 
 func (tc *TestController) Myext() {
@@ -53,7 +53,7 @@ func (tc *TestController) Myext() {
 }
 
 func (tc *TestController) GetUrl() {
-	tc.Ctx.Output.Body([]byte(tc.UrlFor(".Myext")))
+	tc.Ctx.Output.Body([]byte(tc.URLFor(".Myext")))
 }
 
 func (t *TestController) GetParams() {
@@ -76,7 +76,7 @@ type JsonController struct {
 
 func (this *JsonController) Prepare() {
 	this.Data["json"] = "prepare"
-	this.ServeJson(true)
+	this.ServeJSON(true)
 }
 
 func (this *JsonController) Get() {
@@ -88,11 +88,11 @@ func TestUrlFor(t *testing.T) {
 	handler := NewControllerRegister()
 	handler.Add("/api/list", &TestController{}, "*:List")
 	handler.Add("/person/:last/:first", &TestController{}, "*:Param")
-	if a := handler.UrlFor("TestController.List"); a != "/api/list" {
+	if a := handler.URLFor("TestController.List"); a != "/api/list" {
 		Info(a)
 		t.Errorf("TestController.List must equal to /api/list")
 	}
-	if a := handler.UrlFor("TestController.Param", ":last", "xie", ":first", "asta"); a != "/person/xie/asta" {
+	if a := handler.URLFor("TestController.Param", ":last", "xie", ":first", "asta"); a != "/person/xie/asta" {
 		t.Errorf("TestController.Param must equal to /person/xie/asta, but get " + a)
 	}
 }
@@ -100,10 +100,10 @@ func TestUrlFor(t *testing.T) {
 func TestUrlFor3(t *testing.T) {
 	handler := NewControllerRegister()
 	handler.AddAuto(&TestController{})
-	if a := handler.UrlFor("TestController.Myext"); a != "/test/myext" && a != "/Test/Myext" {
+	if a := handler.URLFor("TestController.Myext"); a != "/test/myext" && a != "/Test/Myext" {
 		t.Errorf("TestController.Myext must equal to /test/myext, but get " + a)
 	}
-	if a := handler.UrlFor("TestController.GetUrl"); a != "/test/geturl" && a != "/Test/GetUrl" {
+	if a := handler.URLFor("TestController.GetUrl"); a != "/test/geturl" && a != "/Test/GetUrl" {
 		t.Errorf("TestController.GetUrl must equal to /test/geturl, but get " + a)
 	}
 }
@@ -114,25 +114,25 @@ func TestUrlFor2(t *testing.T) {
 	handler.Add("/v1/:username/edit", &TestController{}, "get:GetUrl")
 	handler.Add("/v1/:v(.+)_cms/ttt_:id(.+)_:page(.+).html", &TestController{}, "*:Param")
 	handler.Add("/:year:int/:month:int/:title/:entid", &TestController{})
-	if handler.UrlFor("TestController.GetUrl", ":username", "astaxie") != "/v1/astaxie/edit" {
-		Info(handler.UrlFor("TestController.GetUrl"))
+	if handler.URLFor("TestController.GetUrl", ":username", "astaxie") != "/v1/astaxie/edit" {
+		Info(handler.URLFor("TestController.GetUrl"))
 		t.Errorf("TestController.List must equal to /v1/astaxie/edit")
 	}
 
-	if handler.UrlFor("TestController.List", ":v", "za", ":id", "12", ":page", "123") !=
+	if handler.URLFor("TestController.List", ":v", "za", ":id", "12", ":page", "123") !=
 		"/v1/za/cms_12_123.html" {
-		Info(handler.UrlFor("TestController.List"))
+		Info(handler.URLFor("TestController.List"))
 		t.Errorf("TestController.List must equal to /v1/za/cms_12_123.html")
 	}
-	if handler.UrlFor("TestController.Param", ":v", "za", ":id", "12", ":page", "123") !=
+	if handler.URLFor("TestController.Param", ":v", "za", ":id", "12", ":page", "123") !=
 		"/v1/za_cms/ttt_12_123.html" {
-		Info(handler.UrlFor("TestController.Param"))
+		Info(handler.URLFor("TestController.Param"))
 		t.Errorf("TestController.List must equal to /v1/za_cms/ttt_12_123.html")
 	}
-	if handler.UrlFor("TestController.Get", ":year", "1111", ":month", "11",
+	if handler.URLFor("TestController.Get", ":year", "1111", ":month", "11",
 		":title", "aaaa", ":entid", "aaaa") !=
 		"/1111/11/aaaa/aaaa" {
-		Info(handler.UrlFor("TestController.Get"))
+		Info(handler.URLFor("TestController.Get"))
 		t.Errorf("TestController.Get must equal to /1111/11/aaaa/aaaa")
 	}
 }

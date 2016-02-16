@@ -174,7 +174,7 @@ func (b *BeegoHttpRequest) SetTimeout(connectTimeout, readWriteTimeout time.Dura
 
 // SetTLSClientConfig sets tls connection configurations if visiting https url.
 func (b *BeegoHttpRequest) SetTLSClientConfig(config *tls.Config) *BeegoHttpRequest {
-	b.setting.TlsClientConfig = config
+	b.setting.TLSClientConfig = config
 	return b
 }
 
@@ -336,7 +336,7 @@ func (b *BeegoHttpRequest) getResponse() (*http.Response, error) {
 	if trans == nil {
 		// create default transport
 		trans = &http.Transport{
-			TLSClientConfig: b.setting.TlsClientConfig,
+			TLSClientConfig: b.setting.TLSClientConfig,
 			Proxy:           b.setting.Proxy,
 			Dial:            TimeoutDialer(b.setting.ConnectTimeout, b.setting.ReadWriteTimeout),
 		}
@@ -344,7 +344,7 @@ func (b *BeegoHttpRequest) getResponse() (*http.Response, error) {
 		// if b.transport is *http.Transport then set the settings.
 		if t, ok := trans.(*http.Transport); ok {
 			if t.TLSClientConfig == nil {
-				t.TLSClientConfig = b.setting.TlsClientConfig
+				t.TLSClientConfig = b.setting.TLSClientConfig
 			}
 			if t.Proxy == nil {
 				t.Proxy = b.setting.Proxy

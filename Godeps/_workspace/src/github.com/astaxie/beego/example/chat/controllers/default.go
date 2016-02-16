@@ -16,5 +16,5 @@ type MainController struct {
 
 func (m *MainController) Get() {
 	m.Data["host"] = m.Ctx.Request.Host
-	m.TplNames = "index.tpl"
+	m.TplName = "index.tpl"
 }

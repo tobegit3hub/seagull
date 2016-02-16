@@ -177,7 +177,7 @@ func (rp *RedisProvider) SessionInit(maxlifetime int64, savePath string) error {
 }
 
 // read redis session by sid
-func (rp *RedisProvider) SessionRead(sid string) (session.SessionStore, error) {
+func (rp *RedisProvider) SessionRead(sid string) (session.Store, error) {
 	c := rp.poollist.Get()
 	defer c.Close()
 
@@ -209,7 +209,7 @@ func (rp *RedisProvider) SessionExist(sid string) bool {
 }
 
 // generate new sid for redis session
-func (rp *RedisProvider) SessionRegenerate(oldsid, sid string) (session.SessionStore, error) {
+func (rp *RedisProvider) SessionRegenerate(oldsid, sid string) (session.Store, error) {
 	c := rp.poollist.Get()
 	defer c.Close()
 

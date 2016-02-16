@@ -64,7 +64,7 @@ type dbBasePostgres struct {
 var _ dbBaser = new(dbBasePostgres)
 
 // get postgresql operator.
-func (d *dbBasePostgres) OperatorSql(operator string) string {
+func (d *dbBasePostgres) OperatorSQL(operator string) string {
 	return postgresOperators[operator]
 }
 

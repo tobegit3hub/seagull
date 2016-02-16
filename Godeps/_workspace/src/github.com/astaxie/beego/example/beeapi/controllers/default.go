@@ -22,11 +22,11 @@ func (o *ObjectController) Post() {
 	json.Unmarshal(o.Ctx.Input.RequestBody, &ob)
 	objectid := models.AddOne(ob)
 	o.Data["json"] = map[string]string{"ObjectId": objectid}
-	o.ServeJson()
+	o.ServeJSON()
 }
 
 func (o *ObjectController) Get() {
-	objectId := o.Ctx.Input.Params[":objectId"]
+	objectId := o.Ctx.Input.Param(":objectId")
 	if objectId != "" {
 		ob, err := models.GetOne(objectId)
 		if err != nil {
@@ -38,11 +38,11 @@ func (o *ObjectController) Get() {
 		obs := models.GetAll()
 		o.Data["json"] = obs
 	}
-	o.ServeJson()
+	o.ServeJSON()
 }
 
 func (o *ObjectController) Put() {
-	objectId := o.Ctx.Input.Params[":objectId"]
+	objectId := o.Ctx.Input.Param(":objectId")
 	var ob models.Object
 	json.Unmarshal(o.Ctx.Input.RequestBody, &ob)
 
@@ -52,12 +52,12 @@ func (o *ObjectController) Put() {
 	} else {
 		o.Data["json"] = "update success!"
 	}
-	o.ServeJson()
+	o.ServeJSON()
 }
 
 func (o *ObjectController) Delete() {
-	objectId := o.Ctx.Input.Params[":objectId"]
+	objectId := o.Ctx.Input.Param(":objectId")
 	models.Delete(objectId)
 	o.Data["json"] = "delete success!"
-	o.ServeJson()
+	o.ServeJSON()
 }

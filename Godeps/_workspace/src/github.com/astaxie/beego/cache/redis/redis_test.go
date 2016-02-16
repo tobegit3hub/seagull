@@ -28,7 +28,7 @@ func TestRedisCache(t *testing.T) {
 	if err != nil {
 		t.Error("init err")
 	}
-	if err = bm.Put("astaxie", 1, 10); err != nil {
+	if err = bm.Put("astaxie", 1, 10*time.Second); err != nil {
 		t.Error("set Error", err)
 	}
 	if !bm.IsExist("astaxie") {
@@ -40,7 +40,7 @@ func TestRedisCache(t *testing.T) {
 	if bm.IsExist("astaxie") {
 		t.Error("check err")
 	}
-	if err = bm.Put("astaxie", 1, 10); err != nil {
+	if err = bm.Put("astaxie", 1, 10*time.Second); err != nil {
 		t.Error("set Error", err)
 	}
 
@@ -68,7 +68,7 @@ func TestRedisCache(t *testing.T) {
 		t.Error("delete err")
 	}
 	//test string
-	if err = bm.Put("astaxie", "author", 10); err != nil {
+	if err = bm.Put("astaxie", "author", 10*time.Second); err != nil {
 		t.Error("set Error", err)
 	}
 	if !bm.IsExist("astaxie") {

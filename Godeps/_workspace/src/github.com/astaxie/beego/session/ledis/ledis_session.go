@@ -107,7 +107,7 @@ func (lp *LedisProvider) SessionInit(maxlifetime int64, savePath string) error {
 }
 
 // read ledis session by sid
-func (lp *LedisProvider) SessionRead(sid string) (session.SessionStore, error) {
+func (lp *LedisProvider) SessionRead(sid string) (session.Store, error) {
 	kvs, err := c.Get([]byte(sid))
 	var kv map[interface{}]interface{}
 	if len(kvs) == 0 {
@@ -133,7 +133,7 @@ func (lp *LedisProvider) SessionExist(sid string) bool {
 }
 
 // generate new sid for ledis session
-func (lp *LedisProvider) SessionRegenerate(oldsid, sid string) (session.SessionStore, error) {
+func (lp *LedisProvider) SessionRegenerate(oldsid, sid string) (session.Store, error) {
 	count, _ := c.Exists([]byte(sid))
 	if count == 0 {
 		// oldsid doesn't exists, set the new sid directly

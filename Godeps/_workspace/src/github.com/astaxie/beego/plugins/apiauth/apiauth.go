@@ -116,7 +116,7 @@ func APIAuthWithFunc(f AppIdToAppSecret, timeout int) beego.FilterFunc {
 			return
 		}
 		if ctx.Input.Query("signature") !=
-			Signature(appsecret, ctx.Input.Method(), ctx.Request.Form, ctx.Input.Uri()) {
+			Signature(appsecret, ctx.Input.Method(), ctx.Request.Form, ctx.Input.URI()) {
 			ctx.Output.SetStatus(403)
 			ctx.WriteString("auth failed")
 		}

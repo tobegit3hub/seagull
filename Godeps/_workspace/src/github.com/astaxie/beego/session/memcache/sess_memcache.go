@@ -122,7 +122,7 @@ func (rp *MemProvider) SessionInit(maxlifetime int64, savePath string) error {
 }
 
 // read memcache session by sid
-func (rp *MemProvider) SessionRead(sid string) (session.SessionStore, error) {
+func (rp *MemProvider) SessionRead(sid string) (session.Store, error) {
 	if client == nil {
 		if err := rp.connectInit(); err != nil {
 			return nil, err
@@ -161,7 +161,7 @@ func (rp *MemProvider) SessionExist(sid string) bool {
 }
 
 // generate new sid for memcache session
-func (rp *MemProvider) SessionRegenerate(oldsid, sid string) (session.SessionStore, error) {
+func (rp *MemProvider) SessionRegenerate(oldsid, sid string) (session.Store, error) {
 	if client == nil {
 		if err := rp.connectInit(); err != nil {
 			return nil, err

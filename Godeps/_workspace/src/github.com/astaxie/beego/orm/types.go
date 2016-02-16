@@ -160,8 +160,8 @@ type dbBaser interface {
 	UpdateBatch(dbQuerier, *querySet, *modelInfo, *Condition, Params, *time.Location) (int64, error)
 	DeleteBatch(dbQuerier, *querySet, *modelInfo, *Condition, *time.Location) (int64, error)
 	Count(dbQuerier, *querySet, *modelInfo, *Condition, *time.Location) (int64, error)
-	OperatorSql(string) string
-	GenerateOperatorSql(*modelInfo, *fieldInfo, string, []interface{}, *time.Location) (string, []interface{})
+	OperatorSQL(string) string
+	GenerateOperatorSQL(*modelInfo, *fieldInfo, string, []interface{}, *time.Location) (string, []interface{})
 	GenerateOperatorLeftCol(*fieldInfo, string, *string)
 	PrepareInsert(dbQuerier, *modelInfo) (stmtQuerier, string, error)
 	ReadValues(dbQuerier, *querySet, *modelInfo, *Condition, []string, interface{}, *time.Location) (int64, error)

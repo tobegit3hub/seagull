@@ -66,7 +66,7 @@ type Controller struct {
 	TplExt         string
 	_xsrf_token    string
 	gotofunc       string
-	CruSession     session.SessionStore
+	CruSession     session.Store
 	XSRFExpire     int
 	AppController  interface{}
 	EnableRender   bool
@@ -96,7 +96,7 @@ type ControllerInterface interface {
 // Init generates default values of controller operations.
 func (c *Controller) Init(ctx *context.Context, controllerName, actionName string, app interface{}) {
 	c.Layout = ""
-	c.TplNames = ""
+	c.TplName = ""
 	c.controllerName = controllerName
 	c.actionName = actionName
 	c.Ctx = ctx
@@ -197,17 +197,17 @@ func (c *Controller) RenderString() (string, error) {
 func (c *Controller) RenderBytes() ([]byte, error) {
 	//if the controller has set layout, then first get the tplname's content set the content to the layout
 	if c.Layout != "" {
-		if c.TplNames == "" {
-			c.TplNames = strings.ToLower(c.controllerName) + "/" + strings.ToLower(c.actionName) + "." + c.TplExt
+		if c.TplName == "" {
+			c.TplName = strings.ToLower(c.controllerName) + "/" + strings.ToLower(c.actionName) + "." + c.TplExt
 		}
 		if RunMode == "dev" {
 			BuildTemplate(ViewsPath)
 		}
 		newbytes := bytes.NewBufferString("")
-		if _, ok := BeeTemplates[c.TplNames]; !ok {
-			panic("can't find templatefile in the path:" + c.TplNames)
+		if _, ok := BeeTemplates[c.TplName]; !ok {
+			panic("can't find templatefile in the path:" + c.TplName)
 		}
-		err := BeeTemplates[c.TplNames].ExecuteTemplate(newbytes, c.TplNames, c.Data)
+		err := BeeTemplates[c.TplName].ExecuteTemplate(newbytes, c.TplName, c.Data)
 		if err != nil {
 			Trace("template Execute err:", err)
 			return nil, err
@@ -242,17 +242,17 @@ func (c *Controller) RenderBytes() ([]byte, error) {
 		icontent, _ := ioutil.ReadAll(ibytes)
 		return icontent, nil
 	} else {
-		if c.TplNames == "" {
-			c.TplNames = strings.ToLower(c.controllerName) + "/" + strings.ToLower(c.actionName) + "." + c.TplExt
+		if c.TplName == "" {
+			c.TplName = strings.ToLower(c.controllerName) + "/" + strings.ToLower(c.actionName) + "." + c.TplExt
 		}
 		if RunMode == "dev" {
 			BuildTemplate(ViewsPath)
 		}
 		ibytes := bytes.NewBufferString("")
-		if _, ok := BeeTemplates[c.TplNames]; !ok {
-			panic("can't find templatefile in the path:" + c.TplNames)
+		if _, ok := BeeTemplates[c.TplName]; !ok {
+			panic("can't find templatefile in the path:" + c.TplName)
 		}
-		err := BeeTemplates[c.TplNames].ExecuteTemplate(ibytes, c.TplNames, c.Data)
+		err := BeeTemplates[c.TplName].ExecuteTemplate(ibytes, c.TplName, c.Data)
 		if err != nil {
 			Trace("template Execute err:", err)
 			return nil, err
@@ -318,7 +318,7 @@ func (c *Controller) ServeJson(encoding ...bool) {
 	if len(encoding) > 0 && encoding[0] == true {
 		hasencoding = true
 	}
-	c.Ctx.Output.Json(c.Data["json"], hasIndent, hasencoding)
+	c.Ctx.Output.JSON(c.Data["json"], hasIndent, hasencoding)
 }
 
 // ServeJsonp sends a jsonp response.
@@ -329,7 +329,7 @@ func (c *Controller) ServeJsonp() {
 	} else {
 		hasIndent = true
 	}
-	c.Ctx.Output.Jsonp(c.Data["jsonp"], hasIndent)
+	c.Ctx.Output.JSONP(c.Data["jsonp"], hasIndent)
 }
 
 // ServeXml sends xml response.
@@ -340,7 +340,7 @@ func (c *Controller) ServeXml() {
 	} else {
 		hasIndent = true
 	}
-	c.Ctx.Output.Xml(c.Data["xml"], hasIndent)
+	c.Ctx.Output.XML(c.Data["xml"], hasIndent)
 }
 
 // ServeFormatted serve Xml OR Json, depending on the value of the Accept header
@@ -348,11 +348,11 @@ func (c *Controller) ServeFormatted() {
 	accept := c.Ctx.Input.Header("Accept")
 	switch accept {
 	case applicationJson:
-		c.ServeJson()
+		c.ServeJSON()
 	case applicationXml, textXml:
-		c.ServeXml()
+		c.ServeXML()
 	default:
-		c.ServeJson()
+		c.ServeJSON()
 	}
 }
 
@@ -533,7 +533,7 @@ func (c *Controller) SaveToFile(fromfile, tofile string) error {
 }
 
 // StartSession starts session and load old session data info this controller.
-func (c *Controller) StartSession() session.SessionStore {
+func (c *Controller) StartSession() session.Store {
 	if c.CruSession == nil {
 		c.CruSession = c.Ctx.Input.CruSession
 	}
@@ -604,7 +604,7 @@ func (c *Controller) XsrfToken() string {
 		} else {
 			expire = int64(XSRFExpire)
 		}
-		c._xsrf_token = c.Ctx.XsrfToken(XSRFKEY, expire)
+		c._xsrf_token = c.Ctx.XSRFToken(XSRFKEY, expire)
 	}
 	return c._xsrf_token
 }
@@ -616,7 +616,7 @@ func (c *Controller) CheckXsrfCookie() bool {
 	if !c.EnableXSRF {
 		return true
 	}
-	return c.Ctx.CheckXsrfCookie()
+	return c.Ctx.CheckXSRFCookie()
 }
 
 // XsrfFormHtml writes an input field contains xsrf token value.

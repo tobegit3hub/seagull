@@ -219,7 +219,7 @@ func Test_Preflight(t *testing.T) {
 func Benchmark_WithoutCORS(b *testing.B) {
 	recorder := httptest.NewRecorder()
 	handler := beego.NewControllerRegister()
-	beego.RunMode = "prod"
+	beego.BConfig.RunMode = "prod"
 	handler.Any("/foo", func(ctx *context.Context) {
 		ctx.Output.SetStatus(500)
 	})
@@ -233,7 +233,7 @@ func Benchmark_WithoutCORS(b *testing.B) {
 func Benchmark_WithCORS(b *testing.B) {
 	recorder := httptest.NewRecorder()
 	handler := beego.NewControllerRegister()
-	beego.RunMode = "prod"
+	beego.BConfig.RunMode = "prod"
 	handler.InsertFilter("*", beego.BeforeRouter, Allow(&Options{
 		AllowAllOrigins:  true,
 		AllowCredentials: true,

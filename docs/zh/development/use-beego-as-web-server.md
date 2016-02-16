@@ -130,7 +130,7 @@ type MainController struct {
 func (this *MainController) Get() {
         this.Data["Website"] = "beego.me"
         this.Data["Email"] = "astaxie@gmail.com"
-        this.TplNames = "index.tpl"
+        this.TplName = "index.tpl"
 }
 ```
 
@@ -152,7 +152,7 @@ type MainController struct {
 
 /* Only accept the get request and return the webiste HTML file */
 func (this *MainController) Get() {
-        this.TplNames = "index.html"
+        this.TplName = "index.html"
         this.Render()
 }
 ```

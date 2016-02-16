@@ -22,7 +22,7 @@
 //
 // Use it like this:
 //
-//	bm.Put("astaxie", 1, 10)
+//	bm.Put("astaxie", 1, 10*time.Second)
 //	bm.Get("astaxie")
 //	bm.IsExist("astaxie")
 //	bm.Delete("astaxie")
@@ -32,6 +32,7 @@ package cache
 
 import (
 	"fmt"
+	"time"
 )
 
 // Cache interface contains all behaviors for cache adapter.

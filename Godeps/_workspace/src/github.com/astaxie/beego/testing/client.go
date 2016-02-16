@@ -24,7 +24,7 @@ var baseUrl = "http://localhost:"
 
 // beego test request client
 type TestHttpRequest struct {
-	httplib.BeegoHttpRequest
+	httplib.BeegoHTTPRequest
 }
 
 func getPort() string {

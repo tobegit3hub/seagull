@@ -84,7 +84,7 @@ type logFilter struct {
 }
 
 func (l *logFilter) Filter(ctx *beecontext.Context) bool {
-	requestPath := path.Clean(ctx.Input.Request.URL.Path)
+	requestPath := path.Clean(ctx.Input.Context.Request.URL.Path)
 	if requestPath == "/favicon.ico" || requestPath == "/robots.txt" {
 		return true
 	}
@@ -761,10 +761,10 @@ func (p *ControllerRegistor) ServeHTTP(rw http.ResponseWriter, r *http.Request) 
 
 			//if XSRF is Enable then check cookie where there has any cookie in the  request's cookie _csrf
 			if EnableXSRF {
-				execController.XsrfToken()
+				execController.XSRFToken()
 				if r.Method == "POST" || r.Method == "DELETE" || r.Method == "PUT" ||
 					(r.Method == "POST" && (context.Input.Query("_method") == "DELETE" || context.Input.Query("_method") == "PUT")) {
-					execController.CheckXsrfCookie()
+					execController.CheckXSRFCookie()
 				}
 			}
 
@@ -868,7 +868,7 @@ func (p *ControllerRegistor) recoverPanic(context *beecontext.Context) {
 					}
 				}
 				var stack string
-				Critical("the request url is ", context.Input.Url())
+				Critical("the request url is ", context.Input.URL())
 				Critical("Handler crashed with error", err)
 				for i := 1; ; i++ {
 					_, file, line, ok := runtime.Caller(i)
@@ -896,7 +896,7 @@ func (p *ControllerRegistor) recoverPanic(context *beecontext.Context) {
 						context.WriteString(fmt.Sprint(err))
 					}
 				} else {
-					Critical("the request url is ", context.Input.Url())
+					Critical("the request url is ", context.Input.URL())
 					Critical("Handler crashed with error", err)
 					for i := 1; ; i++ {
 						_, file, line, ok := runtime.Caller(i)

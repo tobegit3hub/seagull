@@ -11,6 +11,6 @@ type MainController struct {
 
 /* Only accept the get request and return the webiste HTML file */
 func (this *MainController) Get() {
-	this.TplNames = "index.html"
+	this.TplName = "index.html"
 	this.Render()
 }
