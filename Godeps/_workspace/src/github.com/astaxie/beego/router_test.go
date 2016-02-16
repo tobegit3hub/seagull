@@ -45,24 +45,24 @@ func (tc *TestController) List() {
 }
 
 func (tc *TestController) Params() {
-	tc.Ctx.Output.Body([]byte(tc.Ctx.Input.Param("0"] + tc.Ctx.Input.Params["1"] + tc.Ctx.Input.Params["2")))
+	tc.Ctx.Output.Body([]byte(tc.Ctx.Input.Param("0") + tc.Ctx.Input.Param("1") + tc.Ctx.Input.Param("2")))
 }
 
 func (tc *TestController) Myext() {
 	tc.Ctx.Output.Body([]byte(tc.Ctx.Input.Param(":ext")))
 }
 
-func (tc *TestController) GetUrl() {
+func (tc *TestController) GetURL() {
 	tc.Ctx.Output.Body([]byte(tc.URLFor(".Myext")))
 }
 
-func (t *TestController) GetParams() {
-	t.Ctx.WriteString(t.Ctx.Input.Query(":last") + "+" +
-		t.Ctx.Input.Query(":first") + "+" + t.Ctx.Input.Query("learn"))
+func (tc *TestController) GetParams() {
+	tc.Ctx.WriteString(tc.Ctx.Input.Query(":last") + "+" +
+		tc.Ctx.Input.Query(":first") + "+" + tc.Ctx.Input.Query("learn"))
 }
 
-func (t *TestController) GetManyRouter() {
-	t.Ctx.WriteString(t.Ctx.Input.Query(":id") + t.Ctx.Input.Query(":page"))
+func (tc *TestController) GetManyRouter() {
+	tc.Ctx.WriteString(tc.Ctx.Input.Query(":id") + tc.Ctx.Input.Query(":page"))
 }
 
 type ResStatus struct {
@@ -70,18 +70,18 @@ type ResStatus struct {
 	Msg  string
 }
 
-type JsonController struct {
+type JSONController struct {
 	Controller
 }
 
-func (this *JsonController) Prepare() {
-	this.Data["json"] = "prepare"
-	this.ServeJSON(true)
+func (jc *JSONController) Prepare() {
+	jc.Data["json"] = "prepare"
+	jc.ServeJSON(true)
 }
 
-func (this *JsonController) Get() {
-	this.Data["Username"] = "astaxie"
-	this.Ctx.Output.Body([]byte("ok"))
+func (jc *JSONController) Get() {
+	jc.Data["Username"] = "astaxie"
+	jc.Ctx.Output.Body([]byte("ok"))
 }
 
 func TestUrlFor(t *testing.T) {
@@ -103,19 +103,19 @@ func TestUrlFor3(t *testing.T) {
 	if a := handler.URLFor("TestController.Myext"); a != "/test/myext" && a != "/Test/Myext" {
 		t.Errorf("TestController.Myext must equal to /test/myext, but get " + a)
 	}
-	if a := handler.URLFor("TestController.GetUrl"); a != "/test/geturl" && a != "/Test/GetUrl" {
-		t.Errorf("TestController.GetUrl must equal to /test/geturl, but get " + a)
+	if a := handler.URLFor("TestController.GetURL"); a != "/test/geturl" && a != "/Test/GetURL" {
+		t.Errorf("TestController.GetURL must equal to /test/geturl, but get " + a)
 	}
 }
 
 func TestUrlFor2(t *testing.T) {
 	handler := NewControllerRegister()
 	handler.Add("/v1/:v/cms_:id(.+)_:page(.+).html", &TestController{}, "*:List")
-	handler.Add("/v1/:username/edit", &TestController{}, "get:GetUrl")
+	handler.Add("/v1/:username/edit", &TestController{}, "get:GetURL")
 	handler.Add("/v1/:v(.+)_cms/ttt_:id(.+)_:page(.+).html", &TestController{}, "*:Param")
 	handler.Add("/:year:int/:month:int/:title/:entid", &TestController{})
-	if handler.URLFor("TestController.GetUrl", ":username", "astaxie") != "/v1/astaxie/edit" {
-		Info(handler.URLFor("TestController.GetUrl"))
+	if handler.URLFor("TestController.GetURL", ":username", "astaxie") != "/v1/astaxie/edit" {
+		Info(handler.URLFor("TestController.GetURL"))
 		t.Errorf("TestController.List must equal to /v1/astaxie/edit")
 	}
 
@@ -270,7 +270,7 @@ func TestPrepare(t *testing.T) {
 	w := httptest.NewRecorder()
 
 	handler := NewControllerRegister()
-	handler.Add("/json/list", &JsonController{})
+	handler.Add("/json/list", &JSONController{})
 	handler.ServeHTTP(w, r)
 	if w.Body.String() != `"prepare"` {
 		t.Errorf(w.Body.String() + "user define func can't run")
@@ -327,6 +327,18 @@ func TestRouterHandler(t *testing.T) {
 
 	handler := NewControllerRegister()
 	handler.Handler("/sayhi", http.HandlerFunc(sayhello))
+	handler.ServeHTTP(w, r)
+	if w.Body.String() != "sayhello" {
+		t.Errorf("TestRouterHandler can't run")
+	}
+}
+
+func TestRouterHandlerAll(t *testing.T) {
+	r, _ := http.NewRequest("POST", "/sayhi/a/b/c", nil)
+	w := httptest.NewRecorder()
+
+	handler := NewControllerRegister()
+	handler.Handler("/sayhi", http.HandlerFunc(sayhello), true)
 	handler.ServeHTTP(w, r)
 	if w.Body.String() != "sayhello" {
 		t.Errorf("TestRouterHandler can't run")
@@ -444,7 +456,7 @@ func TestFilterAfterExec(t *testing.T) {
 	mux := NewControllerRegister()
 	mux.InsertFilter(url, BeforeRouter, beegoFilterNoOutput)
 	mux.InsertFilter(url, BeforeExec, beegoFilterNoOutput)
-	mux.InsertFilter(url, AfterExec, beegoAfterExec1)
+	mux.InsertFilter(url, AfterExec, beegoAfterExec1, false)
 
 	mux.Get(url, beegoFilterFunc)
 
@@ -506,7 +518,7 @@ func TestFilterFinishRouterMultiFirstOnly(t *testing.T) {
 	url := "/finishRouterMultiFirstOnly"
 
 	mux := NewControllerRegister()
-	mux.InsertFilter(url, FinishRouter, beegoFinishRouter1)
+	mux.InsertFilter(url, FinishRouter, beegoFinishRouter1, false)
 	mux.InsertFilter(url, FinishRouter, beegoFinishRouter2)
 
 	mux.Get(url, beegoFilterFunc)
@@ -534,7 +546,7 @@ func TestFilterFinishRouterMulti(t *testing.T) {
 
 	mux := NewControllerRegister()
 	mux.InsertFilter(url, FinishRouter, beegoFinishRouter1, false)
-	mux.InsertFilter(url, FinishRouter, beegoFinishRouter2)
+	mux.InsertFilter(url, FinishRouter, beegoFinishRouter2, false)
 
 	mux.Get(url, beegoFilterFunc)
 

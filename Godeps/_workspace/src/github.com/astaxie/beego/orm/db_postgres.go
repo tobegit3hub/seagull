@@ -29,6 +29,8 @@ var postgresOperators = map[string]string{
 	"gte":         ">= ?",
 	"lt":          "< ?",
 	"lte":         "<= ?",
+	"eq":          "= ?",
+	"ne":          "!= ?",
 	"startswith":  "LIKE ?",
 	"endswith":    "LIKE ?",
 	"istartswith": "LIKE UPPER(?)",
@@ -99,7 +101,7 @@ func (d *dbBasePostgres) ReplaceMarks(query *string) {
 	num := 0
 	for _, c := range q {
 		if c == '?' {
-			num += 1
+			num++
 		}
 	}
 	if num == 0 {
@@ -112,7 +114,7 @@ func (d *dbBasePostgres) ReplaceMarks(query *string) {
 		if c == '?' {
 			data = append(data, '$')
 			data = append(data, []byte(strconv.Itoa(num))...)
-			num += 1
+			num++
 		} else {
 			data = append(data, c)
 		}
