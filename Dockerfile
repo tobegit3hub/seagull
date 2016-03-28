@@ -1,4 +1,4 @@
-FROM golang:1.4
+FROM golang:1.6
 MAINTAINER tobe tobeg3oogle@gmail.com
 
 # Install dependency
