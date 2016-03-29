@@ -147,10 +147,22 @@ seagull.filter( 'boolean_to_string', function () {
 });
 
 /* Refer to http://www.ng-newsletter.com/posts/angular-translate.html for i18n */
-seagull.controller('IndexController', function ($scope, $rootScope, $translate, $route, $http) {
+seagull.controller('IndexController', function ($scope, $rootScope, $translate, $route, $http, $cookieStore) {
 
   // Default new server and display in add server dialog
   $scope.newServer = "http://96.126.127.93:2375";
+
+  /* Change theme */
+  if ($cookieStore.get("theme")) {
+    $scope.theme =  $cookieStore.get("theme")
+  } else {
+    $scope.theme =  "flatly"
+  }
+
+  $scope.changeTheme = function(theme) {
+    $cookieStore.put("theme", theme)
+    window.location.reload(false);
+  }
 
   /* Change languages with the language string */
   $scope.changeLanguage = function (key) {
