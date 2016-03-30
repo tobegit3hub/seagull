@@ -153,10 +153,11 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
   $scope.newServer = "http://96.126.127.93:2375";
 
   /* Change theme */
+  // More theme in https://bootswatch.com/
   if ($cookieStore.get("theme")) {
     $scope.theme =  $cookieStore.get("theme")
   } else {
-    $scope.theme =  "flatly"
+    $scope.theme =  "bootstrap"
   }
 
   $scope.changeTheme = function(theme) {
@@ -264,6 +265,7 @@ seagull.config(function ($translateProvider) {
     de_de: 'Deutsch',
     fr_fr: 'Français',
     need_help: 'Need Help',
+    theme: 'Theme',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Error to load data from docker daemon. Please check seagull and configuration.',
     period: '.',
@@ -411,6 +413,7 @@ seagull.config(function ($translateProvider) {
     de_de: 'Deutsch',
     fr_fr: 'Français',
     need_help: '帮助',
+    theme: '主题',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: '从Docker中获取数据失败，请检查Docker和海鸥的配置',
     period: '。',
@@ -557,6 +560,7 @@ seagull.config(function ($translateProvider) {
     de_de: 'Deutsch',
     fr_fr: 'Français',
     need_help: '幫助',
+    theme: '主題',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: '從Docker中獲取數據失敗，請檢查Docker和海鷗的配置',
     period: '。',
@@ -704,6 +708,7 @@ seagull.config(function ($translateProvider) {
     de_de: 'Deutsch',
     fr_fr: 'Français',
     need_help: 'Hilfe',
+    theme: 'Theme',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Beim Laden von Daten vom Docker-Dienst trat ein Fehler auf. Bitte überprüfe Seagull und die Einstellungen.',
     period: '.',
@@ -852,6 +857,7 @@ seagull.config(function ($translateProvider) {
     fr_fr: 'Français',
     de_de: 'German',
     need_help: 'Assistance',
+    theme: 'Theme', // TODO: translation
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Erreur de chargement des données depuis le démon docker. Merci de vérifier la configuration de seagull.',
     period: '.',
