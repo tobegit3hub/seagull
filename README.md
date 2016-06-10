@@ -18,6 +18,8 @@ For more information, go to [dockerseagull.com](http://dockerseagull.com), watch
 docker run -d -p 10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull
 ```
 
+Or run with `docker-compose up -d`.
+
 ## Screenshot
 
 ![](https://raw.github.com/tobegit3hub/seagull/master/screenshot.png)
