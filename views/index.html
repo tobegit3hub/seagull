@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <!-- Use angular and named it seagull application -->
 <html ng-app="seagull">
-  <head>
+  <head ng-controller="IndexController">
     <title>Seagull</title>
     <meta charset="UTF-8">
     <base href="/">
@@ -11,7 +11,9 @@
     <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon" />
 
     <!-- Css -->
-    <link rel="stylesheet" type="text/css" href="static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="static/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="static/css/{{theme}}.bootstrap.min.css">
+
     <link rel="stylesheet" type="text/css" href="static/bower_components/jquery.gritter/css/jquery.gritter.css">
     <link rel="stylesheet" type="text/css" href="static/bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="static/bower_components/Hover/css/hover-min.css">
@@ -51,6 +53,32 @@
             <li class="animate-nav"><a href="/dockerhub">{{'dockerhub'|translate}}</a></li>
           </ul>
 
+          <!-- A more button to change theme -->
+          <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+                    <a class="dropdown-toggle animate-nav" data-toggle="dropdown" href="">{{'theme'|translate}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('flatly')">{{'flatly'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('bootstrap')">{{'bootstrap'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('cerulean')">{{'cerulean'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('cosmo')">{{'cosmo'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('cyborg')">{{'cyborg'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('darkly')">{{'darkly'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('journal')">{{'journal'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('lumen')">{{'lumen'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('paper')">{{'paper'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('readable')">{{'readable'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('sandstone')">{{'sandstone'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('simplex')">{{'simplex'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('slate')">{{'slate'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('spacelab')">{{'spacelab'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('superhero')">{{'superhero'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('united')">{{'united'|translate}}</a></li>
+                        <li class="animate-nav"><a href="" ng-click="changeTheme('yeti')">{{'yeti'|translate}}</a></li>
+                    </ul>
+          </li>
+          </ul>
+
           <!-- A more button to change i18n languages and email me -->
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -61,6 +89,7 @@
                 <li class="animate-nav" ng-hide="isZhHant()"><a href="" ng-click="changeLanguage('zh-hant')">{{'zh_hant'|translate}}</a></li>
                 <li class="animate-nav" ng-hide="isDeDe()"><a href="" ng-click="changeLanguage('de-de')">{{'de_de'|translate}}</a></li>
                 <li class="animate-nav" ng-hide="isFrFr()"><a href="" ng-click="changeLanguage('fr-fr')">{{'fr_fr'|translate}}</a></li>
+                <li class="animate-nav" ng-hide="isSvSe()"><a href="" ng-click="changeLanguage('sv-se')">{{'sv_se'|translate}}</a></li>
                 <li class="animate-nav"><a href="https://github.com/tobegit3hub/seagull/issues/new" target="_top">{{'need_help'|translate}}</a></li>
               </ul>
             </li>

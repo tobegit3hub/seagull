@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  seagull:
+    restart: always
+    image: tobegit3hub/seagull
+    ports:
+      - "10086:10086"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+

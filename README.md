@@ -1,4 +1,4 @@
-# Seagull [![Build Status](https://drone.io/github.com/tobegit3hub/seagull/status.png)](https://drone.io/github.com/tobegit3hub/seagull/latest) [![Docker Repository on Quay.io](https://quay.io/repository/tobegit3hub/seagull/status "Docker Repository on Quay.io")](https://quay.io/repository/tobegit3hub/seagull) [![GoDoc](https://godoc.org/github.com/tobegit3hub/seagull?status.svg)](https://godoc.org/github.com/tobegit3hub/seagull) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Seagull [![Build Status](https://drone.io/github.com/tobegit3hub/seagull/status.png)](https://drone.io/github.com/tobegit3hub/seagull/latest) [![Docker Pulls](https://img.shields.io/docker/pulls/tobegit3hub/seagull.svg)](https://hub.docker.com/r/tobegit3hub/seagull/) [![GoDoc](https://godoc.org/github.com/tobegit3hub/seagull?status.svg)](https://godoc.org/github.com/tobegit3hub/seagull) [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Introduction
 
@@ -17,6 +17,8 @@ For more information, go to [dockerseagull.com](http://dockerseagull.com), watch
 ```
 docker run -d -p 10086:10086 -v /var/run/docker.sock:/var/run/docker.sock tobegit3hub/seagull
 ```
+
+Or run with `docker-compose up -d`.
 
 ## Screenshot
 

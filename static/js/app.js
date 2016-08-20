@@ -218,10 +218,23 @@ seagull.filter( 'boolean_to_string', function () {
 });
 
 /* Refer to http://www.ng-newsletter.com/posts/angular-translate.html for i18n */
-seagull.controller('IndexController', function ($scope, $rootScope, $translate, $route, $http) {
+seagull.controller('IndexController', function ($scope, $rootScope, $translate, $route, $http, $cookieStore) {
 
   // Default new server and display in add server dialog
   $scope.newServer = "http://96.126.127.93:2375";
+
+  /* Change theme */
+  // More theme in https://bootswatch.com/
+  if ($cookieStore.get("theme")) {
+    $scope.theme =  $cookieStore.get("theme")
+  } else {
+    $scope.theme =  "bootstrap"
+  }
+
+  $scope.changeTheme = function(theme) {
+    $cookieStore.put("theme", theme)
+    window.location.reload(false);
+  }
 
   /* Change languages with the language string */
   $scope.changeLanguage = function (key) {
@@ -251,6 +264,11 @@ seagull.controller('IndexController', function ($scope, $rootScope, $translate, 
   /* Determine it is French or not */
   $scope.isFrFr = function () {
      return $translate.use() == "fr-fr";
+  }
+
+  /* Determine it is Swedish or not */
+  $scope.isSvSe = function () {
+    return $translate.use() == "sv-se";
   }
 
   /* The default server is local */
@@ -322,7 +340,9 @@ seagull.config(function ($translateProvider) {
     zh_hant: '繁體中文',
     de_de: 'Deutsch',
     fr_fr: 'Français',
+    sv_se: 'Svenska',
     need_help: 'Need Help',
+    theme: 'Theme',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Error to load data from docker daemon. Please check seagull and configuration.',
     period: '.',
@@ -377,6 +397,7 @@ seagull.config(function ($translateProvider) {
     openstdin: 'OpenStdin',
     uid: 'UID',
     pid: 'PID',
+    ppid: 'PPID',
     c: 'C',
     stime: 'STIME',
     tty: 'TTY',
@@ -468,7 +489,9 @@ seagull.config(function ($translateProvider) {
     zh_hant: '繁體中文',
     de_de: 'Deutsch',
     fr_fr: 'Français',
+    sv_se: 'Svenska',
     need_help: '帮助',
+    theme: '主题',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: '从Docker中获取数据失败，请检查Docker和海鸥的配置',
     period: '。',
@@ -614,7 +637,9 @@ seagull.config(function ($translateProvider) {
     zh_hant: '繁體中文',
     de_de: 'Deutsch',
     fr_fr: 'Français',
+    sv_se: 'Svenska',
     need_help: '幫助',
+    theme: '主題',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: '從Docker中獲取數據失敗，請檢查Docker和海鷗的配置',
     period: '。',
@@ -669,6 +694,7 @@ seagull.config(function ($translateProvider) {
     openstdin: '打開標準輸入',
     uid: 'UID',
     pid: 'PID',
+    ppid: 'PPID',
     c: 'C',
     stime: 'STIME',
     tty: 'TTY',
@@ -760,7 +786,9 @@ seagull.config(function ($translateProvider) {
     zh_hant: '繁體中文',
     de_de: 'Deutsch',
     fr_fr: 'Français',
+    sv_se: 'Svenska',
     need_help: 'Hilfe',
+    theme: 'Theme',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Beim Laden von Daten vom Docker-Dienst trat ein Fehler auf. Bitte überprüfe Seagull und die Einstellungen.',
     period: '.',
@@ -907,8 +935,10 @@ seagull.config(function ($translateProvider) {
     zh_hant: '繁體中文',
     en_us: 'English',
     fr_fr: 'Français',
+    sv_se: 'Svenska',
     de_de: 'German',
     need_help: 'Assistance',
+    theme: 'Theme', // TODO: translation
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Erreur de chargement des données depuis le démon docker. Merci de vérifier la configuration de seagull.',
     period: '.',
@@ -1038,6 +1068,155 @@ seagull.config(function ($translateProvider) {
     star_count: 'Nombre d\'étoiles',
     is_official: 'Officiel',
     is_automated: 'Automatisé'
+  });
+
+  /* Translate into Swedish */
+  $translateProvider.translations('sv-se', {
+    // Index html
+    seagull: 'Seagull',
+    containers: 'Containrar',
+    images: 'Images',
+    configuration: 'Konfiguering',
+    dockerhub: 'DockerHub',
+    more: 'Mer',
+    en_us: 'English',
+    zh_cn: '简体中文',
+    zh_hant: '繁體中文',
+    de_de: 'Deutsch',
+    fr_fr: 'Français',
+    sv_se: 'Svenska',
+    need_help: 'Hjälp',
+    theme: 'Tema',
+    // Home page
+    error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Misslyckades med att hämta data från docker daemon. Var vänlig verifiera seagull och konfigurationen.',
+    period: '.',
+    the_best_friend_of_docker: 'dockers bästa vän',
+    im_using: 'Jag använder',
+    with_kernel: 'med kernel',
+    and_docker: 'och Docker',
+    the_docker_daemon_has: 'Docker daemonen har nu',
+    running_stopped_containers_and: 'exekverande/stoppade containrar och',
+    images_now: 'images',
+    docker_is_an_open_platform_for_distributed_application_for_developers_and_sysadmins: 'Docker är en öppen plattform för distribuerade applikationer som används av utvecklare och systemadministratörer',
+    and_seagull_provides_a_friendly_web_ui_to_monitor_docker: 'seagull ger ett användarvänligt webbgränssnitt för att övervaka docker.',
+    github: 'Github',
+    go_now: 'Öppna',
+    learn_more: 'Läs mer',
+    containers_page_display_all_running_and_stopped_docker_containers: 'Containersidan visar alla exekverande och stoppade docker containrar.',
+    images_page_display_all_docker_images_to_start_stop_and_delete: 'Imagessidan visar alla docker images som kan startas, stoppas och raderas.',
+    configuration_page_display_all_your_docker_environment_and_settings:'Konfigurationssidan visar alla dina inställningar samt din docker miljö.',
+    seagull_is_open_source_in_Github_welcome_to_contribution_and_issues: 'Seagull är distribuerat med öppen källkod på Github. Bidrag är välkommet.',
+    // Containers page
+    search: 'Sök',
+    filter: 'Filtrera',
+    all: 'Alla',
+    no_docker_container: 'Inga docker containrar!',
+    id: 'Id',
+    names: 'Namn',
+    image: 'Image',
+    command: 'Kommando',
+    created: 'Skapad',
+    status: 'Status',
+    ports: 'Portar',
+    operation: 'Operation',
+    // Images page
+    no_docker_image: 'Inga docker images!',
+    repotags: 'Tagg',
+    virtualsize: 'Virtuell Storlek',
+    delete: 'Radera',
+    no_search_result_for: 'Inga sökresultat för',
+    // Container page
+    container: 'Container',
+    start: 'Start',
+    stop: 'Stop',
+    refresh: 'Uppdatera',
+    no_such_container: 'Det finns ingen sådan container!',
+    attribute: 'Attribut',
+    value: 'Värde',
+    name: 'Namn',
+    running: 'Exekverar',
+    startedat: 'Startpunkt',
+    publishallports: 'Publicera alla portar',
+    links: 'Länkar',
+    openstdin: 'Öppna StdIn',
+    uid: 'UID',
+    pid: 'PID',
+    ppid: 'PPID',
+    c: 'C',
+    stime: 'STIME',
+    tty: 'TTY',
+    time: 'TIME',
+    cmd: 'CMD',
+    read: 'Läs',
+    network_rx_bytes: 'Network rx bytes',
+    network_rx_packets: 'Network rx packages',
+    network_rx_errors: 'Network rx errors',
+    network_rx_dropped: 'Network rx dropped',
+    network_tx_bytes: 'Network tx bytes',
+    network_tx_packets: 'Network tx packets',
+    network_tx_errors: 'Network tx errors',
+    network_tx_dropped: 'Network tx dropped',
+    cpu_total_usage: 'CPU total usage',
+    cpu_usage_in_kernelmode: 'CPU usage in kernel mode',
+    cpu_usage_in_usermode: 'CPU usage in user mode',
+    cpu_system_cpu_usage: 'CPU system usage',
+    cpu_throttling_periods: 'CPU throtting periods',
+    cpu_throttling_throttled_periods: 'CPU throttled periods',
+    cpu_throttling_throttled_time:'CPU throttled time',
+    memory_usage: 'Memory usage',
+    memory_max_usage: 'Memory max usage',
+    memory_active_anon: 'Memory active anon',
+    memory_active_file: 'Memory active file',
+    memory_cache: 'Memory cache',
+    memory_hierarchical_memory_limit: 'Memory hierarchical limit',
+    memory_inactive_anon: 'Memory inactive anon',
+    memory_inactive_file: 'Memory inactive file',
+    memory_mapped_file: 'Memory mapped file',
+    memory_pgfault: 'Memory pg fault',
+    memory_pgpgin: 'Memory pg pg in',
+    memory_pgpgout: 'Memory pg pg out',
+    memory_rss: 'Memory rss',
+    memory_rss_huge: 'Memory rss huge',
+    memory_unevictable: 'Memory unevictable',
+    memory_writeback: 'Memory writeback',
+    memory_failcnt: 'Memory failcnt',
+    memory_limit: 'Memory limit',
+    // Image page
+    no_such_image: 'Det finns ingen sådan image!',
+    author: 'Författare',
+    architecture: 'Arkitektur',
+    comment: 'Kommentar',
+    dockerversion: 'DockerVersion',
+    os: 'Operativsystem',
+    parent: 'Förälder',
+    size: 'Storlek',
+    // Configuration page
+    no_data_of_version_or_info: 'Inga uppgifter om version eller liknande information',
+    goversion: 'Go-Version',
+    version: 'Version',
+    gitcommit: 'Git-Commit',
+    apiversion: 'Api-Version',
+    driver: 'Driver',
+    executiondriver: 'Exekverings-Driver',
+    KernelVersion: 'Kernel-Version',
+    debug: 'Debug',
+    nfd: 'NFD',
+    ngoroutines: 'NGoroutines',
+    neventslistener: 'NEventsListener',
+    initpath: 'InitPath',
+    initsha1: 'InitSha1',
+    indexserveraddress: 'Index-Server-Adress',
+    memorylimit: 'Minnesgräns',
+    swaplimit: 'Swap-gräns',
+    ipv4forwarding: 'IPv4Forwarding',
+    sockets: 'Sockets',
+    // Dockerhub page
+    search_image: 'Sök Image',
+    search_no_docker_image: 'Ingen Docker Image hittades',
+    description: 'Beskrivning',
+    star_count: 'Antal stjärnor',
+    is_official: 'Officiell',
+    is_automated: 'Automatiserad'
   });
 
 });

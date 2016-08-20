@@ -1,8 +1,11 @@
-FROM golang:1.4
+FROM golang:1.6-alpine
 MAINTAINER tobe tobeg3oogle@gmail.com
 
 # Install dependency
-RUN go get github.com/astaxie/beego
+RUN apk add -U git\
+    && go get github.com/astaxie/beego \
+    && apk del git \
+    && rm -rf /var/cache/apk/* /tmp/*
 
 # Build seagull
 Add . /go/src/github.com/tobegit3hub/seagull/
