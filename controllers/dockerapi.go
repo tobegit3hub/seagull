@@ -137,7 +137,7 @@ func (this *DockerapiController) DeleteContainer() {
 /* Wrap docker remote API to get container stats */
 func (this *DockerapiController) GetContainerStats() {
 	id := this.GetString(":id")
-	address := "/containers/" + id + "/stats"
+	address := "/containers/" + id + "/stats?stream=False"
 	result := RequestUnixSocket(address, "GET")
 	this.Ctx.WriteString(result)
 }
