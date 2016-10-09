@@ -938,7 +938,7 @@ seagull.config(function ($translateProvider) {
     sv_se: 'Svenska',
     de_de: 'German',
     need_help: 'Assistance',
-    theme: 'Theme', // TODO: translation
+    theme: 'Thème',
     // Home page
     error_to_load_data_from_docker_daemon_please_check_seagull_and_configuration: 'Erreur de chargement des données depuis le démon docker. Merci de vérifier la configuration de seagull.',
     period: '.',
@@ -975,14 +975,14 @@ seagull.config(function ($translateProvider) {
     no_docker_image: 'Aucune image docker !',
     repotags: 'Tag',
     virtualsize: 'Espace disque',
-    delete: 'Delete',
-    no_search_result_for: 'No search result for', // TODO: Translate for German
+    delete: 'Supprimer',
+    no_search_result_for: 'Aucun résultat de recherche pour',
     // Container page
     container: 'Conteneur',
     start: 'Démarrer',
     stop: 'Arrêter',
     refresh: 'Rafraîchir',
-    no_such_container: 'conteneur non trouvé!',
+    no_such_container: 'conteneur non trouvé !',
     attribute: 'Attribut',
     value: 'Valeur',
     name: 'Nom',
@@ -998,7 +998,7 @@ seagull.config(function ($translateProvider) {
     tty: 'TTY',
     time: 'TIME',
     cmd: 'CMD',
-    read: 'Read', // TODO: need translation
+    read: 'Lecture',
     network_rx_bytes: 'Network rx bytes',
     network_rx_packets: 'Network rx packages',
     network_rx_errors: 'Network rx errors',
@@ -1033,7 +1033,7 @@ seagull.config(function ($translateProvider) {
     memory_failcnt: 'Memroy failcnt',
     memory_limit: 'Memory limit',
     // Image page
-    no_such_image: 'Impossible de trouver cette image!',
+    no_such_image: 'Impossible de trouver cette image !',
     author: 'Auteur',
     architecture: 'Architecture',
     comment: 'Comment',
@@ -1042,7 +1042,7 @@ seagull.config(function ($translateProvider) {
     parent: 'Parent',
     size: 'Size',
     // Configuration page
-    no_data_of_version_or_info: 'No data of version or info',
+    no_data_of_version_or_info: 'Aucune donnée de version ou d\'information',
     goversion: 'GoVersion',
     version: 'Version',
     gitcommit: 'GitCommit',
