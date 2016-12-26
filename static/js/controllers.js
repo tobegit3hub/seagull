@@ -567,6 +567,8 @@ seagullControllers.controller('ImagesController',
         "ubuntu:latest"
       ],
       "Id": "8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c",
+      // For docker 1.10.3+
+      // "Id": "sha256:8dbd9e392a964056420e5d58ca5cc376ef18e2de93b5cc90e868a1bbc8318c1c",
       "Created": 1365714795,
       "Size": 131506275,
       "VirtualSize": 131506275,
@@ -577,6 +579,11 @@ seagullControllers.controller('ImagesController',
   // Sort table, refer to https://docs.angularjs.org/api/ng/filter/orderBy
   $scope.predicate = '';
   $scope.reverse = false;
+
+  /* Remove image id prefix from "sha256:7b550cc136fa992081e4ee02f8afbd17087ad9921ccedf0409ff7807c990643d" to "7b550cc136fa992081e4ee02f8afbd17087ad9921ccedf0409ff7807c990643d" */
+  for (var i=0; i < images.length; i++) {
+    images[i].Id = images[i].Id.substring(7)
+  }
 
   $scope.images = images;
 
@@ -590,8 +597,14 @@ seagullControllers.controller('ImagesController',
     }).success(function(data, status, headers, config) {
       if (status == 200) {
         alert_success("Delete image " + id.substring(0,12));
-        $http.get($rootScope.canonicalServer + '/images/json').success(function(data) {
-          $scope.images = data;
+        $http.get($rootScope.canonicalServer + '/images/json').success(function(images) {
+
+          /* Remove image id prefix from "sha256:7b550cc136fa992081e4ee02f8afbd17087ad9921ccedf0409ff7807c990643d" to "7b550cc136fa992081e4ee02f8afbd17087ad9921ccedf0409ff7807c990643d" */
+          for (var i=0; i < images.length; i++) {
+            images[i].Id = images[i].Id.substring(7)
+          }
+
+          $scope.images = images;
         });
       } else {
         alert_error("Delete image " + id.substring(0,12));
