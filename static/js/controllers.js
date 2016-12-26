@@ -715,6 +715,9 @@ seagullControllers.controller('ImageController',
     }
   */
 
+  /* Remove image id prefix from "sha256:7b550cc136fa992081e4ee02f8afbd17087ad9921ccedf0409ff7807c990643d" to "7b550cc136fa992081e4ee02f8afbd17087ad9921ccedf0409ff7807c990643d" */
+  image.Id = image.Id.substring(7)
+
   $scope.image = image;
 });
 
