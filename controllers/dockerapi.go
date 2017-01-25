@@ -118,6 +118,15 @@ func (this *DockerapiController) StartContainer() {
 	this.Ctx.WriteString(result)
 }
 
+
+/* Wrap docker remote API to restart contaienrs */
+func (this *DockerapiController) RestartContainer() {
+	id := this.GetString(":id")
+	address := "/containers/" + id + "/restart"
+	result := RequestUnixSocket(address, "POST")
+	this.Ctx.WriteString(result)
+}
+
 /* Wrap docker remote API to stop contaienrs */
 func (this *DockerapiController) StopContainer() {
 	id := this.GetString(":id")
