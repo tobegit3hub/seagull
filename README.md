@@ -1,4 +1,4 @@
-# Seagull [![Build Status](https://drone.io/github.com/tobegit3hub/seagull/status.png)](https://drone.io/github.com/tobegit3hub/seagull/latest) [![Docker Pulls](https://img.shields.io/docker/pulls/tobegit3hub/seagull.svg)](https://hub.docker.com/r/tobegit3hub/seagull/) [![GoDoc](https://godoc.org/github.com/tobegit3hub/seagull?status.svg)](https://godoc.org/github.com/tobegit3hub/seagull) [![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Seagull [![Docker Pulls](https://img.shields.io/docker/pulls/tobegit3hub/seagull.svg)](https://hub.docker.com/r/tobegit3hub/seagull/) [![GoDoc](https://godoc.org/github.com/tobegit3hub/seagull?status.svg)](https://godoc.org/github.com/tobegit3hub/seagull) [![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/tobegit3hub/seagull?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Introduction
 
